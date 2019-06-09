@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lesson-01</title>
+    <style>
+        .wrapper {
+            margin: 0 auto;
+            max-width: 1240px;
+        }
+        .task1 > img {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>homework-01</h1>
+        <h2>Радюк Елена</h2>
+
+        <div class="task1">
+            <h3>1. Нарисуйте блок-схему алгоритма, который проверяет значение входного параметра x, и если это значение больше или равно 0,
+                то возвращает в качестве результата строку "Число положительное", в противном случае - строку "Число отрицательное"
+            </h3>
+            <img src="scheme1_1.svg">
+        </div>
+
+        <div class="task1 p2">
+            <h3>2. Нарисуте блок-схему алгоритма суммирования 10 чисел, кратных 5 ( начиная с 0 )</h3>
+            <img src="scheme2.svg">
+
+            <div class="decription">
+                <div>Код по схеме 2</div>
+                <pre>
+                var num = 0;
+                var sum = 0;
+                for (var i=0; i<10; i++) {
+                    num+=5;
+                    sum+=num;
+                }
+                console.log(sum);
+                console.log(num);
+            </pre>
+            </div>
+
+        </div>
+
+
+        <div class="task3">
+            <h3>3. Напилите кодец, который работает с массивом произвольных целых чисел
+                var numbers = [ 254, 115, 78, 25, 91, 45, 37 ]
+                Ваш скрипт должен вывести в консоль все числа больше 50
+            </h3>
+            <pre>
+                var numbers = [ 254, 115, 78, 25, 91, 45, 37 ];
+
+                for (var i=0; i < numbers.length; i++) {
+                    if(numbers[i]>50) console.log(numbers[i]);
+                }
+            </pre>
+        </div>
+    </div>
+</body>
+</html>
