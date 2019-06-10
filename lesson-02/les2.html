@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lesson-01</title>
+    <style>
+        .wrapper {
+            margin: 0 auto;
+            max-width: 1240px;
+        }
+        .task1 > img {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>homework-02</h1>
+        <h2>Радюк Елена</h2>
+
+        <div class="task1">
+            <h3>1. Создайте пустой массив letters
+
+                Создайте строку из нескольких слов, например "Backend As A Service"
+
+                Напилите код, который разбивает эту строку на массив слов и пушит в массив letters первый символ каждого слова
+
+                Выведите результат в консоль
+
+                Объедините все элементы массива letters в одну строку и выведите ее в консоль
+            </h3>
+            <pre>
+                var letters = [];
+                var sentence = "Backend As A Service";
+
+                var words = sentence.split(' ');
+                for (var i=0; i < words.length; i++) {
+                    letters.push(words[i].charAt(0));
+                }
+                console.log(letters);
+
+                var str = letters.join('');
+                console.log(str);
+            </pre>
+        </div>
+
+        <div class="task1 p2">
+            <h3>2. Объявите функцию с одним формальным параметром, которая проверяет тип данных переданного аргумента и:<br>
+                если это число, возвращает текущую дату в формате "20.02.2019, 13:21:51"<br>
+                в противном случае возвращает строку "Неверный тип данных"<br>
+                Вызовите функцию
+            </h3>
+
+
+            <pre>
+                function checkType(par) {
+                if (isNaN(par)) return console.log('Неверный тип данных');
+
+                var date = new Date();
+                var monthNames = [
+                    "01", "02", "03",
+                    "04", "05", "06", "07",
+                    "08", "09", "10",
+                    "11", "12"
+                ];
+                var day = date.getDate(),
+                    monthIndex = date.getMonth(),
+                    year = date.getFullYear(),
+                    hour = date.getHours(),
+                    minutes = date.getMinutes(),
+                    seconds = date.getSeconds();
+
+                var formatedDate = day + '.' + monthNames[monthIndex] + '.' + year + ', ' + hour + ':' + minutes + ':' + seconds;
+                return formatedDate;
+                }
+
+                checkType('3');
+            </pre>
+
+        </div>
+
+        <div class="task3">
+            <h3>3. Ваша задача: обезопасить свою страницу от внедрения вредоносного кода с помощью функции валидации testUserText
+                функция должна вывести на страницу текст пользователя безопасным способом
+                ( т.е. текст должен быть выведен "as is" ( как есть ), но код не должен быть выполнен )
+            </h3>
+            <img src="winner.jpg">
+        </div>
+    </div>
+</body>
+</html>
