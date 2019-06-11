@@ -54,6 +54,7 @@
 
 
             <pre>
+                1//
                 function checkType(par) {
                 if (isNaN(par)) return console.log('Неверный тип данных');
 
@@ -74,7 +75,14 @@
                 var formatedDate = day + '.' + monthNames[monthIndex] + '.' + year + ', ' + hour + ':' + minutes + ':' + seconds;
                 return formatedDate;
                 }
-
+                
+                2//
+                function checkType2(par) {
+                    if (isNaN(par)) return console.log('Неверный тип данных');
+                    var newData = new Date ();
+                    return newData.toLocaleString();
+                }
+                
                 checkType('3');
             </pre>
 
