@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lesson-03</title>
+    <style>
+        .wrapper {
+            margin: 0 auto;
+            max-width: 1240px;
+        }
+        .task1 > img {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <h1>homework-03</h1>
+    <h2>Радюк Елена</h2>
+
+    <div class="task1">
+        <h3>1. Объявите функцию без формальных параметров, которая выводит в консоль сама себя и все переданные ей аргументы <br>
+            Вызовите эту функцию с аргументами 10, false, "google"
+        </h3>
+        <pre>
+        function printArguments () {
+            for (var i=0; i < arguments.length; i++) {
+                console.log(arguments[i]);
+            }
+            console.dir(arguments.callee)
+            //or console.log(arguments.callee)
+        }
+        printArguments(10, false, "google");
+        </pre>
+    </div>
+
+    <div class="task1 p2">
+        <h3>2. Объявите функцию userInfo, которая выводит в консоль сообщение: <br>
+
+            "Дата регистрации: " + свойство data контекста вызова, если свойство registered имеет значение true <br>
+            "Незарегистрированный пользователь: " + свойство name в противном случае
+            ( используйте переменные в литералах ) <br>
+
+            Создайте два объекта с одинаковым набором свойств:<br>
+
+            name ( строка )<br>
+            registered ( логическое значение )<br>
+            data ( дата в формате "дд.мм.гг" )<br>
+            Добавьте каждому объекту метод getInfo, который будет ссылкой на функцию userInfo<br>
+
+            Вызовите каждый метод
+        </h3>
+
+
+        <pre>
+            function userInfo () {
+                console.log (this.registered ? `Дата регистрации:${this.data}` :
+                    `Незарегистрированный пользователь: ${this.name}`)
+            }
+
+            var user1 = {
+                name : 'Vasya',
+                registered: true,
+                data: new Date().toLocaleString()
+            };
+
+            var user2 = {
+                name: 'Inokentiy',
+                registered: false,
+                data: new Date().toLocaleString()
+            };
+
+            user1.getInfo = userInfo;
+            user2.getInfo = userInfo;
+
+            user1.getInfo();
+            user2.getInfo();
+         </pre>
+
+    </div>
+
+    <div class="task3">
+        <h3>3. Есть три объекта: users, posts и comments
+            ( готовые объекты уже ждут вас по ссылке )<br>
+            Написать код функции getPostComments ( postId ),
+            которая возвращает массив всех комментариев к посту
+            с идентификатором postId
+            ( с именем автора комментария и текстом комментария )
+        </h3>
+        <pre>
+        var users = {
+            14587: {
+                    name: "Ivan",
+                    email: "ivan78@gmail.com"
+            },
+            28419: {
+                    name: "Georg",
+                    email: "georg.klep@gmail.com"
+            },
+            41457: {
+                    name: "Stephan",
+                    email: "stephan.borg@gmail.com"
+            }
+        }
+        var posts = {
+            7891451: {
+                    author: 14587,
+                    text: "Imagine we can encapsulate these secondary responsibilities in functions"
+            },
+            7891452: {
+                    author: 28419,
+                    text: `В конструкторе ключевое слово super используется как функция, вызывающая родительский конструктор.
+                            Её необходимо вызвать до первого обращения к ключевому слову this в теле конструктора.
+                            Ключевое слово super также может быть использовано для вызова функций родительского объекта`
+            },
+            7891453: {
+                    author: 28419,
+                    text: `DOM не обрабатывает или не вынуждает проверять пространство имен как таковое.
+                            Префикс пространства имен, когда он связан с конкретным узлом, не может быть изменен`
+            },
+            7891454: {
+                    author: 14587,
+                    text: "Ключевое слово super используется для вызова функций, принадлежащих родителю объекта"
+            }
+        }
+        var comments = {
+            91078454: {
+                    postId: 7891451,
+                    author: 28419,
+                    text: `The static String.fromCharCode() method returns a string created
+                            from the specified sequence of UTF-16 code units`
+            },
+            91078455: {
+                    postId: 7891451,
+                    author: 41457,
+                    text: `HTML элемент < template> — это механизм для отложенного рендера клиентского контента,
+                            который не отображается во время загрузки, но может быть инициализирован при помощи JavaScript`
+            },
+            91078457: {
+                    postId: 7891452,
+                    author: 41457,
+                    text: "Глобальный объект String является конструктором строк, или, последовательностей символов"
+            },
+            91078458: {
+                    postId: 7891452,
+                    author: 14587,
+                    text: `The Element.namespaceURI read-only property returns the namespace URI of the element,
+                            or null if the element is not in a namespace`
+            }
+        }
+
+        function getCurrentPostComments ( postId ) {
+        var res = []
+
+        for (var comment in comments) {
+            if (comments[comment].postId == postId) {
+                for (var user in users) {
+                    if (comments[comment].author == user) {
+                        res.push({author: users[user].name, text: comments[comment].text});
+                    }
+                }
+            }
+        }
+        return res
+        }
+
+        console.log ( getCurrentPostComments ( 7891451 ) )
+        </pre>
+    </div>
+</div>
+</body>
+</html>
