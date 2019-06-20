@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lesson-04</title>
+    <style>
+        .wrapper {
+            margin: 0 auto;
+            max-width: 1240px;
+            font-family: Arial, sans-serif;
+        }
+        .task1 > img {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <h1>homework-04</h1>
+    <h2>Радюк Елена</h2>
+
+    <div class="task1">
+        <h4>1. Создайте объект, свойства которого описывают содержимое дамской сумочки <br>
+            - Создайте метод объекта, позволяющий удалить что-то из сумочки <br>
+            - Создайте метод объекта, позволяющий положить что-то в сумочку
+        </h4>
+        <div>Вар 1.1 - объект создается с помощью литерала (публичные собственные перечислимые свойства экземпляра )</div>
+        <pre>
+        var bag = {
+            lipstick: "chanel",
+            phone: "iphone 6",
+
+            addThing: function (name, key) {
+            this[name] = key
+            },
+
+            removeThing: function (name) {
+            delete this[name]
+            }
+        }
+        bag.addThing('laptop', 'lenovo');
+        bag.removeThing('phone');
+        </pre>
+        <div>Вар 1.2 - через конструктор Bag</div>
+        <pre>
+        function Bag () {
+            var password = prompt('set your password');
+            var notebook = 'my private note';
+            var money = '100 euro';
+            this.phone = 'iphone 6';
+            this.pen = 'parker';
+            checkUser = function() {
+                return password === prompt('your password?')
+            }
+            this.addThing = function (name, key) {
+                this[name] = key;
+                console.info(`add: ${this[name]}`)
+            },
+            this.removeThing = function (name) {
+                if (checkUser()) {
+                delete this[name]
+                console.info(`delete: ${name}`)
+                return;
+                }
+                console.error('wrong password');
+            },
+            this.motherRights = function () {
+                this.money = money;
+                for(var item in this) {
+                    if (typeof this[item] == 'function') continue;
+                    console.log ( `In this bag: ${item } (${this[item]})` )
+                }
+            }
+        }
+        var bag1 = new Bag();
+
+        bag1.addThing('laptop', 'lenovo');
+        bag1.removeThing('pen');
+        bag1.motherRights();
+
+        </pre>
+    </div>
+
+    <div class="task1 p2">
+        <h4>2. Объявить конструктор LibraryBook, с помощью которого можно создавать и редактировать объекты, хранящие информацию о книгах в библиотеке: <br>
+            Приватные свойства объекта: <br>
+            🔑 title ( название книги ),<br>
+            🔑 year ( год издания ),<br>
+            🔑 author ( автор ),<br>
+            🔑 readerName ( кому выдана ),<br>
+            🔑 readerData ( когда выдана )<br>
+
+            📦 Приватный метод 🔑 giveTheBook ( client ):<br>
+            внесение изменений в свойства:<br>
+            🔑 readerName ( client )<br>
+            🔑 readerData ( текущая дата )<br>
+
+            📋 Публичные методы:<br>
+            📋 getBookInfo () - посмотреть информацию о наличии книги<br>
+            ( вывести в консоль readerData )<br>
+            📋 getTheBook ( client ) -  получить книгу:<br>
+            проверка, что книга не выдана на руки<br>
+            ( приватное свойство readerName<br>
+            должно быть пустой строкой )<br>
+            если выдана - вернуть null<br>
+            если не выдана, то вызвать приватный метод<br>
+            giveTheBook ( client ) и вернуть bookTitle<br>
+            📋 returnBook () - вернуть книгу:<br>
+            сбросить значения приватных свойств<br>
+            readerName, readerData<br>
+
+            Создайте экземпляр книги <br>
+            Запросите экземпляр от имени ... ( любое имя )
+        </h4>
+
+
+        <pre>
+        function LibraryBook(_title, _year, _author) {
+            var title = _title;
+            var year = _year;
+            var author = _author;
+            var readerName = null;
+            var readerData = null;
+
+            var giveTheBook = function (client) {
+                readerName = client;
+                readerData = new Date().toLocaleString();
+            };
+
+            this.getBookInfo = function() {
+                var check = readerName ? `книга выдана ${readerName} ${readerData}` : 'книга в наличии';
+                console.log(`${title}, ${author}, ${year}: ${check}`)
+            };
+
+            this.getTheBook = function (client) {
+                if (readerName) {
+                    this.getBookInfo();
+                    return null
+                } else {
+                    giveTheBook (client);
+                    return {title: _title}
+                }
+            };
+
+            this.returnBook = function (client) {
+                readerName = null;
+                readerData = null;
+            }
+        }
+
+        var book1 = new LibraryBook('A Man Called Ove', '2012', 'Fredrik Backman');
+        book1.getBookInfo();
+        book1.getTheBook("Elena");
+        book1.getBookInfo();
+        book1.returnBook("Elena");
+        book1.getBookInfo();
+    </pre>
+    </div>
+
+    <div class="task3">
+        <h4>3. Объявите конструктор, который создает экземпляры с унаследованным методом addProperty<br>
+            Метод addProperty должен принимать два аргумента:<br>
+            имя свойства<br>
+            значение свойства<br>
+            и добавлять экземпляру новое свойство с указанным именем и значением<br>
+        </h4>
+        <pre>
+        function InheritMeth() {}
+        InheritMeth.prototype.addProperty = function (name, value) {
+            console.log(`add ${name}: ${value}`)
+            this[name] = value;
+        };
+
+        var obj = {};
+        obj.__proto__ = InheritMeth.prototype;
+
+        obj.addProperty('test name', 'test value')
+        </pre>
+    </div>
+</div>
+</body>
+</html>

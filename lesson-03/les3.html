@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>lesson-03</title>
+    <title>lesson-04</title>
     <style>
         .wrapper {
             margin: 0 auto;
@@ -55,20 +55,20 @@
 
         <pre>
             function userInfo () {
-                console.log (this.registered ? `Дата регистрации:${this.data}` :
+                console.log (this.registered ? `Дата регистрации: ${this.data}` :
                     `Незарегистрированный пользователь: ${this.name}`)
             }
 
             var user1 = {
                 name : 'Vasya',
                 registered: true,
-                data: new Date().toLocaleString()
+                data: new Date().toLocaleString().split(',')[0]
             };
 
             var user2 = {
                 name: 'Inokentiy',
                 registered: false,
-                data: new Date().toLocaleString()
+                data: new Date().toLocaleString().split(',')[0]
             };
 
             user1.getInfo = userInfo;
@@ -77,7 +77,6 @@
             user1.getInfo();
             user2.getInfo();
          </pre>
-
     </div>
 
     <div class="task3">
