@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lesson-05</title>
+    <style>
+        .wrapper {
+            margin: 0 auto;
+            max-width: 1240px;
+            font-family: Arial, sans-serif;
+        }
+        .task1 > img {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <h1>homework-05</h1>
+    <h2>Радюк Елена</h2>
+
+    <div class="task1">
+        <h4>1. Напилить код функции modificator, такой, чтобы в результате работы кода:
+            <pre>
+            function sampleFunc () {
+            console.log ( `${arguments.callee.name}: ${arguments[0]} | ${arguments[1]}` )
+            }
+            function modificator ( func ) {
+            ...
+            }
+            testFunc = modificator( sampleFunc )
+            testFunc()
+            </pre>
+            в консоли было: <br>
+            sampleFunc: test | sample
+
+        </h4>
+
+        <pre>
+        function sampleFunc () {
+            console.log ( `${arguments.callee.name}: ${arguments[0]} | ${arguments[1]}` )
+        }
+
+        function modificator ( func ) {
+            return func.bind(null, 'test', 'sample')
+        }
+
+        testFunc = modificator( sampleFunc )
+
+        testFunc()
+        sampleFunc: test | sample
+        </pre>
+    </div>
+
+    <div class="task1 p2">
+        <h4>2. Напилить код функции modificator, такой, чтобы в результате работы кода:
+            <pre>
+            function sampleFunc () {
+            console.info ( `Symbols in my code: ${arguments.callee + 0}` )
+            }
+            function modificator ( func ) {
+            ...
+            }
+            modificator( sampleFunc )
+            sampleFunc()
+            </pre>
+            в консоль было выведено число символов в коде функции sampleFunc, т.е.:<br>
+            Symbols in my code: 93
+        </h4>
+
+<pre>
+function sampleFunc () {
+    console.info ( `Symbols in my code: ${arguments.callee + 0}` )
+}
+function modificator ( func ) {
+    func.valueOf = function() {
+        return this.arguments.callee.toString().length
+    }
+}
+
+modificator( sampleFunc )
+
+sampleFunc()
+    </pre>
+    </div>
+
+    <div class="task3">
+        <h4>3. Напилите код функции generateError, такой, чтобы в результате работы кода:
+            <pre>
+            function testArguments () {
+            function generateError ( numArgs ) {
+            ...
+            }
+            try {
+            arguments.length >= 3 ? null : generateError ( arguments.length )
+            }
+            catch ( err ) {
+            console.error ( `${err.name}: ${err.message}\n${err.stack}` )
+            }
+            }
+            testArguments ( "Google" )
+            </pre>
+            в консоли было сообщение от ошибке:<br>
+
+            ► Application: Invalid arguments<br>
+            Function needs 3 arguments, but only 1 present
+        </h4>
+        <pre>
+        function testArguments () {
+            function generateError ( numArgs ) {
+                numArgs = arguments.length
+                var err = new Error ( `Invalid arguments` )
+                err.name = "Application"
+                err.stack = `Function needs 3 arguments, but only ${numArgs} present`
+                throw err
+            }
+            try {
+                arguments.length >= 3 ? null : generateError ( arguments.length )
+            }
+            catch ( err ) {
+                console.error ( `${err.name}: ${err.message}\n${err.stack}` )
+            }
+        }
+
+        testArguments ( "Google" )
+        </pre>
+    </div>
+</div>
+</body>
+</html>
