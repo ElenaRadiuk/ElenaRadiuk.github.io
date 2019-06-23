@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lesson-05</title>
+    <style>
+        .wrapper {
+            margin: 0 auto;
+            max-width: 1240px;
+            font-family: Arial, sans-serif;
+        }
+        .task1 > img {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <h1>homework-06</h1>
+    <h2>Радюк Елена</h2>
+
+    <div class="task1">
+        <h4>1. Создайте массив tags с именами валидных тегов HTML5 <br>
+
+            Теперь создайте массив classes с именами классов<br>
+
+            ( число элементов в массиве classes должно быть не меньше, чем число элементов массива tags )<br>
+
+            Создайте элемент style и вставьте его в head документа<br>
+
+            Добавьте контент элемента style с описанием классов, имена которых находятся в массиве classes<br>
+
+            Итерируйте массив tags, создавая соответствующие элементы и вставляя их на страницу, добавляя каждому элементу класс из массива classes
+        </h4>
+
+        <pre>
+        var tags = ['header', 'div', 'section', 'article', 'footer']
+        var classes = [ 'classes-1', 'classes-2', 'classes-3', 'classes-4', 'classes-5' ]
+
+
+        var styleTag = document.createElement('style');
+        document.head.appendChild(styleTag)
+
+        function randomColor() {
+            var letters = '0123456789ABCDEF'.split('');
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.round(Math.random() * 15)];
+            }
+            return color;
+        }
+
+        for (var class1 of classes) {
+            var classColor =  randomColor();
+            styleTag.appendChild (
+                document.createTextNode (
+                    `.${class1} {
+                        border: 2px solid ${classColor};
+                        height: ${Math.round(Math.random()*150)}px;
+                        margin-bottom: 10px;
+                     }`
+                )
+            )
+        }
+
+        var i = 0;
+        for (var tag1 of tags) {
+            var newElem = document.createElement(tag1);
+            newElem.classList.add(classes[i]);
+            document.body.appendChild(newElem);
+            i++;
+        }
+        </pre>
+    </div>
+
+    <div class="task1 p2">
+        <h4>2. Результат должен быть аналогичен тому, что получится в предыдущем упражнении
+
+            Однако исходный массив tags должен быть массивом объектов, каждый из которых содержит не только имя тега элемента,
+            но и его атрибуты, а так же хотя бы один обработчик события
+
+            Таким образом, массив classes нам уже не нужен, но кроме стилизации элементов нужно еще добавить их контент, используя
+            как атрибуты тегов, так и свойства элементов DOM
+
+        </h4>
+
+<pre>
+
+    </pre>
+    </div>
+
+    <div class="task3">
+        <h4>3. Напилить код, который выбирает все элементы-потомки body ( :warning: кроме элементов script ) и добавляет им класc:
+
+            .redBack {
+            background-color: red!important;
+            }
+            Альтернативный вариант - выбрать все заранее заданные элементы:
+
+            var tags = [ "header", "footer", "main", "div", "p" ]
+            Запустить код в консоли любой страницы
+
+            Подсказка: используйте методы объекта classList
+
+        </h4>
+        <pre>
+
+        </pre>
+    </div>
+</div>
+</body>
+</html>
