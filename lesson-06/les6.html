@@ -85,7 +85,82 @@
 
         </h4>
 
-<pre>
+    <pre>
+        var styleTag = document.createElement('style');
+    document.head.appendChild(styleTag);
+styleTag.appendChild (
+    document.createTextNode (
+        `.class-for-all {
+            border: 2px solid grey;
+            height: 150px;
+            margin-bottom: 10px;
+         }`
+    )
+)
+
+
+elements = [
+    {
+        tag: 'header',
+        class: 'class-for-all',
+        'data-attribute': 'element created',
+        text: `this is tag header`,
+        onclick: function(event) {
+            event.target.style.background = `green`;
+            event.target.innerHTML = 'click'
+        }
+    },
+
+    {
+        tag: 'div',
+        class: 'class-for-all',
+        style: `border: 2px solid grey;
+                height: 250px;
+                margin-bottom: 10px;`,
+        'data-attribute': 'element created',
+        text: `this is tag div`,
+        onclick: function(event) {
+            event.target.style.background = `red`;
+            event.target.innerHTML = 'click'
+        }
+    }
+]
+
+for (var elem of elements) {
+    for (var prop in elem) {
+        console.log(prop);
+//         console.log(elem[prop]);
+var newElem;
+        if (this.prop == 'tag') {
+//             console.log('tag');
+            newElem = document.createElement(elem[prop]);
+            document.body.appendChild(newElem);
+//
+
+
+             if (this.prop == 'class') {
+             console.log(prop)
+//              newElem.classList.add('class test')
+         }
+
+
+        }
+//         console.log(newElem);
+        prop == 'class' ? (newElem.classList.add(elem[prop])) : null;
+        prop == 'style' ? (newElem.style.cssText = elem[prop]) : null;
+        prop == 'data-attribute' ? (newElem.setAttribute(prop, elem[prop])) : null;
+        prop == 'text' ? (newElem.innerHTML = elem[prop]) : null;
+
+       (prop.slice(0,2) == 'on') ? (newElem.onclick = elem[prop]) : 'false';
+//        console.log(newElem.addEventListener(prop, elem[prop]));
+//         console.log(newElem.setAttribute(prop, 'ttttt'));
+
+// newElem.style.cssText = 'color: red;'
+//         if (prop.slice(0,2) == 'on') {
+//             newElem.onclick =  elem[prop];
+//         }
+    }
+}
 
     </pre>
     </div>
