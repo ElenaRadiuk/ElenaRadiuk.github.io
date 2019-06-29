@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    var collection = [];
+    var parentElem = document.body;
+
+    [ "first", "second", "third", "fourth" ].forEach (
+        function ( tag, index, arr  ) {
+            var elem = document.createElement('div');
+
+            elem.style = `
+                    width: ${500 - (index+1) * 70}px;
+                    height: ${500 - (index+1) * 70}px;
+                    border: dotted 1px yellow;
+                    position: relative;
+                    margin: 30px auto;
+                    background: #ff00ff;
+                `;
+            elem.setAttribute('title', tag);
+
+            parentElem.appendChild(elem);
+            parentElem = elem;
+
+            collection.push(elem);
+
+            elem.addEventListener("click", clickHandler);
+            elem.addEventListener("mouseenter", enter);
+            elem.addEventListener("mouseleave", leave);
+        }
+    )
+
+    var message = document.createElement('p');
+    message.style = `
+            color: red;
+            text-align: center;
+        `;
+    document.body.appendChild(message);
+
+
+    function clickHandler ( event ) {
+        event.stopPropagation();
+
+        message.innerText = `the ${this.title} element has been deleted`;
+
+
+        for (child of this.children) {
+            this.parentElement.appendChild(child);
+        }
+        this.remove();
+
+//             if (this.hasChildNodes()) {
+//                 for (child of this.children) {
+//                     this.parentElement.replaceChild(child, this)
+//                 }
+//             } else {
+//                 this.remove()
+//             }
+    }
+
+    function enter ( event ) {
+        this.style.background = "#ffff00";
+    }
+
+    function leave ( event ) {
+        this.style.background = "#ff00ff";
+    }
+</script>
+<script>
+
+    var element = document.createElement('p');
+
+    var img = document.createElement('img');
+
+    element.style = `
+        height: 100px;
+        width: 100px;
+        border: 1px solid grey;
+        margin: 80px auto;
+        text-align: center;
+        line-height: 55px;
+    `;
+    element.innerText = 'Click me';
+    document.body.appendChild(element);
+
+    function showImg(event) {
+        (img.length !== 0) ? (element.innerHTML = `Enjoy :) <br> &dArr;`) : (element.innerText = 'Click me');
+
+        img.src = "img.jpg";
+        img.style = `
+           display: block;
+           height: 100px;
+           margin: 0 auto;
+        `;
+        document.body.appendChild(img);
+    }
+
+    function scaleImg(event) {
+        this.style.transform = "scale(2)";
+        this.style.transition = "all 0.5s";
+    }
+
+    function removeImg(event) {
+        document.body.removeChild(img);
+        element.innerText = 'Click me';
+    }
+
+    element.addEventListener('click', showImg);
+    img.addEventListener('mouseover', scaleImg);
+    img.addEventListener('click', removeImg);
+
+</script>
+
+<script>
+
+    var collection = ["first", "second", "third", "fourth" ];
+    var parentElem = document.body;
+    var index = collection.length;
+    for (var item of collection) {
+        var elem = document.createElement('div');
+
+        elem.style = `
+        width: ${ index * 70}px;
+                height: ${index * 70}px;
+                border: dotted 1px yellow;
+                position: relative;
+                margin: 30px auto;
+                background: #ff00ff;
+            `;
+
+        elem.setAttribute('title', item);
+
+        parentElem.appendChild(elem);
+
+        parentElem = elem;
+        index--;
+        elem.addEventListener("click", clickHandler);
+        elem.addEventListener("mouseover", over);
+        elem.addEventListener("mouseout", out);
+    }
+
+    var message = document.createElement('p');
+    message.style = `
+            color: red;
+            text-align: center;
+        `;
+    document.body.appendChild(message);
+
+
+    function clickHandler ( event ) {
+        event.stopPropagation();
+        this.hasChildNodes() ? (message.innerText = `the ${this.title} element with child have been deleted`)
+            : (message.innerText = `the ${this.title} element has been deleted`);
+
+        this.parentElement.removeChild(this);
+    }
+
+    function over ( event ) {
+        event.stopPropagation();
+        this.style.background = "#ffff00";
+    }
+
+    function out ( event ) {
+        event.stopPropagation();
+        this.style.background = "#ff00ff";
+    }
+
+</script>
+
+<script>
+    var element = document.createElement('p');
+
+    var img = document.createElement('img');
+
+    element.style = `
+    height: 100px;
+    width: 100px;
+    border: 1px solid grey;
+    margin: 100px auto;
+     text-align: center;
+    // overflow: hidden;
+    `
+
+    document.body.appendChild(element);
+    element.innerText = 'Click me';
+
+    // img.src = "https://greatchat.ru/wp-content/uploads/2018/10/Image1538719176781.jpeg"
+    // img.style = `
+    //     width: 100px;
+    //     height: 100px;
+    // `
+
+    function showImg(event) {
+        // event.stopPropagation();
+//             img.src = "https://greatchat.ru/wp-content/uploads/2018/10/Image1538719176781.jpeg"
+        img.src = "img.jpg";
+        img.setAttribute('id', 'pic')
+        img.style = `
+            height: 100px;
+`
+        element.appendChild(img)
+//     src = `${this.src}`
+    }
+
+    function scaleImg(event) {
+        // event.stopPropagation();
+        this.style.transform = "scale(2)";
+        this.style.transition = "all 0.5s";
+    }
+
+    function removeImg(event) {
+        event.stopPropagation();
+        this.parentElement.removeChild(img);
+        console.log(this.parentNode)
+        console.log(this.parentElement)
+        console.log(img.parentElement)
+        // .removeChild(img);
+    }
+
+    element.addEventListener('click', showImg);
+    img.addEventListener('mouseover', scaleImg);
+    img.addEventListener('click', removeImg);
+
+
+
+
+    // img.removeEventListener('click', scaleImg);
+
+</script>
+</body>
+</html>
