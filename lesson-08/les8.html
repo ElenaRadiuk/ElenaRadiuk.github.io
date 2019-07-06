@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>lesson-08</title>
+    <style>
+        .wrapper {
+            margin: 0 auto;
+            max-width: 1240px;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <h1>homework-08</h1>
+    <h2>Радюк Елена</h2>
+
+    <div class="task1">
+        <h4>1. Напилите код, выводящий на страницу текущее время в течение 100 секунд
+        </h4>
+
+       <pre>
+       var description = document.body.appendChild(document.createElement("span"));
+       description.innerText = "Time ";
+       var timeLine = document.body.appendChild(document.createElement("span"));
+
+       var currentTime = setTimeout(function setTime(n){
+           timeLine.innerText = new Date().toLocaleString().split(',')[1]
+           if (n!=0) {
+               currentTime = setTimeout(setTime, 1000, n-1)
+           }
+       }, 1000, 100)
+       </pre>
+    </div>
+
+    <div class="task1 p2">
+        <h4>2. Завершите код рекурсивной функции typeMessage так, чтобы при ее вызове на страницу выводился один символ в секунду
+            <pre>
+            var typeMessage = ( function ( velocity ) {
+            let container = document.getElementById ( "demo" ) ?
+            document.getElementById ( "demo" ) :
+            document.body.appendChild (
+            document.createElement ( "h3" )
+            )
+            container.style = `color: magenta;`
+            var index = 0
+            return function ( message ) {
+            ...
+            }
+            })( 1 )
+
+            typeMessage ( `Welcome to the hell` )
+            </pre>
+        </h4>
+
+    <pre>
+        var typeMessage = ( function ( velocity ) {
+        let container = document.getElementById ( "demo" ) ?
+            document.getElementById ( "demo" ) :
+            document.body.appendChild (
+                document.createElement ( "h3" )
+            )
+        container.style = `color: magenta;`
+        var index = 0
+        return function ( message ) {
+            var arg = Array.from(message);
+            container.textContent += arg[index];
+
+            if (++index < arg.length) {
+                setTimeout(function(){
+                return typeMessage(message);
+                }, velocity)
+            }
+            }
+        })( 1000 )
+
+        typeMessage ( `Welcome to the hell` )
+    </pre>
+    </div>
+
+    <div class="task3">
+        <h4>3. Нужно сделать так, чтобы у всех экзепляров, созданных конструктором User, был унаследованный метод counter(), который считает созданные конструктором экземпляры<br>
+            Каждый вызов конструктора увеличивает счетчик экземпляров на 1 и помещать новое значение счетчика в свойство id созданного экземпляра:<br>
+            <pre>
+            function User ( name ) {
+            this.name = name
+            this.id = this.counter()
+            }
+
+            ...
+
+            var users = [
+            new User ( "Семен" ),
+            new User ( "Антон" ),
+            new User ( "Демьян" ),
+            new User ( "Василий" )
+            ]
+            </pre>
+            После выполнения кода:<br>
+            users[1].id = users[1].counter()<br>
+            свойство id экземпляра не должно измениться, так же, как и значение счетчика
+        </h4>
+        <pre>
+            function User ( name ) {
+                this.name = name
+                this.id = this.counter();
+            }
+
+            User.prototype.counter = (function() {
+                var count = 0;
+                return function () {
+                    if(typeof(this.id) == 'number') return this.id;
+                    return ++count;
+                }
+            })();
+
+            var users = [
+                new User ( "Семен" ),
+                new User ( "Антон" ),
+                new User ( "Демьян" ),
+                new User ( "Василий" )
+            ]
+        </pre>
+    </div>
+</div>
+
+</body>
+</html>
