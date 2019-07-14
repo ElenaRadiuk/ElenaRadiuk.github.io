@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>lesson-09</title>
+    <style>
+        .wrapper {
+            margin: 0 auto;
+            max-width: 1240px;
+            font-family: Arial, sans-serif;
+        }
+        span {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <h1>homework-09</h1>
+    <h2>Радюк Елена</h2>
+
+    <div class="task1">
+        <h4>1. Завершите код функции typeMessage так, чтобы на страницу выводился один символ в секунду
+            <pre>
+            function typeMessage ( message, velocity ) {
+            var container = document.getElementById ( "demo" ) ?
+            document.getElementById ( "demo" ) :
+            document.body.appendChild (
+            document.createElement ( "h3" )
+            )
+            container.style = `color: magenta;`
+            ...
+            }
+
+            typeMessage ( `Welcome to the hell`, 1 )
+            </pre>
+        </h4>
+
+        Решение:
+        <pre>
+        function typeMessage ( message, velocity ) {
+        var container = document.getElementById ( "demo" ) ?
+            document.getElementById ( "demo" ) :
+            document.body.appendChild (
+                document.createElement ( "h3" )
+            )
+        container.style = `color: magenta;`
+
+        message.split('').forEach(function(symbol, index){
+            (function(){
+                 setTimeout(function(){
+                      container.textContent += symbol;
+                 }, velocity*1000*(index+1))
+            })()
+        })
+        }
+
+        typeMessage ( `Welcome to the hell`, 1 )
+        </pre>
+    </div>
+
+    <div class="task1 p2">
+        <h4>2. Напилите код методов setUserPresent, showPresent и showAbsent
+            <pre>
+            var users = (
+            function ( list ) {
+            var users = []
+            for ( var user of list )
+            users.push ({
+            name: user,
+            present: false
+            })
+
+            return {
+            setUserPresent ( userName, present ) {
+            ...
+            },
+            showPresent () {
+            ...
+            },
+            showAbsent () {
+            ...
+            }
+            }
+            }
+            )( [ "Иван", "Дмитрий", "Степан", "Михаил" ] )
+
+            users.showAbsent()
+            После запуска кода результат в консоли должен быть таким:
+
+            Иван
+            Дмитрий
+            Степан
+            Михаил
+            а после выполнения кода:
+
+            users.setUserPresent( "Иван", "+" )
+            users.setUserPresent( "Михаил", "присутствовал" )
+            users.setUserPresent( "Степан", true )
+
+            users.showPresent()
+            результат в консоли должен быть таким:
+
+            Иван
+            Степан
+            Михаил
+            </pre>
+        </h4>
+
+        Решение:
+        <pre>
+        var users = (
+        function ( list ) {
+        var users = []
+        for ( var user of list )
+            users.push ({
+                name: user,
+                present: false
+            })
+
+        return {
+            setUserPresent ( userName, present ) {
+                users.filter(function(user) {
+                    user.name === userName ? user['present'] = present : null;
+                })
+            },
+            showPresent () {
+                users.forEach(function(user) {
+                    user.present === '+' || user.present === true || user.present === 'присутствовал'
+                         ? console.log(user.name) : null
+                })
+            },
+            showAbsent () {
+               users.filter(function(x){
+                           x.present === false ? console.log(x.name) : null
+                       })
+                    }
+                }
+            }
+        )( [ "Иван", "Дмитрий", "Степан", "Михаил" ] )
+
+        users.showAbsent()
+        users.setUserPresent ( 'Иван', '+' )
+        users.setUserPresent( "Михаил", "присутствовал" )
+        users.setUserPresent( "Степан", true )
+        users.showPresent ()
+        </pre>
+    </div>
+
+    <div class="task3">
+        <h4>3. Допилите код функции changeClass, которая парсит все стили страницы в поисках заданного класса, а затем меняет атрибуты стиля этого класса
+            <pre>
+            let changeClass = ( classname, styleString ) => (
+            ...
+            ).length > 0 ? console.log ( "found" ) :
+            document.head.appendChild (
+            document.createElement ( "style" )
+            ).textContent = `.${classname} {${styleString}}`
+            После вызова функции:
+
+            changeClass ( "second-level-menu", "background-color: red!important;" )
+            в консоли страницы, где есть элементы с классом second-level-menu, у всех элементов этого класса цвет фона должен измениться на красный
+            </pre>
+        </h4>
+
+        Решение Вариант 1
+        <pre>
+        function changeStyle(findSelector, newDeclarations) {
+            Array.from( document.styleSheets ).forEach((sheet) => {
+            if (sheet.href) return;
+            Array.from(sheet.cssRules).forEach((styleRule) => {
+                styleRule.selectorText === findSelector ? styleRule.style.cssText = newDeclarations : null;
+                });
+            });
+        }
+
+        changeStyle('.toChange', 'color: red');
+        </pre>
+
+        Решение Вариант 2
+        <pre>
+        function changeStyle2(findSelector, newDeclarations) {
+            Array.from( document.styleSheets ).forEach((sheet) => {
+            if (sheet.href) return;
+                Array.from(sheet.cssRules).forEach((styleRule) => {
+                    Object.keys(newDeclarations).forEach((cssProp) => {
+                    styleRule.style[cssProp] = newDeclarations[cssProp];
+                    });
+                });
+            });
+        }
+
+        var newDeclarations = {
+            'background': 'red'
+        };
+        changeStyle2('.toChange', newDeclarations);
+        </pre>
+
+        <h5 style="color: orangered">Файл для теста скрипта: <a href="forLes9.html">ссылка на файл</a></h5>
+    </div>
+</div>
+
+</body>
+</html>
