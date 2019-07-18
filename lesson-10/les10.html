@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>lesson-10</title>
+    <style>
+        .wrapper {
+            margin: 0 auto;
+            max-width: 1240px;
+            font-family: Arial, sans-serif;
+        }
+        span {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <h1>homework-10</h1>
+    <h2>Радюк Елена</h2>
+
+    <div class="task1">
+        <h4>1. Логирование поступающих сообщений в объекте log
+            <pre>
+            Задан массив сообщений и пустой объект log:
+
+            let messages = [
+                "backspace",
+                "enter",
+                "shift",
+                "control",
+                "delete",
+                "space",
+                "subtract"
+            ]
+
+            var log = {}
+            Далее, есть функция, отправляющая сообщения в случайном порядке в случайное время:
+
+            var sendMessage = ( message, callback ) =>
+                setTimeout (
+                    () => callback ( message ),
+                    Math.random () * 7000
+                )
+            Обратите внимание, что эта функция получает при вызове не только текст сообщения, но и колбэк-функцию, которой нужно передать это сообщение
+
+            С помощью кода:
+
+            messages.forEach (
+                message => sendMessage ( message, handler )
+            )
+            инициируем отправку сообщений
+
+            :warning:
+
+            Ваша задача - напилить код функции handler,
+
+            которая получает сообщение и заносит его в объект log
+
+            в виде нового свойства,
+
+            значение которого - текст поступившего сообщения,
+
+            а ключ ( имя свойства ) - это время поступления сообщения ( в виде строки )
+
+            log
+            {
+                19:34:08: "control"
+                19:34:08[2]: "backspace"
+                19:34:09: "subtract"
+                19:34:09[2]: "enter"
+                19:34:11: "delete"
+                19:34:11[2]: "shift"
+            }
+            В помощь вам уже есть функция, которая формирует ключ очередного сообщения:
+
+            getKey = () => {
+                let key = new Date().toLocaleTimeString(), x = 0
+                while ( log [ `${key}[${x}]` ] ) { x++ }
+                return `${key}[${x}]`
+            }
+            На случай, если два сообщения поступят одновременно, функция getKey добавляет "[0]", "[1]", "[2]"... к значению ключа ( иначе значения ключей могут дублироваться,
+                что приведет к генерации исключения )
+            </pre>
+        </h4>
+
+        <h5>Решение:</h5>
+        <pre>
+            var messages = [
+            "backspace",
+            "enter",
+            "shift",
+            "control",
+            "delete",
+            "space",
+            "subtract"
+            ]
+
+            var log = {}
+
+            var sendMessage = ( message, callback ) =>
+                setTimeout (
+                () => callback ( message ),
+                Math.random () * 7000
+            )
+
+            function handler (message){
+                getKey = () => {
+                    let key = new Date().toLocaleTimeString(), x = 0
+                    while ( log [ `${key}[${x}]` ] ) { x++ }
+                    return `${key}[${x}]`
+                }
+
+                Object.defineProperty(log, getKey(), {
+                    value: message
+                })
+                console.log(log)
+            }
+
+            messages.forEach (
+                message => sendMessage ( message, handler )
+            )
+        </pre>
+    </div>
+
+    <div class="task1 p2">
+        <h4>2. Допилите код конструктора User, дополнив его акцессорами приватного свойства presence так, чтобы после выполнения скрипта:
+            <pre>
+                function User ( name ) {
+                    this.name = name
+                    var presence = false
+                    ...
+                }
+
+                let user = new User ( "Ivan" )
+                console.info ( user.presence )
+                в консоли было:
+
+                "Ivan is absent"
+                а после выполнения кода:
+
+                user.presence = "+"
+                console.info ( user.presence )
+                в консоли было:
+
+                "Ivan is present"
+            </pre>
+        </h4>
+
+        <h5>Решение:</h5>
+        <pre>
+            function User ( name ) {
+                this.name = name
+                var presence = false
+
+                Object.defineProperties(this, {
+                    presence: {
+                        get: () => presence == false ? console.log(`${this.name} is absent`) : (`${this.name} is present`),
+                        set: (updateStatus)  =>
+                              updateStatus === "+" ? presence = updateStatus : null
+                    }
+                })
+            }
+
+            var user = new User ( "Ivan" )
+            console.info ( user.presence )
+
+            user.presence = "+"
+            console.info ( user.presence )
+        </pre>
+    </div>
+
+    <div class="task3">
+        <h4>3. Объявить функцию-конструктор User
+        <pre>
+            :warning: Конструктор должен принимать аргументы, описывающие юзера
+            :clipboard: Статические свойства и методы конструктора
+            У конструктора должны быть следующие :warning: не наследуемые экземплярами свойства и методы:
+            :one: avatars
+            массив:
+
+            [
+                 "https://pre00.deviantart.net/50f9/th/pre/i/2011/217/e/8/pikachu_2_by_nostalgiaattack-d45jd3i.png",
+                 "https://cdn.diversityavatars.com/wp-content/uploads/2018/01/Vector-Smart-Object-5.png",
+                 "https://cdn4.iconfinder.com/data/icons/user-avatar-flat-icons/512/User_Avatar-31-512.png",
+                 "http://icons.iconarchive.com/icons/hopstarter/face-avatars/256/Male-Face-L3-icon.png",
+                 "https://findicons.com/files/icons/1072/face_avatars/300/i05.png",
+                 "http://www.iconarchive.com/download/i51043/hopstarter/halloween-avatars/Gomez.ico",
+                 "http://icons.iconarchive.com/icons/hopstarter/halloween-avatars/256/Zombie-2-icon.png",
+                 "https://vignette.wikia.nocookie.net/yogscast/images/8/8a/Avatar_Turps_2015.jpg"
+            ]
+            :two: admin
+            объект следующей структуры:
+
+            {
+                photoURL: "https://i.pinimg.com/originals/3d/47/4f/3d474f82ff71595e8081f9a120892ae8.gif",
+                name: "admin"
+            }
+                Админ пишет непосредственно в messageBox
+            :three: getAvatar
+            метод, возвращающий извлеченный из массива avatars элемент
+
+            return this.avatars.shift ()
+            :clipboard: Собственные свойства экземпляров
+            :one: name ( имя пользователя )
+            :two: email
+            :three: photoURL ( URL фотографии пользователя )
+            Конструктор должен иметь дефолтные значения для всех аргументов
+            дефолтное значение URL фотографии пользователя должно быть результатом работы статического метода getAvatar
+
+            :clipboard: Унаследованные свойства экземпляров
+            :five: неперечислимое неизменяемое свойство messageBox - элемент DOM
+            messageBox - это контейнер, куда будут выводиться сообщения всех пользователей и admin
+            при выводе сообщения пользователя в messageBox должны отображаться его аватар и имя
+            :four: унаследованные методы write и read
+            запись осуществляется в messageBox, чтение - из messageBox
+
+            :arrow_forward: После того, как конструктор будет объявлен, выполните код в консоли:
+            var users = [
+                new User ( "Иван" ),
+                new User ( 'Alex', "alex@gmail.com" ),
+                new User ( 'Bob', "bob777@gmail.com" ),
+                new User ( 'Dima', "dima888@gmail.com" ),
+                new User ( 'Fima', "fima999@gmail.com" )
+            ]
+
+            var k = 1
+            users.forEach (
+                function ( user ) {
+                    setTimeout (
+                        function () {
+                            user.write ( `Hello, I'm ${user.name}` )
+                        }, 3000 * k++
+                    )
+                }
+            )
+            :large_blue_circle: Короче, юзеры пишут в messageBox из консоли:
+
+            users[index].write ( text )
+            а вот админ - непосредственно вводит текст в messageBox
+
+            ( т.е. при вводе в messageBox пишущий сообщение идентифицируется как админ, выводится его аватар и имя )
+        </pre>
+        </h4>
+
+        <h5>Решение:</h5>
+        <pre>
+        function User(name = "default name",
+            email = "default@gmail.com",
+            avatar = User.getAvatar() ) {
+            this.name = name
+            this.email = email
+            this.avatar = avatar
+            this.userInfo = ''
+        }
+
+        User.avatars = [
+             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqTLS_JUm-kPpCIIT2VOzBP9Q-xcvpWf_p94zHTTwur_K4wnVcEg",
+             "https://cdn4.iconfinder.com/data/icons/user-avatar-flat-icons/512/User_Avatar-31-512.png",
+             "http://icons.iconarchive.com/icons/hopstarter/face-avatars/256/Male-Face-L3-icon.png",
+             "https://findicons.com/files/icons/1072/face_avatars/300/i05.png",
+             "http://www.iconarchive.com/download/i51043/hopstarter/halloween-avatars/Gomez.ico",
+             "http://icons.iconarchive.com/icons/hopstarter/halloween-avatars/256/Zombie-2-icon.png",
+             "https://vignette.wikia.nocookie.net/yogscast/images/8/8a/Avatar_Turps_2015.jpg",
+             "https://cdn.diversityavatars.com/assets/images/avatars-gallery/freebie-v3/matrix-trinity.png"
+         ]
+
+        User.admin = {
+            photoURL: "https://i.pinimg.com/originals/3d/47/4f/3d474f82ff71595e8081f9a120892ae8.gif",
+            name: "admin"
+        }
+
+        User.getAvatar = function() {
+            return this.avatars.shift();
+        }
+
+        User.prototype.messageBox = (function(){
+            var box = document.createElement('div')
+            document.body.appendChild(box)
+            box.style = `
+                width: 100%;
+                max-width: 500px;
+                height: 350px;
+                border: 1px solid grey;
+                background-color: darkgrey;
+                font-size: 18px;
+                padding: 0 20px 20px;
+                overflow: auto;
+                box-sizing: border-box;
+                color: white;
+                font-family: Arial
+
+            `
+            box.headerBox = box.appendChild(document.createElement('h4'))
+            box.headerBox.innerHTML = 'Type your message'
+
+            box.photo = box.appendChild(document.createElement('img'))
+            box.photo.style = `height: 50px; max-height: 50px; width: auto; display: inline-block; padding-right: 5px;`
+
+            box.name = box.appendChild(document.createElement('span'))
+            box.name.innerHTML = 'Name: '
+
+            box.email = box.appendChild(document.createElement('p'))
+            box.email.innerHTML = 'E-mail: '
+
+            box.textContainer = box.appendChild(document.createElement('textarea'))
+            box.textContainer.style = `width: 99%; height: 30%; margin-top: 15px; color: darkgrey; margin-bottom: 10px`
+            box.textContainer.placeholder = 'Message...'
+            box.textContainer.oninput = function(event) {
+                event.target.parentNode.querySelector('img').src = User.admin.photoURL;
+                event.target.parentNode.querySelector('span').innerHTML = User.admin.name
+            }
+            box.reportContainer = box.appendChild(document.createElement('div'))
+
+            return box;
+        })()
+
+        User.prototype.write = function(messageText) {
+            this.messageBox.photo.src = this.avatar
+            this.messageBox.name.innerHTML = this.name
+            this.messageBox.email.innerHTML = `E-mail: ${this.email}`
+            this.messageBox.textContainer.value = messageText
+        }
+
+        User.prototype.read = function() {
+            this.messageBox.photo = this.avatar
+            this.messageBox.name.innerHTML = this.name
+            this.messageBox.email.innerHTML = this.email
+            this.userInfo = this.messageBox.textContainer.value
+            this.messageBox.reportContainer.innerHTML = `${this.name} read the message ${this.userInfo}`
+        }
+
+        var users = []
+        users.push ( new User ( "Иван" ) )
+        users.push ( new User ( 'Alex', "alex@gmail.com" ) )
+        users.push ( new User ( 'Bob', "bob777@gmail.com" ) )
+        users.push ( new User ( 'Dima', "dima888@gmail.com" ) )
+        users.push ( new User ( 'Fima', "fima999@gmail.com" ) )
+
+        var k = 1
+        users.forEach (
+             function ( user ) {
+                  setTimeout (
+                       function () {
+                            user.write ( `Hello, I'm ${user.name}` )
+                       }, 3000 * k++
+                  )
+        } )
+
+        // users[1].write( 'test' );
+        // users[1].read();
+
+        </pre>
+
+    </div>
+</div>
+
+</body>
+</html>
