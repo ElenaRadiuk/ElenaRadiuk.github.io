@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap');
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {
+    padding: 0;
+    margin: 0;
+}
+
+ol,ul {
+    list-style: none;
+}
+
+a, a:hover {
+    text-decoration: none;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-weight: normal;
+    font-size: 100%;
+}
+
+font-face {
+    font-family: "OpenSansRegular";
+    src: url("/fonts/OpenSans-Regular.ttf");
+}
+
+font-face {
+    font-family: "OpenSansBold";
+    src: url("/fonts/OpenSans-Bold.ttf");
+}
+
+font-face {
+    font-family: "MontserratRegular";
+    src: url("/fonts/Montserrat-Regular.ttf");
+}
+
+font-face {
+    font-family: "MontserratBold";
+    src: url("/fonts/Montserrat-Bold.ttf");
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.container {
+    max-width: 940px;
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+}
+
+.top-banner {
+    background: url("images/HeroImage.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 1055px;
+}
+
+header .logo {
+    width: 20%;
+}
+header .right-menu {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+header .right-menu li {
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #263742;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding-left: 40px;
+}
+
+header .right-menu li.social-icon {
+    padding-left: 20px;
+}
+
+header .right-menu li a {
+    color: #263742;
+}
+
+
+.top-banner-text {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+}
