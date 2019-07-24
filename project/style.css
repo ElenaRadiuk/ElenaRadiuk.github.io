@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap');
 
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {
     padding: 0;
@@ -49,11 +50,15 @@ font-face {
     margin: 0 auto;
 }
 
+.text-dot {
+    color: #fa5c65;
+}
+
 header {
     display: flex;
 }
 
-.top-banner {
+.top-banner-block {
     background: url("images/HeroImage.jpg");
     background-size: cover;
     background-repeat: no-repeat;
@@ -82,7 +87,7 @@ header .right-menu li {
 }
 
 header .right-menu li.social-icon {
-    padding-left: 20px;
+    padding-left: 25px;
 }
 
 header .right-menu li a {
@@ -90,8 +95,252 @@ header .right-menu li a {
 }
 
 
+/* main banner text*/
 .top-banner-text {
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
+}
+
+.top-banner-text .main-text{
+    font-size: 48px;
+    line-height: 1.1;
+    color: #314a5b;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.top-banner-text .sub-text {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    color: #314a5b;
+    font-size: 20px;
+    padding: 30px 0 45px;
+}
+
+.top-banner-text .banner-btn {
+    display: inline-block;
+    background-color: #fa5c65;
+    padding: 25px 55px;
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    border-radius: 8px;
+}
+
+
+
+
+.advantages-block {
+    padding-top: 85px;
+    padding-bottom: 110px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.advantages-block  .advantages-item{
+   max-width: 260px;
+}
+
+.advantages-block .advantages-item .advantages-item-title{
+    font-size: 26px;
+    line-height: 1;
+    color: #314a5b;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.advantages-block .advantages-item .advantages-item-text{
+    font-size: 15px;
+    line-height: 1.5;
+    color: #9aa0ab;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    margin: 25px 0 30px;
+}
+
+.advantages-block .advantages-item .advantages-item-link{
+    font-size: 15px;
+    line-height: 1.5;
+    color: #fa5c65;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.advantages-block .advantages-item .advantages-item-link span {
+    display: inline-block;
+    margin-left: 8px;
+}
+
+
+.portfolio-block {
+    display: flex;
+    justify-content: space-between;
+}
+
+.portfolio-block .portfolio-content {
+    max-width: 415px;
+}
+
+.portfolio-block .portfolio-content .portfolio-title{
+    font-size: 40px;
+    line-height: 1.1;
+    color: #314a5b;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.portfolio-block .portfolio-content .portfolio-subtitle{
+    font-size: 16px;
+    line-height: 1.1;
+    color: #314a5b;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    margin: 15px 0 30px;
+}
+
+.portfolio-block .portfolio-content .portfolio-text {
+    margin-bottom: 35px;
+}
+
+.portfolio-block .portfolio-content .portfolio-text p{
+    font-size: 15px;
+    line-height: 1.5;
+    color: #9aa0ab;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    margin-top: 25px;
+}
+
+.portfolio-block .portfolio-content .portfolio-item-link{
+    font-size: 15px;
+    line-height: 1.5;
+    color: #fa5c65;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.portfolio-block .portfolio-content .portfolio-item-link span {
+    display: inline-block;
+    margin-left: 8px;
+}
+
+
+
+.team-block {
+    margin-top: 105px;
+}
+
+.team-block .team-block-title {
+    font-size: 32px;
+    line-height: 1.1;
+    color: #314a5b;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.team-block .team-block-sutitle {
+    font-size: 16px;
+    line-height: 1;
+    color: #9aa0ab;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    margin: 15px 0 35px;
+}
+
+.team-block .team-block-link {
+    text-align: right;
+    margin-bottom: 55px;
+}
+.team-block .team-block-link > a {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #fa5c65;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.team-block .team-block-link a span {
+    display: inline-block;
+    margin-left: 8px;
+}
+
+
+.team-block .team-member-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.team-block .team-member img, .team-member > div {
+    float: left;
+}
+
+.team-block .team-member img {
+    max-width: 120px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.team-member > div {
+    margin-left: 20px;
+}
+
+.team-block .team-member .team-member-name {
+    font-size: 22px;
+    line-height: 1.1;
+    color: #314a5b;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.team-block .team-member .team-member-position {
+    font-size: 14px;
+    line-height: 1;
+    color: #fa5c65;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    margin: 10px 0 15px;
+}
+
+.team-block .team-member .team-member-facts {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #9aa0ab;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    margin-bottom: 35px;
+    max-width: 160px;
+}
+
+
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 0 40px;
+    border-top: 1px solid #e6eaed;
+}
+
+footer .social-icon a {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+footer small {
+    font-size: 13px;
+    line-height: 1;
+    color: #b9c0c6;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
 }
