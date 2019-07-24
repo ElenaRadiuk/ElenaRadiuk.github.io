@@ -10,10 +10,44 @@ ol,ul {
     list-style: none;
 }
 
-a, a:hover {
+/*a, a:hover {*/
+    /*text-decoration: none;*/
+/*}*/
+
+/*a:hover {*/
+    /*transition: 0.35s ease;*/
+    /*color: #ff000f;*/
+/*}*/
+
+a {
+    /*background: linear-gradient(to bottom, #ff000f 0%, #ff000f 100%);*/
+    /*color: #ff000f;*/
+    /*background-position: 0 100%;*/
+    /*background-repeat: repeat-x;*/
+    /*background-size: 3px 3px;*/
+    /*color: #000;*/
+    /*transition: 0.35s ease;*/
+    text-decoration: none;
+    color: #fa5c65;
+}
+
+a.wave-effect {
+    transition: none;
+}
+
+a.wave-effect:hover {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg id='squiggle-link' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'%3E%3Cstyle type='text/css'%3E.squiggle{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-20px);}}%3C/style%3E%3Cpath fill='none' stroke='%23fa5c65' stroke-width='2' class='squiggle' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/%3E%3C/svg%3E");
+    background-position: 0 100%;
+    background-size: auto 3px;
+    background-repeat: repeat-x;
     text-decoration: none;
 }
 
+img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
 h1,h2,h3,h4,h5,h6 {
     font-weight: normal;
     font-size: 100%;
@@ -37,12 +71,6 @@ font-face {
 font-face {
     font-family: "MontserratBold";
     src: url("/fonts/Montserrat-Bold.ttf");
-}
-
-.flex {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
 }
 
 .container {
@@ -92,6 +120,12 @@ header .right-menu li.social-icon {
 
 header .right-menu li a {
     color: #263742;
+    transition: 0.35s ease;
+}
+
+header .right-menu li a:hover {
+    color: #fa5c65;
+    transition: 0.35s ease;
 }
 
 
@@ -129,10 +163,42 @@ header .right-menu li a {
     color: white;
     text-transform: uppercase;
     border-radius: 8px;
+    position: relative;
+    transition: all 0.5s;
+    overflow: hidden;
 }
 
+.top-banner-text .banner-btn:before, .top-banner-text .banner-btn:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    opacity: 1;
+    -webkit-transform: translate(-13%,-190%) rotate(-30deg);
+    transform: translate(-13%,-190%) rotate(-30deg);
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgba(255,255,255,1);
+    background-color: rgba(255,255,255,0.35);
+}
 
+.top-banner-text .banner-btn:after {
+    -webkit-transition-delay: 0.2s;
+    transition-delay: 0.2s;
+}
 
+.top-banner-text .banner-btn:hover::before, .top-banner-text .banner-btn:hover::after {
+    opacity: 0;
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+}
 
 .advantages-block {
     padding-top: 85px;
@@ -166,7 +232,7 @@ header .right-menu li a {
 .advantages-block .advantages-item .advantages-item-link{
     font-size: 15px;
     line-height: 1.5;
-    color: #fa5c65;
+    /*color: #fa5c65;*/
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     text-transform: uppercase;
@@ -343,4 +409,88 @@ footer small {
     color: #b9c0c6;
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
+}
+
+
+/************************************* about *********************************/
+.aboutus-block {
+    padding-top: 85px;
+    padding-bottom: 110px;
+}
+
+.aboutus-block p {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #9aa0ab;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    margin-top: 25px;
+}
+
+.aboutus-block h2 {
+    font-size: 40px;
+    line-height: 1.1;
+    color: #314a5b;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 40px 0 25px;
+}
+
+
+
+/**************************** work *************************************/
+.work-block {
+    background-color: #314a5b;
+    padding-top: 85px;
+    padding-bottom: 110px;
+}
+
+.work-block > .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.work-block .work-block-item {
+    margin: 10px;
+    width: 31%;
+    overflow: hidden;
+    position: relative;
+}
+
+.work-block .work-block-item figcaption{
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    z-index: -1;
+    display: block;
+    width: 300px;
+    margin: 0;
+    padding: 0;
+    color: #314a5b;
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+    opacity: 0;
+    z-index: 10;
+}
+
+.work-block .work-block-item:hover figcaption {
+    bottom: 20px;
+    opacity: 1;
+}
+
+.work-block .work-block-item img {
+    opacity: 1;
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.work-block .work-block-item:hover img {
+    opacity: .5;
+
 }
