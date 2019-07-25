@@ -1,6 +1,5 @@
-var pageContent = document.querySelector('.page-content')
-var template = pageContent.appendChild(document.createElement(template))
-
+var pageContent = document.querySelector('.advantages-block')
+var template = document.createElement(template)
 
 template.innerHTML = `
     <style>
@@ -59,11 +58,11 @@ customElements.define('content-about',
             const shadowRoot = this.attachShadow({ mode: 'open' })
                 .appendChild( template.content );
         }
-        
-
-
-        
     });
+
+
+
+pageContent.replaceWith(template)
 
 // ( function () {
 //     var x = location.hash.substr(1)
