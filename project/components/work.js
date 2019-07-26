@@ -1,65 +1,105 @@
 var pageContent = document.querySelector('.page-content');
-var template = document.createElement(template);
+var template = pageContent.appendChild (
+    document.createElement ( "template" )
+);
 
 template.innerHTML = `
     <style>
-    .aboutus-block {
-        padding-top: 85px;
-        padding-bottom: 110px;
+    .work-block {
+    background-color: #314a5b;
+    padding-top: 85px;
+    padding-bottom: 110px;
     }
     
-    .aboutus-block p {
-        font-size: 15px;
-        line-height: 1.5;
-        color: #9aa0ab;
-        font-family: 'Open Sans', sans-serif;
-        font-weight: 400;
-        margin-top: 25px;
+    .work-block > .container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
     }
     
-    .aboutus-block h2 {
-        font-size: 40px;
-        line-height: 1.1;
+    .work-block .work-block-item {
+        margin: 10px;
+        width: 31%;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .work-block .work-block-item figcaption{
+        position: absolute;
+        bottom: -20px;
+        left: 0;
+        z-index: -1;
+        display: block;
+        width: 300px;
+        margin: 0;
+        padding: 0;
         color: #314a5b;
+        font-size: 18px;
         font-family: 'Montserrat', sans-serif;
         font-weight: 700;
-        text-transform: uppercase;
-        margin: 40px 0 25px;
+        text-decoration: none;
+        text-align: center;
+        -webkit-transition: .3s ease-in-out;
+        transition: .3s ease-in-out;
+        opacity: 0;
+        z-index: 10;
+    }
+    
+    .work-block .work-block-item:hover figcaption {
+        bottom: 20px;
+        opacity: 1;
+    }
+    
+    .work-block .work-block-item img {
+        opacity: 1;
+        -webkit-transition: .3s ease-in-out;
+        transition: .3s ease-in-out;
+    }
+    .work-block .work-block-item:hover img {
+        opacity: .5;
     }
     </style>
     
-     <section class="aboutus-block container">
-        <div>
-            <p>
-            WE are top-of-the-line creative digital company, dedicated to enriching digital experiences by providing innovative and ingenious
-            solutions to small and large-scale businesses. Every day, we strive to assist you in augmenting your brand’s online visibility,
-            increasing reach & engagement with your target audience, and eventually driving sales.
-            </p>
-            <p>
-                As one of the leading web design agencies in New York, we understand that every client has a unique set
-                of requirements that can be in the form of either generating leads, increasing sales or boosting traffic on their virtual storefronts.
-            </p>
+     <section class="work-block">
+        <div class="container">
+            <figure class="work-block-item">
+                <img src="images/work/23.jpg">
+                <figcaption>work</figcaption>
+            </figure>
+            <figure class="work-block-item">
+                <img src="images/work/24.jpg">
+                <figcaption>work</figcaption>
+            </figure>
+            <figure class="work-block-item">
+                <img src="images/work/25.jpg">
+                <figcaption>work</figcaption>
+            </figure>
+            <figure class="work-block-item">
+                <img src="images/work/26.jpg">
+                <figcaption>work</figcaption>
+            </figure>
+            <figure class="work-block-item">
+                <img src="images/work/27.jpg">
+                <figcaption>work</figcaption>
+            </figure>
+            <figure class="work-block-item">
+                <img src="images/work/28.jpg">
+                <figcaption>work</figcaption>
+            </figure>
         </div>
-
-        <h2>OUR advantages<span class="text-dot">.</span></h2>
-            <p class="advantages-item-text">You’re safe with us. The privacy and security of your financial information is our top priority.</p>
-
-            <p class="advantages-item-text">No more pricing grids. No more fine print. Sending and receiving cash is free without gimmicks.</p>
-
-            <p class="advantages-item-text">The same debit card you use to buy coffee lets deposit money straight to your bank account.</p>
-
     </section>
 `;
 
-customElements.define('content-about',
+customElements.define('content-work',
     class extends HTMLElement {
         constructor() {
-            super()
+            super();
             const shadowRoot = this.attachShadow({ mode: 'open' })
-                .appendChild( template.content );
+                .appendChild( template.content.cloneNode(true)  );
         }
     });
 
-
-
-pageContent.replaceWith(template);
+pageContent.innerHTML = '';
+template = pageContent.appendChild (
+    document.createElement ( "content-work" )
+);
