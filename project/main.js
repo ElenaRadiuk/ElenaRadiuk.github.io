@@ -2,19 +2,29 @@
     // var x = location.hash.substr(1)
     // import ( `./index${location.hash.slice(1)}.js` )
 
+    var topBanner = document.querySelector('.top-banner-text');
+
     document.getElementById('main-menu').addEventListener('click', event => {
         event.preventDefault();
-        (event.target.getAttribute("data-attr") == 'about') ? import('./components.js')
-            .then(resolve => {
-                console.log(resolve)
-            })
-            .catch(error => {
-                console.log(error)
-                /* Error handling */
-            })
-            : null
+
+        return new Promise (
+            ( resolve, reject ) => {
+                var module = event.target.getAttribute("data-attr");
+                import(`./components/${module}.js`)
+                resolve && module ? (topBanner.innerHTML = `<h2 class="main-text">${module}<span class="text-dot">.</span></h2>`) : null;
+                // reject (null)}
+            }
+        )
+        .then((resolve, reject) => {
+        console.log(resolve)
+        console.log(reject)
+        })
+        .catch(error => {
+            console.log(error)
+            /* Error */
+        })
     });
-})()
+})();
 
 
 //     document.addEventListener(
