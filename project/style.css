@@ -133,7 +133,7 @@ header .right-menu li a:hover {
 .top-banner-text {
     position: absolute;
     top: 50%;
-    transform: translate(0, -50%);
+    transform: translate(0, -15%);
 }
 
 .top-banner-text .main-text{
@@ -246,11 +246,16 @@ header .right-menu li a:hover {
 
 .portfolio-block {
     display: flex;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
+}
+
+.portfolio-block img {
+    max-width: 390px;
 }
 
 .portfolio-block .portfolio-content {
     max-width: 415px;
+    margin-left: 100px;
 }
 
 .portfolio-block .portfolio-content .portfolio-title{

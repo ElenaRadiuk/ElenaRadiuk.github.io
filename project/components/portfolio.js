@@ -63,34 +63,34 @@ template.innerHTML = `
      <section class="work-block">
         <div class="container">
             <figure class="work-block-item">
-                <img src="images/work/23.jpg">
+                <img src="images/portfolio/1p.jpg">
                 <figcaption>work</figcaption>
             </figure>
             <figure class="work-block-item">
-                <img src="images/work/24.jpg">
+                <img src="images/portfolio/2p.jpg">
                 <figcaption>work</figcaption>
             </figure>
             <figure class="work-block-item">
-                <img src="images/work/25.jpg">
+                <img src="images/portfolio/3p.jpg">
                 <figcaption>work</figcaption>
             </figure>
             <figure class="work-block-item">
-                <img src="images/work/26.jpg">
+                <img src="images/portfolio/4p.jpg">
                 <figcaption>work</figcaption>
             </figure>
             <figure class="work-block-item">
-                <img src="images/work/27.jpg">
+                <img src="images/portfolio/5p.jpg">
                 <figcaption>work</figcaption>
             </figure>
             <figure class="work-block-item">
-                <img src="images/work/28.jpg">
+                <img src="images/portfolio/6p.jpg">
                 <figcaption>work</figcaption>
             </figure>
         </div>
     </section>
 `;
 
-customElements.define('content-work',
+customElements.define('content-portfolio',
     class extends HTMLElement {
         constructor() {
             super();
@@ -101,5 +101,5 @@ customElements.define('content-work',
 
 pageContent.innerHTML = '';
 template = pageContent.appendChild (
-    document.createElement ( "content-work" )
+    document.createElement ( "content-portfolio" )
 );
