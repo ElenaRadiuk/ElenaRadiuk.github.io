@@ -445,57 +445,255 @@ footer small {
 
 
 /**************************** work *************************************/
-.work-block {
-    background-color: #314a5b;
-    padding-top: 85px;
-    padding-bottom: 110px;
-}
+/*.work-block {*/
+    /*background-color: #314a5b;*/
+    /*padding-top: 85px;*/
+    /*padding-bottom: 110px;*/
+/*}*/
 
-.work-block > .container {
+/*.work-block > .container {*/
+    /*display: flex;*/
+    /*justify-content: space-between;*/
+    /*flex-wrap: wrap;*/
+/*}*/
+
+/*.work-block .work-block-item {*/
+    /*margin: 10px;*/
+    /*width: 31%;*/
+    /*overflow: hidden;*/
+    /*position: relative;*/
+/*}*/
+
+/*.work-block .work-block-item figcaption{*/
+    /*position: absolute;*/
+    /*bottom: -20px;*/
+    /*left: 0;*/
+    /*z-index: -1;*/
+    /*display: block;*/
+    /*width: 300px;*/
+    /*margin: 0;*/
+    /*padding: 0;*/
+    /*color: #314a5b;*/
+    /*font-size: 18px;*/
+    /*font-family: 'Montserrat', sans-serif;*/
+    /*font-weight: 700;*/
+    /*text-decoration: none;*/
+    /*text-align: center;*/
+    /*-webkit-transition: .3s ease-in-out;*/
+    /*transition: .3s ease-in-out;*/
+    /*opacity: 0;*/
+    /*z-index: 10;*/
+/*}*/
+
+/*.work-block .work-block-item:hover figcaption {*/
+    /*bottom: 20px;*/
+    /*opacity: 1;*/
+/*}*/
+
+/*.work-block .work-block-item img {*/
+    /*opacity: 1;*/
+    /*-webkit-transition: .3s ease-in-out;*/
+    /*transition: .3s ease-in-out;*/
+/*}*/
+/*.work-block .work-block-item:hover img {*/
+    /*opacity: .5;*/
+
+/*}*/
+
+/***/
+body {
+    margin: 0;
+}
+.container-user {
+    width: 100%;
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: 0;
 }
-
-.work-block .work-block-item {
-    margin: 10px;
-    width: 31%;
+.container-user::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(255,255,255,.9);
+}
+.wrap-user {
+    max-width: 300px;
+    width: 100%;
+    border-radius: 10px;
     overflow: hidden;
+    padding: 40px 55px 55px;
+    background: #314a5b;
     position: relative;
 }
 
-.work-block .work-block-item figcaption{
+.wrap-user .btn-close{
+    width: 20px;
+    height: 20px;
     position: absolute;
-    bottom: -20px;
-    left: 0;
-    z-index: -1;
-    display: block;
-    width: 300px;
-    margin: 0;
-    padding: 0;
-    color: #314a5b;
-    font-size: 18px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    text-decoration: none;
+    top: 25px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.wrap-user .btn-close:before {
+    position: absolute;
+    content: '';
+    width: 2px;
+    height: 17px;
+    background: red;
+    transform: rotate(45deg);
+}
+.wrap-user .btn-close:after {
+    position: absolute;
+    content: '';
+    width: 2px;
+    height: 17px;
+    background: red;
+    transform: rotate(-45deg);
+}
+
+.login-form-logo {
+    font-size: 60px;
+    color: #333;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.login-form-title {
+    font-family: Poppins-Medium;
+    font-size: 30px;
+    color: #fff;
+    line-height: 1.2;
     text-align: center;
-    -webkit-transition: .3s ease-in-out;
-    transition: .3s ease-in-out;
-    opacity: 0;
-    z-index: 10;
+    text-transform: uppercase;
+    display: block;
+    margin: 25px 30px;
+}
+.wrap-input {
+    width: 100%;
+    position: relative;
+    border-bottom: 2px solid rgba(255,255,255,0.24);
+    margin-bottom: 30px;
 }
 
-.work-block .work-block-item:hover figcaption {
-    bottom: 20px;
-    opacity: 1;
+.input {
+    font-size: 16px;
+    color: #fff;
+    line-height: 1.2;
+
+    display: block;
+    width: 100%;
+    height: 45px;
+    background: transparent;
+    padding: 0 5px 0 38px;
+    border: none;
+    outline: none;
+    font-family: 'Open Sans', sans-serif;
+}
+.input::placeholder {
+    color: white;
+    opacity: 0.5;
 }
 
-.work-block .work-block-item img {
-    opacity: 1;
-    -webkit-transition: .3s ease-in-out;
-    transition: .3s ease-in-out;
+.focus-input {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    color: white;
 }
-.work-block .work-block-item:hover img {
-    opacity: .5;
 
+.focus-input::before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+
+    background: #fff;
+}
+
+.focus-input::after {
+    font-family: Material-Design-Iconic-Font;
+    font-size: 22px;
+    color: #fff;
+
+    content: attr(data-placeholder);
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 6px;
+    left: 0px;
+    padding-left: 5px;
+
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.input:focus {
+    padding-left: 5px;
+}
+
+.input:focus + .focus-input::after {
+    top: -22px;
+    font-size: 18px;
+}
+
+.input:focus + .focus-input::before {
+    width: 100%;
+}
+.login-form-btn {
+    display: inline-block;
+    background-color: #fa5c65;
+    padding: 15px 30px;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    border-radius: 8px;
+    position: relative;
+    transition: all 0.5s;
+    overflow: hidden;
+    border: none;
 }
