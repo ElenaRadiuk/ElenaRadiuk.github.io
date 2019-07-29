@@ -26,10 +26,6 @@
     }) );
 
 
-    document.body.getElementById("login").onclick = event => {
-
-    }
-
 
 })();
 
