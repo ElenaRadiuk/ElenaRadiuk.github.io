@@ -640,7 +640,33 @@ class SignInUser extends HTMLElement {
         this.wrapInput.classList.add('wrap-input')
         console.log('test')
 
+        // this.containerformButton = this.createElem( 'div', this.form )
+        this.formButton = this.createElem( 'button', this.form )
+        this.formButton.classList.add('submit-btn')
+        this.formButton.id = 'submitbtn'
+        this.formButton.innerText = 'Register'
+
+        var inpName = this.form.appendChild(document.createElement("input"))
+        var inpAva = this.form.appendChild(document.createElement("input"))
+        inpAva.classList.add('user-avatar')
+        var inpPass = this.form.appendChild(document.createElement("input"));
+        var button = this.form.appendChild(document.createElement("button"));
+        button.classList.add('submit-btn')
+        button.textContent = "Submit";
+        var img = this.form.appendChild(document.createElement("img"));
+
+        inpAva.type = "file";
+        inpAva.onchange = function(event) {
+            var reader = new FileReader();
+            reader.onload = function(event){
+                img.src = event.target.result;
+            }
+            reader.readAsDataURL(event.target.files[0])
+        }
+
+
     }
+
     connectedCallback() {
             console.log(document.querySelector('.user-avatar'));
         this.container.classList.add('container-user')
@@ -649,7 +675,31 @@ class SignInUser extends HTMLElement {
         this.form.classList.add('login-form')
         this.imgContainer.classList.add('login-form-logo')
         this.imgForm.classList.add('user-pic')
-        this.inputImg.onchange = () => this.changePicture()
+        // this.inputImg.onchange = () => this.changePicture()
+        this.inputImg.addEventListener( "change", this.loadPic );
+
+
+    }
+        loadPic = e => {
+
+        var reader = new FileReader();
+        console.log(this.imgForm.src)
+
+        reader.onload = function (e){
+            console.log(this.imgForm.src)
+
+            this.imgForm.src = e.target.result
+            console.log(reader.result)
+
+        }
+
+        console.log(this.imgForm.src)
+        // if(target.files[0]){
+            reader.readAsDataURL(e.target.files[0]);
+        // }
+        // console.log(reader.readAsDataURL(target.files[0]))
+        // reader.readAsDataURL(target.files[0])
+
 
     }
     createElem ( tagName, container ) {

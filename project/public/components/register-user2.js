@@ -237,11 +237,11 @@ template.innerHTML = `
                     <span class="focus-input" data-placeholder="&#xf191;"></span>
                 </div>
 
-                <div class="container-login-form-btn">
-                    <button class="submit-btn">
+
+                    <button class="submit-btn" id="submitbtn">
                         Register
                     </button>
-                </div>
+
             </form>
         </div>
     </section>
