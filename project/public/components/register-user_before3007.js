@@ -406,13 +406,12 @@
 //   .then(response => response.json())
 //     .then(response => console.log(response))
 
-var mainWrapper = document.querySelector('.register-user-wrapper')
+
 class SignInUser extends HTMLElement {
     constructor() {
         super()
-
-        this.mainWrapper = document.querySelector('.register-user-wrapper')
-        this.container = this.mainWrapper.appendChild(document.createElement('section'))
+        this.pictures = []
+        this.container = this.createElem('section')
         let shadow = this.attachShadow ( { mode: 'open' } )
         shadow.appendChild ( this.container )
         let style = document.createElement ( 'style' )
@@ -526,26 +525,84 @@ class SignInUser extends HTMLElement {
         margin-bottom: 30px;
     }
     
-     input.wrap-input {
+    .input {
         font-size: 16px;
         color: #fff;
         line-height: 1.2;
     
-        padding: 5px;
-        max-width: 100%;
+        display: block;
+        width: 100%;
+        height: 45px;
         background: transparent;
-        outline: none;
+        padding: 0 5px 0 38px;
         border: none;
-        border-bottom: 2px solid white;
-        color: white;
-        font-size: 16px;
+        outline: none;
         font-family: 'Open Sans', sans-serif;
     }
-     input.wrap-input::placeholder {
+    .input::placeholder {
         color: white;
         opacity: 0.5;
     }
     
+    .focus-input {
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        color: white;
+    }
+    
+    .focus-input::before {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+    
+        -webkit-transition: all 0.4s;
+        -o-transition: all 0.4s;
+        -moz-transition: all 0.4s;
+        transition: all 0.4s;
+    
+        background: #fff;
+    }
+    
+    .focus-input::after {
+        font-family: Material-Design-Iconic-Font;
+        font-size: 22px;
+        color: #fff;
+    
+        content: attr(data-placeholder);
+        display: block;
+        width: 100%;
+        position: absolute;
+        top: 6px;
+        left: 0px;
+        padding-left: 5px;
+    
+        -webkit-transition: all 0.4s;
+        -o-transition: all 0.4s;
+        -moz-transition: all 0.4s;
+        transition: all 0.4s;
+    }
+    
+    .input:focus {
+        padding-left: 5px;
+    }
+    
+    .input:focus + .focus-input::after {
+        top: -22px;
+        font-size: 18px;
+    }
+    
+    .input:focus + .focus-input::before {
+        width: 100%;
+    }
     .submit-btn {
         display: inline-block;
         background-color: #fa5c65;
@@ -560,47 +617,27 @@ class SignInUser extends HTMLElement {
         transition: all 0.5s;
         overflow: hidden;
         border: none;
-        margin-right: 15px;
     }  
         `
         shadow.appendChild ( style )
-        this.visible = true
         this.wrapUser = this.createElem( 'div', this.container )
         this.btnClose = this.createElem( 'div', this.wrapUser )
         this.form = this.createElem( 'form', this.wrapUser )
         this.imgContainer = this.createElem( 'span', this.form )
-        var imgForm = this.createElem( 'img', this.imgContainer )
-        imgForm.src = "images/avatar-default.svg"
+        this.imgForm = this.createElem( 'img', this.imgContainer )
+        this.imgForm.src = "images/avatar-default.svg"
 
-        var inputImg = this.createElem( 'input', this.form )
-        inputImg.type = "file"
-        inputImg.classList.add('user-avatar')
+        this.inputImg = this.createElem( 'input', this.form )
+        this.inputImg.type = "file"
+        this.inputImg.classList.add('user-avatar')
 
 
         this.formTitle = this.createElem( 'span', this.form )
         this.formTitle.classList.add('login-form-title')
-        this.formTitle.innerHTML = 'Register'
+        this.formTitle.innerHTML = 'Log in'
 
-        this.inputName = this.createElem( 'input', this.form )
-        this.inputName.type = "text"
-        this.inputName.placeholder = 'name'
-        this.inputName.classList.add('name')
-        this.inputName.classList.add('wrap-input')
-
-        this.inputEmail = this.createElem( 'input', this.form )
-        this.inputEmail.type = "text"
-        this.inputEmail.placeholder = 'e-mail'
-        this.inputEmail.classList.add('email')
-        this.inputEmail.classList.add('wrap-input')
-
-        var script = document.head.appendChild(document.createElement("script"));
-        script.src = "https://cdn.rawgit.com/chrisveness/crypto/4e93a4d/sha256.js"
-        this.inputPass = this.createElem( 'input', this.form )
-        this.inputPass.type = "password"
-        this.inputPass.placeholder = 'password'
-        this.inputPass.classList.add('pass')
-        this.inputPass.classList.add('wrap-input')
-
+        this.wrapInput = this.createElem( 'div', this.form )
+        this.wrapInput.classList.add('wrap-input')
         console.log('test')
 
         // this.containerformButton = this.createElem( 'div', this.form )
@@ -609,142 +646,27 @@ class SignInUser extends HTMLElement {
         this.formButton.id = 'submitbtn'
         this.formButton.innerText = 'Register'
 
+        var inpName = this.form.appendChild(document.createElement("input"))
+        var inpAva = this.form.appendChild(document.createElement("input"))
+        inpAva.classList.add('user-avatar')
+        var inpPass = this.form.appendChild(document.createElement("input"));
+        var button = this.form.appendChild(document.createElement("button"));
+        button.classList.add('submit-btn')
+        button.textContent = "Submit";
+        var img = this.form.appendChild(document.createElement("img"));
 
-        this.formButtonDelete = this.createElem( 'button', this.form )
-        this.formButtonDelete.classList.add('submit-btn')
-        this.formButtonDelete.id = 'submitbtn'
-        this.formButtonDelete.innerText = 'Delete'
-
-
-        this.hash = ''
-        this.inputPass.addEventListener('change', this._hashPass.bind(this));
-
-        // this.formButton.addEventListener('click', this.sendData.bind(this));
-        this.formButton.onclick = event => {
-            // fetch("https://a-level-json-server.glitch.me/students", {
-            fetch("http://localhost:3000/profile", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    // name: this.inputName.value,
-                    // email: this.inputEmail.value,
-                    // pass: this.hash,
-                    "user-photo": imgForm.src
-                })
-            }).then(response => response.json())
-                .then(response => {document.cookie = `userId=${response.id}`
-                    console.log ( 'response: ', response )})
-        }
-
-        // this.inputPass.onchange = function(event){
-        //     this.hash = Sha256.hash (event.target.value);
-        //     console.log(this.hash)
-        // }
-
-        // btnClose.onclick = function (event) {
-        //     console.dir(container)
-        //     document.body.removeChild(container)
-        // }
-
-
-        // var inpName = this.form.appendChild(document.createElement("input"))
-        // var inpAva = this.form.appendChild(document.createElement("input"))
-        // inpAva.classList.add('user-avatar')
-        // var inpPass = this.form.appendChild(document.createElement("input"));
-        // var button = this.form.appendChild(document.createElement("button"));
-        // button.classList.add('submit-btn')
-        // button.textContent = "Submit";
-        // var img = this.form.appendChild(document.createElement("img"));
-        //
-        // inpAva.type = "file";
-        // inpAva.onchange = function(event) {
-        //     var reader = new FileReader();
-        //     reader.onload = function(event){
-        //         img.src = event.target.result;
-        //     }
-        //     reader.readAsDataURL(event.target.files[0])
-        // }
-
-
-
-        // this.inputImg.addEventListener('change', this.loadPic.bind(this));
-
-        this.btnClose.addEventListener('click', this._onClickHide.bind(this));
-        this.formButtonDelete.addEventListener('click', this._onClickRemove.bind(this));
-
-
-        inputImg.onchange = function (e) {
+        inpAva.type = "file";
+        inpAva.onchange = function(event) {
             var reader = new FileReader();
-            console.log(imgForm.src)
-
-            reader.onload = function (e){
-                console.log(imgForm.src)
-
-                imgForm.src = e.target.result
-                console.log(reader.result)
-
+            reader.onload = function(event){
+                img.src = event.target.result;
             }
-
-            console.log(imgForm.src)
-            // if(target.files[0]){
-            reader.readAsDataURL(e.target.files[0]);
-            // }
-            // console.log(reader.readAsDataURL(target.files[0]))
-            // reader.readAsDataURL(target.files[0])
-
+            reader.readAsDataURL(event.target.files[0])
         }
 
 
     }
-    _onClick(event) {
-        // this.checked = !this._checked;
-        console.log('test bind')
-        console.log(event)
-    }
 
-    _onClickHide(event) {
-        console.log(this.container)
-        // this.container.remove()
-        document.querySelector('.register-user-wrapper').style.display = 'none'
-        // document.body.appendChild(this.container)
-
-        // document.getElementById("register-user").parentElement.style.display = `none`
-        this.visible = false;
-
-
-        // var visible = true;
-        //
-        //     if(visible) {
-        //         this.container.style.display = 'none';
-        //         visible = false;
-        //     } else {
-        //         this.container.style.display = 'block';
-        //         visible = true;
-        //     }
-
-
-
-
-    }
-
-    _onClickRemove(event) {
-        console.log(this.container)
-        this.container.remove()
-        document.getElementById("register-user").parentElement.style.display = `none`
-        this.visible = false;
-    }
-
-    _hashPass(event) {
-            this.hash = Sha256.hash (event.target.value);
-            console.log(this.hash)
-    }
-
-
-    disconnectedCallback() {
-        console.log('Custom square element removed from page.');
-    }
     connectedCallback() {
             console.log(document.querySelector('.user-avatar'));
         this.container.classList.add('container-user')
@@ -753,9 +675,8 @@ class SignInUser extends HTMLElement {
         this.form.classList.add('login-form')
         this.imgContainer.classList.add('login-form-logo')
         this.imgForm.classList.add('user-pic')
-
         // this.inputImg.onchange = () => this.changePicture()
-        // this.inputImg.addEventListener( "change", this.loadPic );
+        this.inputImg.addEventListener( "change", this.loadPic );
 
 
     }
@@ -781,24 +702,6 @@ class SignInUser extends HTMLElement {
 
 
     }
-
-    sendData(imgForm, event) {
-            // fetch("https://a-level-json-server.glitch.me/students", {
-            fetch("http://localhost:3000/profile", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    name: this.inputName.value,
-                    email: this.inputEmail.value,
-                    pass: this.hash,
-                    "user-photo": imgForm.src
-                })
-            }).then(response => response.json())
-                .then(response => document.cookie = `userId=${response.id}`)
-    }
-
     createElem ( tagName, container ) {
         return  ( !container ? document.body : container )
             .appendChild (
@@ -858,8 +761,7 @@ class SignInUser extends HTMLElement {
     }
 }
 customElements.define ( 'user-sign-in', SignInUser );
-
-const elem = mainWrapper.appendChild (
+const elem = document.body.appendChild (
     document.createElement ( 'user-sign-in' )
 );
 

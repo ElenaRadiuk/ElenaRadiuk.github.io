@@ -3,6 +3,8 @@
     {
       "name": "Name 1",
       "email": "name@name.com",
+      "pass": "",
+      "user-photo": "",
       "id": 1
     }
   ],
