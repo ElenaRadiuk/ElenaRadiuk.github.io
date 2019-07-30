@@ -47,8 +47,13 @@ customElements.define('contact-block',
     class extends HTMLElement {
         constructor() {
             super();
+
             const shadowRoot = this.attachShadow({ mode: 'open' })
                 .appendChild( template.content.cloneNode(true)  );
+        }
+        connectedCallback() {
+            var contact = this.shadowRoot.querySelector('.contact-block')
+            console.log(contact)
         }
     });
 

@@ -583,12 +583,14 @@ class SignInUser extends HTMLElement {
 
         this.inputName = this.createElem( 'input', this.form )
         this.inputName.type = "text"
+        this.inputName.name = 'name'
         this.inputName.placeholder = 'name'
         this.inputName.classList.add('name')
         this.inputName.classList.add('wrap-input')
 
         this.inputEmail = this.createElem( 'input', this.form )
         this.inputEmail.type = "text"
+        this.inputEmail.name = 'email'
         this.inputEmail.placeholder = 'e-mail'
         this.inputEmail.classList.add('email')
         this.inputEmail.classList.add('wrap-input')
@@ -621,17 +623,18 @@ class SignInUser extends HTMLElement {
 
         // this.formButton.addEventListener('click', this.sendData.bind(this));
         this.formButton.onclick = event => {
+            // event.preventDefault()
             // fetch("https://a-level-json-server.glitch.me/students", {
-            fetch("http://localhost:3000/profile", {
+            fetch("http://localhost:3000/users", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    // name: this.inputName.value,
+                    name: this.inputName.value,
                     // email: this.inputEmail.value,
                     // pass: this.hash,
-                    "user-photo": imgForm.src
+                    // "user-photo": imgForm.src
                 })
             }).then(response => response.json())
                 .then(response => {document.cookie = `userId=${response.id}`
