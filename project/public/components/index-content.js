@@ -1,9 +1,8 @@
-var pageContent = document.querySelector('.page-content');
-var template = pageContent.appendChild (
-    document.createElement ( "template" )
-);
 
-template.innerHTML = `
+var template2 =     document.createElement ( "template" )
+
+
+template2.innerHTML = `
     <style>
     a {
         /*background: linear-gradient(to bottom, #ff000f 0%, #ff000f 100%);*/
@@ -346,13 +345,13 @@ customElements.define('index-content',
         constructor() {
             super();
             const shadowRoot = this.attachShadow({ mode: 'open' })
-                .appendChild( template.content.cloneNode(true)  );
+                .appendChild( template2.content.cloneNode(true)  );
         }
     });
 
-pageContent.innerHTML = '';
-template = pageContent.appendChild (
-    document.createElement ( "index-content" )
-);
+// pageContent.innerHTML = '';
+// template = pageContent.appendChild (
+//     document.createElement ( "index-content" )
+// );
 
 

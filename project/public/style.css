@@ -96,6 +96,13 @@ header {
 header .logo {
     width: 20%;
 }
+
+header .logo a {
+    display: inline-block;
+    width: 190px;
+    height: 100%;
+}
+
 header .right-menu {
     width: 80%;
     display: flex;
