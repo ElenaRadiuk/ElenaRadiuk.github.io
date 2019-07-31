@@ -1,7 +1,4 @@
-var pageContent = document.querySelector('.page-content');
-var template = pageContent.appendChild (
-    document.createElement ( "template" )
-);
+var template = document.createElement ( "template" );
 
 template.innerHTML = `
     <style>
@@ -90,7 +87,7 @@ template.innerHTML = `
     </section>
 `;
 
-customElements.define('content-work',
+customElements.define('work-content',
     class extends HTMLElement {
         constructor() {
             super();
@@ -98,8 +95,3 @@ customElements.define('content-work',
                 .appendChild( template.content.cloneNode(true)  );
         }
     });
-
-pageContent.innerHTML = '';
-template = pageContent.appendChild (
-    document.createElement ( "content-work" )
-);

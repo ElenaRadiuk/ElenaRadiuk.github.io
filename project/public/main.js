@@ -6,6 +6,7 @@
     var clearContent = () => pageContent.innerHTML = null;
 
     var topBanner = document.querySelector('.top-banner-text');
+    var bannerText = document.querySelector('banner-text')
 
     document.addEventListener(
         "DOMContentLoaded", function() {
@@ -50,8 +51,14 @@
             pageContent.appendChild (
                 document.createElement ( module )
             );
+            // var  bannerT = document.querySelector('banner-text').src
+            // bannerText.src = `${module}.html`;
+            // console.log(bannerText)
+            // document.querySelector('banner-text').src = bannerText.src
+            bannerText.setAttribute('src', `${module}.html`);
+            console.log(document.querySelector('banner-text'))
 
-            module ? (topBanner.innerHTML = `<h2 class="main-text">${textBanner}<span class="text-dot">.</span></h2>`) : null;
+            // module ? (topBanner.innerHTML = `<h2 class="main-text">${textBanner}<span class="text-dot">.</span></h2>`) : null;
         }
 
 

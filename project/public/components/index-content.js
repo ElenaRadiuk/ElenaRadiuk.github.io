@@ -1,17 +1,8 @@
-
-var template2 =     document.createElement ( "template" )
-
+var template2 = document.createElement ( "template" )
 
 template2.innerHTML = `
     <style>
     a {
-        /*background: linear-gradient(to bottom, #ff000f 0%, #ff000f 100%);*/
-        /*color: #ff000f;*/
-        /*background-position: 0 100%;*/
-        /*background-repeat: repeat-x;*/
-        /*background-size: 3px 3px;*/
-        /*color: #000;*/
-        /*transition: 0.35s ease;*/
         text-decoration: none;
         color: #fa5c65;
     }
@@ -347,11 +338,11 @@ customElements.define('index-content',
             const shadowRoot = this.attachShadow({ mode: 'open' })
                 .appendChild( template2.content.cloneNode(true)  );
         }
+        // connectedCallback() {
+        //     var contact = this.shadowRoot.querySelector('.contact-block')
+        //     console.log(contact)
+        // }
     });
 
-// pageContent.innerHTML = '';
-// template = pageContent.appendChild (
-//     document.createElement ( "index-content" )
-// );
 
 

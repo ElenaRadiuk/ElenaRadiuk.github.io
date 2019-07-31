@@ -58,12 +58,8 @@ customElements.define('about-us',
             const shadowRoot = this.attachShadow({ mode: 'open' })
                 .appendChild( template.content.cloneNode(true)  );
         }
-        conne
+
     });
 
-// pageContent.innerHTML = '';
-// template = pageContent.appendChild (
-//     document.createElement ( "about" )
-// );
 
 

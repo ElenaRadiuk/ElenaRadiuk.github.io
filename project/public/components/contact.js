@@ -1,7 +1,4 @@
-var pageContent = document.querySelector('.page-content');
-var template = pageContent.appendChild (
-    document.createElement ( "template" )
-);
+var template = document.createElement ( "template" );
 
 template.innerHTML = `
     <style>
@@ -43,7 +40,7 @@ template.innerHTML = `
     </section>
 `;
 
-customElements.define('contact-block',
+customElements.define('contact-us',
     class extends HTMLElement {
         constructor() {
             super();
@@ -51,13 +48,5 @@ customElements.define('contact-block',
             const shadowRoot = this.attachShadow({ mode: 'open' })
                 .appendChild( template.content.cloneNode(true)  );
         }
-        connectedCallback() {
-            var contact = this.shadowRoot.querySelector('.contact-block')
-            console.log(contact)
-        }
-    });
 
-pageContent.innerHTML = '';
-template = pageContent.appendChild (
-    document.createElement ( "contact-block" )
-);
+    });

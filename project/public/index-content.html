@@ -1,0 +1,80 @@
+<style>
+    /* main banner text*/
+    .top-banner-text {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -15%);
+    }
+
+    .top-banner-text .main-text{
+        font-size: 48px;
+        line-height: 1.1;
+        color: #314a5b;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .top-banner-text .sub-text {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 400;
+        color: #314a5b;
+        font-size: 20px;
+        padding: 30px 0 45px;
+    }
+
+    .top-banner-text .banner-btn {
+        display: inline-block;
+        background-color: #fa5c65;
+        padding: 25px 55px;
+        font-size: 20px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 700;
+        color: white;
+        text-transform: uppercase;
+        border-radius: 8px;
+        position: relative;
+        transition: all 0.5s;
+        overflow: hidden;
+    }
+
+    .top-banner-text .banner-btn:before, .top-banner-text .banner-btn:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+        opacity: 1;
+        -webkit-transform: translate(-13%,-190%) rotate(-30deg);
+        transform: translate(-13%,-190%) rotate(-30deg);
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: rgba(255,255,255,1);
+        background-color: rgba(255,255,255,0.35);
+    }
+
+    .top-banner-text .banner-btn:after {
+        -webkit-transition-delay: 0.2s;
+        transition-delay: 0.2s;
+    }
+
+    .top-banner-text .banner-btn:hover::before, .top-banner-text .banner-btn:hover::after {
+        opacity: 0;
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0);
+    }
+</style>
+<div class="top-banner-text">
+    <div class="main-text">intelligence<br>
+        is nothing without<br>
+        ambition<span class="text-dot">.</span>
+    </div>
+    <h3 class="sub-text">We’re small but impressive creative agency.</h3>
+<a href="#" class="banner-btn">READ MORE</a>
+</div>
