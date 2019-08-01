@@ -1,6 +1,6 @@
-var template = document.createElement ( "template" );
+var template3 = document.createElement ( "template" );
 
-template.innerHTML = `
+template3.innerHTML = `
     <style>
     .aboutus-block {
         padding-top: 85px;
@@ -56,7 +56,7 @@ customElements.define('about-us',
         constructor() {
             super();
             const shadowRoot = this.attachShadow({ mode: 'open' })
-                .appendChild( template.content.cloneNode(true)  );
+                .appendChild( template3.content.cloneNode(true)  );
         }
 
     });

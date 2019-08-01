@@ -137,11 +137,17 @@ header .right-menu li a:hover {
 
 
 /* main banner text*/
-.top-banner-text {
+.b-text-wrapper {
     position: absolute;
     top: 50%;
     transform: translate(0, -15%);
 }
+
+/*.top-banner-text {*/
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*transform: translate(0, -15%);*/
+/*}*/
 
 .top-banner-text .main-text{
     font-size: 48px;
@@ -150,6 +156,8 @@ header .right-menu li a:hover {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     text-transform: uppercase;
+    padding: 0;
+    margin: 0;
 }
 
 .top-banner-text .sub-text {

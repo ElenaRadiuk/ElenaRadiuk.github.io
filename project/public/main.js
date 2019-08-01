@@ -3,10 +3,12 @@
     // import ( `./index${location.hash.slice(1)}.js` )
 
     var pageContent = document.querySelector('.page-content');
+    var bannerText = document.querySelector('banner-text');
     var clearContent = () => pageContent.innerHTML = null;
+    var clearContentBanner = () => bannerText.innerHTML = null;
 
     var topBanner = document.querySelector('.top-banner-text');
-    var bannerText = document.querySelector('banner-text')
+
 
     document.addEventListener(
         "DOMContentLoaded", function() {
@@ -34,29 +36,34 @@
             document.querySelector('.register-user-wrapper').style.display = 'block'
             import(`./components/${module}.js`);
 
-        } else if(module == "index-content") {
-            console.log('index content click')
-            clearContent();
-
-            pageContent.appendChild (
-                document.createElement ( module )
-            );
-            // import ( `./components/index-content.js` )
         }
+        // else if(module == "index-content") {
+        //     console.log('index content click')
+        //     clearContent();
+        //
+        //     pageContent.appendChild (
+        //         document.createElement ( module )
+        //     );
+        //     // import ( `./components/index-content.js` )
+        // }
         else {
             console.log('no index click')
             // module ? import(`./components/${module}.js`) : null;
+            clearContentBanner();
+            bannerText.setAttribute('src', `./banner-template/${module}.html`);
+            console.log(document.querySelector('banner-text'));
+
             clearContent();
 
             pageContent.appendChild (
                 document.createElement ( module )
             );
+            console.log(module)
             // var  bannerT = document.querySelector('banner-text').src
             // bannerText.src = `${module}.html`;
             // console.log(bannerText)
             // document.querySelector('banner-text').src = bannerText.src
-            bannerText.setAttribute('src', `${module}.html`);
-            console.log(document.querySelector('banner-text'))
+
 
             // module ? (topBanner.innerHTML = `<h2 class="main-text">${textBanner}<span class="text-dot">.</span></h2>`) : null;
         }

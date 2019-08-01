@@ -1,6 +1,6 @@
-var template = document.createElement ( "template" );
+var template5 = document.createElement ( "template" );
 
-template.innerHTML = `
+template5.innerHTML = `
     <style>
    .contact-block {
         padding-top: 85px;
@@ -46,7 +46,7 @@ customElements.define('contact-us',
             super();
 
             const shadowRoot = this.attachShadow({ mode: 'open' })
-                .appendChild( template.content.cloneNode(true)  );
+                .appendChild( template5.content.cloneNode(true)  );
         }
 
     });

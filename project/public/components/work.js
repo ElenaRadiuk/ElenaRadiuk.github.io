@@ -1,6 +1,6 @@
-var template = document.createElement ( "template" );
+var template1 = document.createElement ( "template" );
 
-template.innerHTML = `
+template1.innerHTML = `
     <style>
     .work-block {
     padding-top: 85px;
@@ -12,9 +12,9 @@ template.innerHTML = `
         flex-wrap: wrap;
     }
     .work-block figure {
-        -webkit-box-shadow: 10px 7px 5px -5px rgba(204,202,204,0.85);
-        -moz-box-shadow: 10px 7px 5px -5px rgba(204,202,204,0.85);
-        box-shadow: 10px 7px 5px -5px rgba(204,202,204,0.85);
+        -webkit-box-shadow: 7px -6px 8px 0px rgba(204,202,204,0.45);
+        -moz-box-shadow: 7px -6px 8px 0px rgba(204,202,204,0.45);
+        box-shadow: 7px -6px 8px 0px rgba(204,202,204,0.45);
     }
     .work-block .work-block-item {
         margin: 10px;
@@ -92,6 +92,6 @@ customElements.define('work-content',
         constructor() {
             super();
             const shadowRoot = this.attachShadow({ mode: 'open' })
-                .appendChild( template.content.cloneNode(true)  );
+                .appendChild( template1.content.cloneNode(true)  );
         }
     });
