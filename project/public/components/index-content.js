@@ -338,10 +338,10 @@ customElements.define('index-content',
             const shadowRoot = this.attachShadow({ mode: 'open' })
                 .appendChild( template2.content.cloneNode(true)  );
         }
-        // connectedCallback() {
-        //     var contact = this.shadowRoot.querySelector('.contact-block')
-        //     console.log(contact)
-        // }
+        connectedCallback() {
+            var contact = this.shadowRoot.querySelector('.portfolio-block')
+            console.log(contact)
+        }
     });
 
 

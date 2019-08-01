@@ -48,5 +48,9 @@ customElements.define('contact-us',
             const shadowRoot = this.attachShadow({ mode: 'open' })
                 .appendChild( template5.content.cloneNode(true)  );
         }
+        connectedCallback() {
+            var contact = this.shadowRoot.querySelector('.contact-block p')
+            console.log(contact)
+        }
 
     });

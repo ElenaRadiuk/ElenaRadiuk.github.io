@@ -3,6 +3,7 @@
     // import ( `./index${location.hash.slice(1)}.js` )
 
     var pageContent = document.querySelector('.page-content');
+    var registerContainer = document.querySelector('.register-user-wrapper');
     var bannerText = document.querySelector('banner-text');
     var clearContent = () => pageContent.innerHTML = null;
     var clearContentBanner = () => bannerText.innerHTML = null;
@@ -29,13 +30,14 @@
         var module = target.getAttribute("data-attr");
         var textBanner = target.textContent
 
-        console.log(target)
-        console.log(target.getAttribute("data-attr"));
+        // console.log(target)
+        // console.log(target.getAttribute("data-attr"));
 
         if (module == "register-user") {
-            document.querySelector('.register-user-wrapper').style.display = 'block'
-            import(`./components/${module}.js`);
-
+            clearContent();
+            pageContent.appendChild (
+                document.createElement ( 'register-user' )
+            );
         }
         // else if(module == "index-content") {
         //     console.log('index content click')
@@ -51,7 +53,7 @@
             // module ? import(`./components/${module}.js`) : null;
             clearContentBanner();
             bannerText.setAttribute('src', `./banner-template/${module}.html`);
-            console.log(document.querySelector('banner-text'));
+            // console.log(document.querySelector('banner-text'));
 
             clearContent();
 
