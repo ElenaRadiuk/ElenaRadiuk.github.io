@@ -25,6 +25,7 @@ template.innerHTML = `
             z-index: 100;
             top: 0;
             left: 0;
+            position: fixed;
             background-image: url('./images/bg-user.jpg');
         }
         .container-user::before {
