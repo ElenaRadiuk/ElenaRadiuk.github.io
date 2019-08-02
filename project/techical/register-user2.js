@@ -216,7 +216,7 @@ template.innerHTML = `
                         <img src="images/avatar-default.svg" class="user-pic">
                         
                     </span>
-                    <input class="input user-avatar" type="file" name="avatar" placeholder="Avatar">
+                    <input class="input user-avatar" id="user-avatar" type="file" name="avatar" placeholder="Avatar">
 
                 <span class="login-form-title p-b-34 p-t-27">
                         Log in
@@ -238,7 +238,7 @@ template.innerHTML = `
                 </div>
 
 
-                    <button class="submit-btn" id="submitbtn">
+                    <button class="submit-btn" id="submit-btn">
                         Register
                     </button>
 

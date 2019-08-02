@@ -1,13 +1,12 @@
 {
-  "user": [
+  "users": [
     {
-      "name": "Name 1",
+      "user-name": "Name 1",
       "email": "name@name.com",
-      "pass": "",
+      "pass-hash": "",
       "user-photo": "",
       "id": 1
     }
   ],
-  "posts": [],
-  "comments": []
+  "profile": []
 }

@@ -289,7 +289,7 @@ template2.innerHTML = `
                 <p>No more pricing grids. No more fine print. <br> Sending and receiving cash is free without gimmicks.</p>
                 <p>The same debit card you use to buy coffee <br> lets deposit money straight to your bank account.</p>
             </div>
-            <a href="#" data-attr="portfolio" class="portfolio-item-link wave-effect">MORE<span><img src="images/Arrow.svg" alt="arrow"></span></a>
+            <a href="#" data-attr="portfolio-content" class="portfolio-item-link wave-effect">MORE<span><img src="images/Arrow.svg" alt="arrow"></span></a>
         </div>
     </section>
 
@@ -338,10 +338,10 @@ customElements.define('index-content',
             const shadowRoot = this.attachShadow({ mode: 'open' })
                 .appendChild( template2.content.cloneNode(true)  );
         }
-        connectedCallback() {
-            var contact = this.shadowRoot.querySelector('.portfolio-block')
-            console.log(contact)
-        }
+        // connectedCallback() {
+        //     var contact = this.shadowRoot.querySelector('.portfolio-block')
+        //     console.log(contact)
+        // }
     });
 
 
