@@ -26,7 +26,6 @@
         var textBanner = target.textContent;
 
         if (module == "register-user") {
-            clearContent();
             pageContent.appendChild (
                 document.createElement ( 'register-user' )
             );
@@ -36,7 +35,6 @@
             bannerText.setAttribute('src', `./banner-template/${module}.html`);
 
             clearContent();
-
             pageContent.appendChild (
                 document.createElement ( module )
             );
