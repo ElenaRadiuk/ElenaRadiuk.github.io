@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>lesson-12</title>
+    <style>
+        .wrapper {
+            margin: 0 auto;
+            max-width: 1240px;
+            font-family: Arial, sans-serif;
+        }
+        span {
+            display: inline-block;
+        }
+        img {
+            max-width: 300px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <h1>homework-12</h1>
+    <h2>Радюк Елена</h2>
+
+    <div class="task1">
+        <h4>1. Захостить на гитхабе приложение, которое:
+            <pre>
+            • читает куки на клиенте, и если там есть дата последнего посещения, выводит ее на страницу
+            • пишет в куки на клиенте текущую дату посещения
+            </pre>
+        </h4>
+
+        <h5>Решение:</h5>
+        <pre>
+            var res = document.cookie
+            .split ( "; " )
+            .filter ( x =>  {
+                var tmp = x.split ( "=" )
+            if(tmp[0] == "userEmail") console.log(tmp [1])
+            })
+            <!--console.log ( res )-->
+        </pre>
+
+    </div>
+
+    <div class="task1 p2">
+        <h4>2. Задача: напилить код, который вызывает функцию sendMessage для каждого элемента массива messages и логирует полученные сообщения в объекте log
+            <pre>
+
+            </pre>
+        </h4>
+
+        <h5>Решение:</h5>
+        <pre>
+
+        </pre>
+    </div>
+
+    <div class="task3">
+        <h4>3. Нужно напилить код рекурсивной функции recursive, которая вызывает sendMessage поочередно с каждым элементом массива messages
+        <pre>
+
+        </pre>
+        </h4>
+
+        <h5>Решение:</h5>
+        <pre>
+
+        </pre>
+
+    </div>
+</div>
+
+</body>
+</html>

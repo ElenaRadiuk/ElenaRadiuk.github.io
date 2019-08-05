@@ -287,14 +287,14 @@ templateReg.innerHTML = `
             
             <div id="userInfo">
                 <h4></h4>
-                <img src=null>
+                <!--<img src=null>-->
             </div>
             </div>          
       </section>
     `;
 
 
-customElements.define('register-user',
+customElements.define('test-user',
     class extends HTMLElement {
         constructor() {
             super();
@@ -358,7 +358,7 @@ customElements.define('register-user',
                     (val, key) => Object.assign (result, {[key]: val})
                 )
                 fetch("http://localhost:3000/profile", {
-                // fetch("https://a-level-json-server.glitch.me/users", {
+                    // fetch("https://a-level-json-server.glitch.me/users", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"

@@ -11,6 +11,10 @@
             pageContent.appendChild(document.createElement('index-content'))
         }
     );
+    registerContainer.appendChild (
+        document.createElement("test-user")
+    );
+
 
     document.body.querySelectorAll('a').forEach(a => a.addEventListener('click', event => {
         event.preventDefault();
@@ -23,11 +27,13 @@
         }
         var module = target.getAttribute("data-attr");
 
-        var textBanner = target.textContent;
+        // var textBanner = target.textContent;
 
-        if (module == "register-user") {
-            pageContent.appendChild (
-                document.createElement ( 'register-user' )
+        console.log(module)
+        if (module === "register-user") {
+            console.log(module)
+            registerContainer.appendChild (
+                document.createElement(module)
             );
         }
         else if (module){

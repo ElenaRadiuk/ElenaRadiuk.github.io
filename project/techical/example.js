@@ -161,3 +161,72 @@ document.getElementById ( "register-button" ).onclick = function ( event ) {
             document.getElementById ( "userInfo" ).style.display = "block"
         })
 }
+
+
+///////user-sign-in and cookie/////
+customElements.define('user-sign-in',
+    class extends HTMLElement {
+        constructor() {
+            super();
+            const shadowRoot = this.attachShadow({ mode: 'open' })
+                .appendChild( template.content.cloneNode(true)  );
+            function addElem(tagName) {
+                return  document.body.appendChild(document.createElement(tagName))
+            }
+
+            // let cookie = Object.assign({},...document.cookie.split("; ")
+            //     .map(item => Object.assign(
+            //         {},{[item.split("=")[0]]:item.split("=")[1]})
+            //     )
+            // )
+            //
+            // cookie.userId
+            //     ? fetch(`https://a-level-json-server.glitch.me/students/${cookie.userId}`)
+            //         .then(response => response.json())
+            //         .then(response => {
+            //             addElem("p").textContent = response.name
+            //             addElem("img").src = response["user-photo"]
+            //         })
+            //     : console.warn("Not registered");
+
+            function RegistUser () {
+                // const login = document.body.appendChild(document.createElement("input"))
+                const login = document.querySelector('.user-name');
+                const pict = document.querySelector('.user-pic');
+                // const pict = document.body.appendChild(document.createElement("img"))
+                // const avatar = document.body.appendChild(document.createElement("input"))
+                const avatar = document.querySelector('.user-avatar');
+                avatar.type = "file";
+                avatar.onchange = event => {
+                    if (event.target.files[0].type.indexOf("image/") !== 0
+                        || event.target.files[0].size > 300000) return
+                    const reader = new FileReader();
+                    reader.onload = function (event){
+                        pict.src = event.target.result
+                    }
+                    reader.readAsDataURL(event.target.files[0])
+                }
+
+                const submit = document.body.appendChild(document.createElement("button"))
+                submit.onclick = event => {
+                    // fetch("https://a-level-json-server.glitch.me/students", {
+                    fetch("https://a-level-json-server.glitch.me/users", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            name: login.value,
+                            "user-photo": pict.src
+                        })
+                    }).then(response => response.json())
+                        .then(response => document.cookie = `userId=${response.id}`)
+                }
+            }
+        }
+    });
+
+pageContent.innerHTML = '';
+template = pageContent.appendChild (
+    document.createElement ( "user-sign-in" )
+);
