@@ -287,7 +287,7 @@ templateReg.innerHTML = `
             
             <div id="userInfo">
                 <h4></h4>
-                <img src=null>
+                <img src="#">
             </div>
             </div>          
       </section>
@@ -320,6 +320,9 @@ customElements.define('register-user',
             let btnClose = this.shadowRoot.querySelector(".btn-close");
             this.shadowRoot.querySelector(".btn-close").addEventListener('click', this.removeBlock.bind(this));
 
+            this.checkUser();
+
+
 
             userBlock.style.display = "none";
             inputImg.onchange = function (e) {
@@ -332,7 +335,7 @@ customElements.define('register-user',
                     console.log(imgForm.src)
 
                     imgForm.src = e.target.result;
-                    imgFormBs.value = event.target.result
+                    imgFormBs.value = event.target.result;
                     console.log(reader.result)
                 };
                 reader.readAsDataURL(e.target.files[0]);
@@ -383,5 +386,17 @@ customElements.define('register-user',
             console.log(this.script)
             document.head.removeChild(this.script)
         };
+        checkUser() {
+            let cookie = Object.assign({}, ...document.cookie.split("; "))
+                .map(item => Object.assign({}, {[item.split("=")[0]]:item.split("=")[1]})
+                );
+            cookie.userEmail
+                ? fetch(`http://localhost:3000/profile`)
+                    .then(response => response.json())
+                    .then(response => {
+                        inputEmail.placeholder.textContent = response["email"]
+                    })
+                : console.warn("Not registered")
+        }
     });
 
