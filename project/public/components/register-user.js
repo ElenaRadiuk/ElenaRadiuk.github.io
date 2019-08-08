@@ -316,11 +316,11 @@ customElements.define('register-user',
             let userBlock = this.shadowRoot.getElementById("userInfo");
             let inputPass = this.shadowRoot.getElementById ("pass");
             let passHash = this.shadowRoot.getElementById ("pass-hash");
-            let inputEmail = this.shadowRoot.getElementById ("email");
+            this.inputEmail = this.shadowRoot.getElementById ("email");
             let btnClose = this.shadowRoot.querySelector(".btn-close");
             this.shadowRoot.querySelector(".btn-close").addEventListener('click', this.removeBlock.bind(this));
 
-            this.checkUser();
+            checkUser();
 
 
 
@@ -380,23 +380,37 @@ customElements.define('register-user',
                         userBlock.style.display = "block"
                     })
             }
+            function checkUser() {
+                // let cookie = Object.assign({}, ...document.cookie.split("; "))
+                //     .map(item => Object.assign({}, {[item.split("=")[0]]:item.split("=")[1]})
+                //     );
+                var cookie = document.cookie.split("; ");
+                for (var key in cookie) {
+                    var arrCookie = cookie[key].split('=');
+                    // ((arrCookie[0] == "userEmail") && arrCookie[1]) ? getUserData() : null;
+                    // console.log(arrCookie[0])
+                    // console.log(arrCookie[1])
+                }
+                // function getUserData() {
+                console.log('test')
+                cookie
+                    ? fetch(`http://localhost:3000/profile/1`)
+                        .then(response => console.log(response.json()))
+                        .then(response => {
+                            console.log(response["email"]);
+                            console.log(this.inputEmail);
+                            this.inputEmail.placeholder.textContent = response["email"]
+                        })
+                    : console.warn("Not registered")
+                // }
+
+            }
         }
         removeBlock(event) {
             this.registrationSection.remove()
             console.log(this.script)
             document.head.removeChild(this.script)
         };
-        checkUser() {
-            let cookie = Object.assign({}, ...document.cookie.split("; "))
-                .map(item => Object.assign({}, {[item.split("=")[0]]:item.split("=")[1]})
-                );
-            cookie.userEmail
-                ? fetch(`http://localhost:3000/profile`)
-                    .then(response => response.json())
-                    .then(response => {
-                        inputEmail.placeholder.textContent = response["email"]
-                    })
-                : console.warn("Not registered")
-        }
+
     });
 

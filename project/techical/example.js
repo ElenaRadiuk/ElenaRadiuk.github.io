@@ -177,7 +177,7 @@ customElements.define('user-sign-in',
             // let cookie = Object.assign({},...document.cookie.split("; ")
             //     .map(item => Object.assign(
             //         {},{[item.split("=")[0]]:item.split("=")[1]})
-            //     )
+            //
             // )
             //
             // cookie.userId
