@@ -11,19 +11,13 @@
       "id": 1,
       "body": "some comment",
       "postId": 1
-    },
-    {
-      "postId": 1,
-      "userID": 1,
-      "body": "Good for you!",
-      "id": 2
     }
   ],
   "profile": {
-    "user-name": "gfgfg",
-    "email": "fgfgf",
-    "pass-hash": "2e5d91d305f3b1d59de362baf0e5507af0899b444a33e79a641587ece38c952b",
-    "user-photo": "",
-    "id": 1
+    "id": 1,
+    "user-name": "test",
+    "email": "ascent2005@ukr.net",
+    "pass-hash": "37268335dd6931045bdcdf92623ff819a64244b53d0e746d438797349d4da578",
+    "user-photo": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAw0lEQVQoU5XRv0pCYRQA8N8dUhoiwkGcAtdAaAlykGYfIYnGSAjcfAYJalLfwNaeoq0tVFqc3Jp0aWiIL05wkQsXz3j4fuffl9kzMhzjvMC9Y7ubT+AZgwIwwgtO8IGv9CaBMfoF4Ak9LGOKayzKQBuXOI1unTJwg3l0b+GhDNzjMDduP4EuLgp2eMMrVqijlnZN4BvVqDSNQ9xGgU/McIUjnCXwH0Os0cBjLj+J095hkwcHcZE0yk8ONFGJ8/79w17xC9YmITWVcKWwAAAAAElFTkSuQmCC"
   }
 }

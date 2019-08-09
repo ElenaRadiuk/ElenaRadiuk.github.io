@@ -289,6 +289,9 @@ templateReg.innerHTML = `
                 <h4></h4>
                 <img src="#">
             </div>
+            <div id="warnInfo" style="display: none">
+                
+            </div>
             </div>          
       </section>
     `;
@@ -304,30 +307,33 @@ customElements.define('register-user',
             this.script.src = "https://cdn.rawgit.com/chrisveness/crypto/4e93a4d/sha256.js";
 
             this.registrationSection = this.shadowRoot.getElementById ("registration");
-            let currentUser = null;
+            var currentUser = null;
 
-            let inputImg = this.shadowRoot.querySelector("#avatar");
-            let imgForm = this.shadowRoot.querySelector(".user-pic");
-            let imgFormBs = this.shadowRoot.getElementById("user-photo-bs");
-            let regForm = this.shadowRoot.getElementById("registrationForm");
-            let userInfoName = this.shadowRoot.querySelector ("#userInfo > h4");
-            let userInfoImg = this.shadowRoot.querySelector ("#userInfo > img");
-            let submitBtn = this.shadowRoot.getElementById("submit-btn");
-            let userBlock = this.shadowRoot.getElementById("userInfo");
-            let inputPass = this.shadowRoot.getElementById ("pass");
-            let passHash = this.shadowRoot.getElementById ("pass-hash");
-            this.inputEmail = this.shadowRoot.getElementById ("email");
-            let btnClose = this.shadowRoot.querySelector(".btn-close");
+            var inputImg = this.shadowRoot.querySelector("#avatar");
+            var imgForm = this.shadowRoot.querySelector(".user-pic");
+            var imgFormBs = this.shadowRoot.getElementById("user-photo-bs");
+            var regForm = this.shadowRoot.getElementById("registrationForm");
+            var userInfoName = this.shadowRoot.querySelector ("#userInfo > h4");
+            var userInfoImg = this.shadowRoot.querySelector ("#userInfo > img");
+            var submitBtn = this.shadowRoot.getElementById("submit-btn");
+            var userBlock = this.shadowRoot.getElementById("userInfo");
+            var inputPass = this.shadowRoot.getElementById ("pass");
+            var passHash = this.shadowRoot.getElementById ("pass-hash");
+            var inputEmail = this.shadowRoot.getElementById ("email");
+            var inputName = this.shadowRoot.getElementById ("user-name");
+            var btnClose = this.shadowRoot.querySelector(".btn-close");
+            var warnInfo = this.shadowRoot.getElementById("warnInfo");
             this.shadowRoot.querySelector(".btn-close").addEventListener('click', this.removeBlock.bind(this));
 
+            // this.checkUser.bind(this)();
             checkUser();
 
 
 
             userBlock.style.display = "none";
             inputImg.onchange = function (e) {
-                if (event.target.files[0].type.indexOf("image/") !== 0
-                    || event.target.files[0].size > 300000) return
+                if (e.target.files[0].type.indexOf("image/") !== 0
+                    || e.target.files[0].size > 300000) return
                 const reader = new FileReader();
                 console.log(imgForm.src)
 
@@ -380,6 +386,7 @@ customElements.define('register-user',
                         userBlock.style.display = "block"
                     })
             }
+
             function checkUser() {
                 // let cookie = Object.assign({}, ...document.cookie.split("; "))
                 //     .map(item => Object.assign({}, {[item.split("=")[0]]:item.split("=")[1]})
@@ -387,25 +394,29 @@ customElements.define('register-user',
                 var cookie = document.cookie.split("; ");
                 for (var key in cookie) {
                     var arrCookie = cookie[key].split('=');
-                    // ((arrCookie[0] == "userEmail") && arrCookie[1]) ? getUserData() : null;
+                    ((arrCookie[0] == "userId") && arrCookie[1]) ? getUserData(arrCookie[0]) : null;
                     // console.log(arrCookie[0])
                     // console.log(arrCookie[1])
                 }
-                // function getUserData() {
+                function getUserData() {
                 console.log('test')
                 cookie
-                    ? fetch(`http://localhost:3000/profile/1`)
-                        .then(response => console.log(response.json()))
+                    ? fetch(`http://localhost:3000/profile/`)
+                        .then(response => response.json())
                         .then(response => {
                             console.log(response["email"]);
-                            console.log(this.inputEmail);
-                            this.inputEmail.placeholder.textContent = response["email"]
+                            console.log(arrCookie[0]);
+                            inputEmail.placeholder = response["email"]
+                            inputName.placeholder = response["user-name"]
+                            imgForm.src = response["user-photo"]
                         })
                     : console.warn("Not registered")
-                // }
+                }
 
             }
+
         }
+
         removeBlock(event) {
             this.registrationSection.remove()
             console.log(this.script)
