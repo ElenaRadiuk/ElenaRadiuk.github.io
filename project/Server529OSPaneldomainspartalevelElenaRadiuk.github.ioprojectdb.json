@@ -1,0 +1,22 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "user-name": "rrr",
+    "email": "qwerty",
+    "pass-hash": "65e84be33532fb784c48129675f9eff3a682b27168c0ea744b2cf58ee02337c5",
+    "user-photo": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAw0lEQVQoU5XRv0pCYRQA8N8dUhoiwkGcAtdAaAlykGYfIYnGSAjcfAYJalLfwNaeoq0tVFqc3Jp0aWiIL05wkQsXz3j4fuffl9kzMhzjvMC9Y7ubT+AZgwIwwgtO8IGv9CaBMfoF4Ak9LGOKayzKQBuXOI1unTJwg3l0b+GhDNzjMDduP4EuLgp2eMMrVqijlnZN4BvVqDSNQ9xGgU/McIUjnCXwH0Os0cBjLj+J095hkwcHcZE0yk8ONFGJ8/79w17xC9YmITWVcKWwAAAAAElFTkSuQmCC"
+  }
+}

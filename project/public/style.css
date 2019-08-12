@@ -44,9 +44,9 @@ a.wave-effect:hover {
 }
 
 img {
-    width: 100%;
-    max-width: 100%;
+    width: auto;
     height: auto;
+    max-width: 100%;
 }
 h1,h2,h3,h4,h5,h6 {
     font-weight: normal;

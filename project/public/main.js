@@ -35,6 +35,7 @@
         // var textBanner = target.textContent;
 
         console.log(module)
+        // if (module === "register-user" || module== "sign-in-user") {
         if (module === "register-user") {
             console.log(module)
             registerContainer.appendChild (

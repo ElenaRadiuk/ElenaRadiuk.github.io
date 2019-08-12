@@ -20,7 +20,7 @@ template2.innerHTML = `
     }
     
     img {
-        width: 100%;
+        width: auto;
         max-width: 100%;
         height: auto;
     }
@@ -103,12 +103,13 @@ template2.innerHTML = `
     
     .portfolio-block {
         display: flex;
+        align-items: flex-start;
         /*justify-content: space-between;*/
     }
     
-    .portfolio-block img {
-        max-width: 390px;
-    }
+    /*.portfolio-block img {*/
+        /*max-width: 390px;*/
+    /*}*/
     
     .portfolio-block .portfolio-content {
         max-width: 415px;
@@ -122,6 +123,7 @@ template2.innerHTML = `
         font-family: 'Montserrat', sans-serif;
         font-weight: 700;
         text-transform: uppercase;
+        margin-top: 0;
     }
     
     .portfolio-block .portfolio-content .portfolio-subtitle{
