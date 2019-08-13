@@ -1,7 +1,6 @@
 var loginContainer = document.querySelector('#sign-in-user > a')
 var templateLogin = document.createElement ( "template" );
 
-
 templateLogin.innerHTML = `
     <style >
        body {
@@ -40,7 +39,7 @@ templateLogin.innerHTML = `
             background-color: rgba(255,255,255,.9);
         }
         
-        #reg-section {
+        #autorization-section {
             display: flex;
             align-items: center;
         }
@@ -261,6 +260,11 @@ templateLogin.innerHTML = `
             height: auto!important;
             max-height: 50px!important;
         }
+        
+        #sign-in-user {
+            display: flex;
+            align-items: center;
+        }
     
     
     #log-out {
@@ -302,11 +306,11 @@ templateLogin.innerHTML = `
             </div>          
     </section>
       
-    <span id="reg-section">
-        <img src="./images/account_icon24px.svg" id="login-user-photo">
-        <span id="login-user-name"></span>
-        <span id="log-out" style="display: none"><img src="./images/directions_run-24px.svg"></span>
-    </span>
+    <!--<span id="reg-section">-->
+        <!--<img src="./images/account_icon24px.svg" id="login-user-photo">-->
+        <!--<span id="login-user-name"></span>-->
+        <!--<span><img src="./images/directions_run-24px.svg" id="log-out" style="display:none"></span>-->
+    <!--</span>-->
 `;
 
 customElements.define('sign-in-user',
@@ -323,9 +327,20 @@ customElements.define('sign-in-user',
             checkUser();
             console.log('login');
             // var logiUserName =  containerUserLogin.appendChild(document.createElement("span"));
-            var logiUserPhoto =  this.shadowRoot.querySelector('#login-user-photo');
-            var logiUserName =  this.shadowRoot.querySelector('#login-user-name');
-            var logiUserOut =  this.shadowRoot.querySelector('#log-out');
+            // var logiUserPhoto =  this.shadowRoot.querySelector('#login-user-photo');
+            // var logiUserName =  this.shadowRoot.querySelector('#login-user-name');
+            // var logiUserOut =  this.shadowRoot.querySelector('#log-out');
+
+            var autorizationSection = document.getElementById('autorization-section');
+            autorizationSection.style.display = "none";
+            var imgAutoriz = document.getElementById('login-user-photo');
+            var nameAutoriz = document.getElementById('login-user-name');
+            var logOut = document.getElementById("log-out");
+
+            console.log(imgAutoriz)
+            console.log(nameAutoriz)
+
+
             var warnInfo =  this.shadowRoot.querySelector('#warnInfo');
             // var logiUserPhoto = containerUserLogin.appendChild(document.createElement("img"));
 
@@ -336,9 +351,9 @@ customElements.define('sign-in-user',
 
 
 
-            this.shadowRoot.getElementById("log-out").addEventListener('click', removeBlock.bind(this));
+            document.getElementById("log-out").addEventListener('click', removeBlock.bind(this));
 
-            this.shadowRoot.querySelector(".btn-close").addEventListener('click', removeBlock.bind(this));
+            this.shadowRoot.querySelector(".btn-close").addEventListener('click', removeBlockLogin.bind(this));
 
 
             function checkUser() {
@@ -355,22 +370,33 @@ customElements.define('sign-in-user',
                 function getUserData() {
                     console.log('test')
                     cookie
-                        ? fetch(`http://localhost:3000/profile/`)
+                        ? fetch(`http://localhost:3000/profile/`,{
+                            method: "PATCH",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                activeSession: "true"
+                            })
+                        })
                             .then(response => response.json())
                             .then(response => {
                                 console.log(response["email"]);
                                 console.log(arrCookie[0]);
-                                loginContainer.style.display = "none"
+                                loginContainer.style.display = "none";
 
-                                logiUserPhoto.src = response["user-photo"];
-                                console.log(response["user-photo"]);
-                                logiUserName.textContent = response["user-name"];
+                                autorizationSection.style.display = "flex";
+
+                                imgAutoriz.src = response["user-photo"];
+
+                                nameAutoriz.textContent = response["user-name"];
                                 console.log(response["user-name"]);
-                                document.cookie = `userSignIn=${response.id}true`;
+
+                                document.cookie = `activeSession=${response["activeSession"]}`
                                 // var runUser = containerUserLogin.appendChild(document.createElement("img"));
                                 // runUser.src = "./images/directions_run-24px.svg";
                                 // runUser.id = "log-out";
-                                logiUserOut.style.display = 'block';
+                                logOut.style.display = 'block';
                             })
                         : warnInfo.style.display = 'block'
                 }
@@ -378,7 +404,9 @@ customElements.define('sign-in-user',
             }
 
             loginContainer.onclick = () => {
+                warnInfo.style.display = 'none';
                 formLogin.style.display = "flex";
+
 
             }
 
@@ -389,25 +417,39 @@ customElements.define('sign-in-user',
                 console.log('test cbt');
                 var currentUser = null;
                 document.cookie
-                    ? fetch(`http://localhost:3000/profile/`)
+                    ? fetch(`http://localhost:3000/profile/`, {
+                        method: "PATCH",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            activeSession: "true"
+                        })
+                    }
+                    )
                         .then(response => response.json())
                         .then(response => {
-
-                            console.log(logiUserName.textContent)
+                            // console.log(logiUserName.textContent)
                             if(inputName.value === response["user-name"]) {
                                 console.log('ffffffffffffff')
                                 loginContainer.style.display = "none"
 
-                                regSection.innerHTML = null;
-                                regSection.style.display = 'block';
+                                // autorizationSection.innerHTML = null;
+                                autorizationSection.style.display = 'flex';
 
-                                addElem("img").src = response["user-photo"];
-                                addElem("span").innerText = response["user-name"];
+                                // addElem("img").src = response["user-photo"];
+                                // addElem("span").innerText = response["user-name"];
+                                // addElem("span").src = "./images/directions_run-24px.svg";
+                                imgAutoriz.src = response["user-photo"];
+                                nameAutoriz.innerText = response["user-name"];
+                                logOut.src = "./images/directions_run-24px.svg";
+                                loginContainer.style.display = "none;"
+                                document.cookie = `activeSession=${response["activeSession"]}`
 
                                 // var runUser = containerUserLogin.appendChild(document.createElement("img"));
                                 // runUser.src = "./images/directions_run-24px.svg";
                                 // runUser.id = "log-out";
-                                logiUserOut.style.display = 'block';
+                                logOut.style.display = 'block';
 
                                 formLogin.style.display = 'none';
                             }
@@ -421,13 +463,34 @@ customElements.define('sign-in-user',
 
 
 
+            function removeBlockLogin() {
+                loginContainer.style.display = "block";
+                autorizationSection.style.display = 'none';
+                this.shadowRoot.getElementById("login-form").style.display = 'none'
+
+            }
             function removeBlock(event) {
                 loginContainer.style.display = "block";
                 // document.cookie = `userSignIn=false`;
                 // this.shadowRoot.getElementById("reg-section").remove();
                 // this.shadowRoot.getElementById("login-form").remove();
-                this.shadowRoot.getElementById("reg-section").style.display = 'none';
+                autorizationSection.style.display = 'none';
                 this.shadowRoot.getElementById("login-form").style.display = 'none'
+
+                fetch("http://localhost:3000/profile", {
+                    // fetch("https://a-level-json-server.glitch.me/users", {
+                    method: "PATCH",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify ({
+                        "activeSession": "false"
+                    })
+                }).then ( response => response.json() )
+                    .then ( response => {
+                       console.log(response)
+                        document.cookie = `activeSession=${response["activeSession"]}`
+                    })
 
             };
 

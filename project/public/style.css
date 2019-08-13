@@ -118,7 +118,12 @@ header .right-menu li {
     color: #263742;
     text-decoration: none;
     text-transform: uppercase;
-    padding-left: 40px;
+    padding-left: 25px;
+}
+
+header .right-menu > ul {
+    display: flex;
+    align-items: center;
 }
 
 header .right-menu li.social-icon {
@@ -135,6 +140,19 @@ header .right-menu li a:hover {
     transition: 0.35s ease;
 }
 
+header #login-user-name {
+    display: inline-block;
+    padding: 0 5px;
+}
+
+header li #autorization-section, header li#sign-in-user {
+    display: flex;
+    align-items: center;
+}
+header li #autorization-section img{
+    max-height: 50px;
+    width: auto;
+}
 
 /* main banner text*/
 .b-text-wrapper {

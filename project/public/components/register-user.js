@@ -1,4 +1,11 @@
+var autorizationSection = document.getElementById('autorization-section');
+autorizationSection.style.display = "none";
+var imgAutoriz = document.getElementById('login-user-photo');
+var nameAutoriz = document.getElementById('login-user-name');
+var logOut = document.getElementById("log-out");
+
 var templateReg = document.createElement ("template" );
+
 
 templateReg.innerHTML = `
         <style>
@@ -366,6 +373,7 @@ customElements.define('register-user',
                 formData.forEach (
                     (val, key) => Object.assign (result, {[key]: val})
                 )
+                Object.assign(result, {"activeSession": "true"})
                 fetch("http://localhost:3000/profile", {
                 // fetch("https://a-level-json-server.glitch.me/users", {
                     method: "POST",
@@ -380,10 +388,20 @@ customElements.define('register-user',
                         userInfoImg.src = currentUser["user-photo"]
                         document.cookie = `userId=${currentUser.id}`
                         document.cookie = `userPass=${currentUser["pass-hash"]}`
-                        document.cookie = `userEmail=${currentUser["email"]}`
+                        document.cookie = `userEmail=${currentUser["email"]}`;
+                        console.log(`${response["activeSession"]}`);
+                        console.log(`${currentUser["activeSession"]}`);
+                        document.cookie = `activeSession=${currentUser["activeSession"]}`;
                         regForm.style.display = "none"
                         submitBtn.style.display = "none"
                         userBlock.style.display = "block"
+
+                        autorizationSection.style.display = "block";
+
+                        imgAutoriz.src = response["user-photo"];
+                        nameAutoriz.innerText = response["user-name"];
+                        logOut.src = "./images/directions_run-24px.svg";
+                        document.querySelector("#sign-in-user > a").style.display = "none;"
                     })
             }
 
@@ -409,6 +427,7 @@ customElements.define('register-user',
                             inputEmail.placeholder = response["email"]
                             inputName.placeholder = response["user-name"]
                             imgForm.src = response["user-photo"]
+                            document.cookie = `activeSession=${response["activeSession"]}`
                         })
                     : console.warn("Not registered")
                 }
