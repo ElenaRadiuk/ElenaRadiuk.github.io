@@ -2,14 +2,16 @@ import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import AppHeader from "./component/AppHeader";
+import Header from "./component/Header";
 import Footer from "./component/Footer";
 
 function App() {
     return (
 
     <div className="App">
-        <AppHeader></AppHeader>
+        <Header
+            menu="MENU sample"
+        />
 
         <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -26,7 +28,9 @@ function App() {
         </a>
         </header>
 
-        <Footer></Footer>
+        <Footer>
+            <li>example</li>
+        </Footer>
 
 
     </div>
