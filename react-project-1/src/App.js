@@ -5,6 +5,34 @@ import './App.css';
 import Header from "./component/Header";
 import Footer from "./component/Footer";
 
+
+const headerItem = [
+  {
+    id: 1,
+    item: "Home",
+    href: "#home",
+    className: "menu-item"
+  },
+  {
+    id: 2,
+    item: "Portfolio",
+    href: "#portfolio",
+    className: "menu-item"
+  },
+  {
+    id: 3,
+    item: "About",
+    href: "#about",
+    className: "menu-item"
+  },
+  {
+    id: 4,
+    item: "Contact",
+    href: "#contact",
+    className: "menu-item"
+  }
+]
+
 function App() {
     return (
 
