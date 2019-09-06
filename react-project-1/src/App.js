@@ -42,7 +42,7 @@ function App() {
     return (
 
     <div className="App">
-        <Header>list={headerItems}</Header> 
+        <Header /> 
 
         
 
