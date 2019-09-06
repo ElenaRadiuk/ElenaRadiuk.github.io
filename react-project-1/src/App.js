@@ -1,45 +1,50 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
+
 import './App.css';
 
 import Header from "./component/Header";
 import Footer from "./component/Footer";
 
 
-const headerItem = [
+
+const headerItems = [
   {
     id: 1,
-    item: "Home",
+    title: "Home",
     href: "#home",
     className: "menu-item"
   },
   {
     id: 2,
-    item: "Portfolio",
+    title: "Portfolio",
     href: "#portfolio",
     className: "menu-item"
   },
   {
     id: 3,
-    item: "About",
+    title: "About",
     href: "#about",
     className: "menu-item"
   },
   {
     id: 4,
-    item: "Contact",
+    title: "Contact",
     href: "#contact",
     className: "menu-item"
   }
 ]
 
+const headerItems2 = ["a", "b", "c"]
+
 function App() {
+
     return (
 
     <div className="App">
-        <Header
-            menu="MENU sample"
-        />
+        <Header>list={headerItems}</Header> 
+
+        
 
         <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
