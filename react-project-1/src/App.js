@@ -1,10 +1,16 @@
 import React, {Component} from 'react';
+// import Gallery from "react-photo-gallery";
 import logo from './logo.svg';
 
 import './App.css';
 
+// import { photos } from "./data-gallery";
+
 import Header from "./component/Header";
+import Slider from "./component/Slider";
 import Footer from "./component/Footer";
+import MyGallery from "./component/MyGallery";
+import AboutUs from "./component/AboutUs";
 
 
 
@@ -38,28 +44,18 @@ const headerItems = [
 const headerItems2 = ["a", "b", "c"]
 
 function App() {
+  // const BasicRows = () => <Gallery photos={photos} />;
 
     return (
 
     <div className="App">
         <Header /> 
 
+        <Slider />
         
+        <MyGallery />
 
-        <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        </header>
+        <AboutUs />
 
         <Footer>
             <li>example</li>

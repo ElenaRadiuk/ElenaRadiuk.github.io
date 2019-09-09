@@ -1,0 +1,14 @@
+/*---start-gallery-----*/
+.gallery{
+	margin: 4% 0%;
+}
+.gallery1 {
+	padding: 4em 0em;
+}
+.container { 
+	position: relative; 
+	-webkit-transition: all 1s ease;
+	-moz-transition: all 1s ease;
+	-o-transition: all 1s ease;
+	transition: all 1s ease;	
+}

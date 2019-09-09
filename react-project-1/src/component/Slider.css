@@ -1,0 +1,61 @@
+/* start slider */
+.slider_bg{
+	background:  url('../images/banner.jpg') no-repeat;
+	background-size: 100% 100%;
+}
+.da-slide {
+	padding: 11% 0%;
+}
+.da-slide h2 {
+	color: #FFF;
+	font-size: 3em;
+	font-weight: 700;
+	z-index: 10;
+	text-align: center;
+}
+.da-slide h2 span {
+	font-size: 1em;
+	font-weight: 300;
+}
+.da-slide p {
+	color: #FFF;
+	font-size: 1.4em;
+	text-align: center;
+	margin: 1.5em auto;
+	width: 77%;
+	font-weight: 300;
+	line-height: 1.4em;
+}
+.da-slide .da-link {
+	background-color: #1BBC9B;
+	display: block;
+	color: #FFF;
+	font-size: 1em;
+	text-transform: uppercase;
+	margin: 0 auto;
+	width: 10%;
+	text-align: center;
+	padding: 1em 2em;
+}
+.da-slide .da-link:hover
+{
+	background:#01CAA1;
+}
+.da-img{
+	width: 50px;
+	height: 50px;
+	display: block;
+	margin: 2em auto 1em;
+	background: url(../images/buttonimg.png);
+	-webkit-transition: all 0.4s ease-in-out;
+	-moz-transition: all 0.4s ease-in-out;
+	-o-transition: all 0.4s ease-in-out;
+	-ms-transition: all 0.4s ease-in-out;
+	transition: all 0.4s ease-in-out;
+}
+.da-img:hover{
+	width: 50px;
+	height: 50px;
+	display: block;
+	background: url(../images/buttonimgh.png);
+}
