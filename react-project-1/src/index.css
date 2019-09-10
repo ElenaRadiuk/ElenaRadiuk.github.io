@@ -71,3 +71,20 @@ body {
   background: #1bbc9b;
 }
 /************end-nav***********/
+/* start main_btm */
+.container h2{
+	color:#4D4D4D;
+	font-size: 2em;
+	padding-bottom: 0.5em;
+	text-align: center;
+}
+.container p{
+	color:#444444;
+	font-size: 1em;
+	padding-bottom: 1em;
+	text-align: center;
+}
+.main_btm {
+	margin-top: 4%;
+	display: block;
+}
