@@ -10,7 +10,7 @@ function Slider() {
                 <div className="da-slide">
                     <h2><span>We Build</span>Brand</h2>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.  when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                    <a href="#" className="da-link">Learnmore</a>
+                    <a href="#" className="da-link">Learn more</a>
                     <a href="#portfolio" className="scroll"><span className="da-img"> </span> </a>
                 </div>
 		    </div>

@@ -1,0 +1,120 @@
+/***********  Contact Form  *************/
+.col{
+	display: block;
+	float:left;
+	margin: 4% 0 4% 1.6%;
+}
+.col:first-child{
+	margin-left:0;
+}	
+.span_2_of_3 {
+	width: 66.1%;
+}
+.span_1_of_3 {
+	width: 32.2%;
+}
+.contact {
+	background: #EBEBEB;
+}
+.contact-form{
+	padding-bottom:30px;
+}
+.contact-form div{
+	padding:5px 0 15px;
+}
+.contact h2{
+	color:#444444;
+	font-size:2em;
+	padding: 2em 0em 0.7em 0em;
+	text-align: center;
+}
+.contact h4{
+	color:#444;
+	font-size:1em;
+	text-align: center;
+}
+.contact h5{
+	color:#444;
+	font-size:1em;
+	padding-bottom: 2em;
+	padding-left: 1em;
+}
+.contact-form input[type="text"],.contact-form textarea{
+	padding: 15px;
+	display: block;
+	width: 43%;
+	background:#fff;
+	outline: none;
+	color:#888282;
+	font-size: 0.8125em;
+	-webkit-appearance: none;
+	float:left;
+	margin-right: 2em;
+	font-family: 'Lato', sans-serif;
+	font-style: italic;
+	border: 2px solid #CACACA;
+}
+.contact-form input[type="text"]:nth-child(2)
+{
+	margin-right: 0em;
+}
+.contact-form textarea{
+	padding: 15px;
+	display: block;
+	width: 94%;
+	background:#fff;
+	border: none;
+	outline: none;
+	color:#888282;
+	font-size: 0.8125em;
+	-webkit-appearance: none;
+	font-style: italic;
+	border:2px solid #CACACA;
+	margin-bottom: 2em;
+}
+.contact-form textarea{
+	resize:none;
+	height:180px;		
+}
+.contact-form form input[type="submit"] 
+{
+	font-family: 'Lato', sans-serif;
+	color:#fff;
+	padding: 0.8em 1.5em;
+	background: #1BBC9B;
+	border:1px solid #1BBC9B;
+	display: block;
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-ms-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+	cursor: pointer;
+	font-size: 1em;
+	outline: none;
+	text-transform: uppercase;
+	float: right;
+	margin-right: 2%;	
+}
+.company_address p{
+	color:#525252;
+	font-size:0.8125em;
+	line-height: 1.8em;
+	margin-bottom: 2%;
+}
+.company_address p a{
+	color:#525252;
+	font-size:1.1em;
+	line-height: 1.8em;
+	margin-bottom: 2%;
+}
+.list3 li img
+{
+	float:left;
+	margin-top: 4px;
+}
+.list3 li .extra-wrap
+{
+	float:left;
+	padding-left: 1em;
+}

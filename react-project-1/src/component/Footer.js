@@ -1,16 +1,18 @@
 import React from "react";
-// import PropTypes from "prop-types";
+import "./Footer.css";
 
+function Footer(params) {
+     return(
+        <div className="footer-bottom">
+                <div className="wrap">
+                        <div className="copy">
+                        <p className="copy"><a href="#"> BAK-ONE company </a></p>
+                        </div>
+                </div>
+        </div>
 
-
-
-        let Footer = p =>
-<div className='wrapper'>
-        <div className='somesupercontainer'>
-        {p.children}
-</div>
-    </div>
-
+     )   
+}
 
 
 export default Footer

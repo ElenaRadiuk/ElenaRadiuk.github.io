@@ -7,8 +7,8 @@ function MyGallery() {
     const BasicRows = () => <Gallery photos={photos} />;
     return (
         <div className="gallery">
-            <div class="clear"> </div>
-            <div class="container">
+            <div className="clear"> </div>
+            <div className="container">
                 <h2>Portfolio</h2>
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                 {/* <BasicRows /> */}

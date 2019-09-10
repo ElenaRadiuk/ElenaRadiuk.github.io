@@ -44,18 +44,8 @@ function Nav(props) {
 
 function Header(props) {
     const HeaderI = headerItems.map(itemM => <Nav key={itemM.id} href={itemM.href} title={itemM.title}/>)
-    // { this.props.list.map(itemM => <li key={itemM.id}> title={itemM.title}</li>) }
-    // const jokeComponents = jokesData.map(joke => <Joke key={joke.id} question={joke.question} punchLine={joke.punchLine} />)
-    // console.log(HeaderI)
+    
     return (
-        // <header>
-        // This is the header
-        //
-        // <div>
-            // <span>{props.menu}</span>
-        // </div>
-
-        // </header>
         <div className="header_bg">
             <div className="wrap">
                 <div className="header">
@@ -66,14 +56,13 @@ function Header(props) {
                         <div className="clear"></div> 
                     </ul>
                 </div>
-            
 
                 <div className="clear"></div>
                     <span>{props.menu}</span>
                 </div>
             </div>
         </div>
-)
+    )
 }
 
 export default Header
