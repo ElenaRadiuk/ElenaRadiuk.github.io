@@ -89,7 +89,6 @@ class Pass extends Component {
   );
   }
 
-
   render() {
     let color = this.state.valid ? "green" : "red"
     console.log(color)
