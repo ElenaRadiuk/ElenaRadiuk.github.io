@@ -56,13 +56,13 @@ class MyInput extends Component {
 class Pass extends Component {
   constructor(props) {
     super(props)
-    state = {
+    this.state = {
       pass: '',
       pass_re: '',
       password_has_error: false,
       valid: false 
     }
-    this.onChangeEmail = this.onChangeEmail.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
   
