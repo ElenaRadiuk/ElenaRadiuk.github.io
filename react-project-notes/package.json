@@ -1,0 +1,24 @@
+{
+  "name": "react-notes",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ER",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "mongoose": "^5.7.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.3",
+    "@babel/node": "^7.6.3",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/register": "^7.6.2",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "nodemon": "^1.19.3"
+  },
+  "description": ""
+}
