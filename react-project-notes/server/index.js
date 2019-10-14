@@ -1,6 +1,8 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 
+import { serverPort } from '../etc/config.json';
+
 import * as db from './utils/DButils.js';
 
 db.setUpConnection(); //соединение с бд
@@ -27,8 +29,8 @@ app.get('/notes/:id', (req, res) => {
 })
 
 
-const server = app.listen(8080, () => {
-    console.log("start port 8080-1");
+const server = app.listen(serverPort, () => {
+    console.log(`start port ${serverPort}`);
 });
 
 process.on('SIGTERM', () => {

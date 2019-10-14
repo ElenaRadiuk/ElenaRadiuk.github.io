@@ -3,23 +3,39 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:client": "webpack-dev-server --config webpack.config.js",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "author": "ER",
   "license": "ISC",
   "type": "module",
   "dependencies": {
     "i": "^0.3.6",
-    "mongoose": "^5.7.3"
+    "mongoose": "^5.7.3",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "react-scripts": "3.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.3",
     "@babel/node": "^7.6.3",
     "@babel/preset-env": "^7.6.3",
     "@babel/register": "^7.6.2",
+    "babel-watch": "^7.0.0",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "nodemon": "^1.19.3"
+    "nodemon": "^1.19.3",
+    "babel-loader": "5.*",
+    "css-loader": "^0.22.0",
+    "file-loader": "^0.8.5",
+    "json-loader": "^0.5.4",
+    "react-hot-loader": "^1.3.0",
+    "style-loader": "^0.13.0",
+    "url-loader": "^0.5.6",
+    "webpack": "^4.41.1",
+    "webpack-dev-server": "^3.7.1"
   },
   "description": ""
 }
