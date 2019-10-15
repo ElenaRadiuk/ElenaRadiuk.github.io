@@ -7,7 +7,7 @@ module.exports = {
     mode: 'development',
     devServer: {
         contentBase: path.join(__dirname, 'public'),
-        port: 8080,
+        port: 8090,
         host: `localhost`,
     },
     entry: "./client/main.js",
@@ -18,11 +18,18 @@ module.exports = {
     },
    
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.js$/,
-                loader: "babel",
-                exclude: [/node_modules/, /public/]
+                // loader: "babel-loader",
+                
+                exclude: [/node_modules/, /public/],
+                use: {
+                   loader: 'babel-loader',
+                   options: {
+                       presets: ['@babel/preset-env']
+                   }
+                }
             },
             {
                 test: /\.css$/,
@@ -52,7 +59,7 @@ module.exports = {
             },
             {
                 test: /\.jsx$/,
-                loader: "react-hot!babel",
+                loader: "react-hot!babel-loader",
                 exclude: [/node_modules/, /public/]
             },
             {
