@@ -27,10 +27,22 @@ module.exports = {
                 use: {
                    loader: 'babel-loader',
                    options: {
-                       presets: ['@babel/preset-env']
+                       presets: ['@babel/preset-env', 'react']
                    }
                 }
             },
+              {
+                  test: /\.jsx$/,
+                  // loader: "babel-loader",
+
+                  exclude: [/node_modules/, /public/],
+                  use: {
+                      loader: 'babel-loader',
+                      options: {
+                          presets: ['@babel/preset-env', 'react']
+                      }
+                  }
+              },
             {
                 test: /\.css$/,
                 loader: "style-loader!css-loader!autoprefixer-loader",
