@@ -7,7 +7,7 @@ module.exports = {
     mode: 'development',
     devServer: {
         contentBase: path.join(__dirname, 'public'),
-        port: 8090,
+        port: 3000,
         host: `localhost`,
     },
     entry: "./client/main.js",
@@ -26,9 +26,9 @@ module.exports = {
                 exclude: [/node_modules/, /public/],
                 use: {
                    loader: 'babel-loader',
-                   options: {
-                       presets: ['@babel/preset-env', 'react']
-                   }
+                   "query": {
+                    "presets": ["@babel/preset-env", "@babel/preset-react"],
+                  }
                 }
             },
               {
@@ -38,8 +38,8 @@ module.exports = {
                   exclude: [/node_modules/, /public/],
                   use: {
                       loader: 'babel-loader',
-                      options: {
-                          presets: ['@babel/preset-env', 'react']
+                      "query": {
+                        "presets": ["@babel/preset-env", "@babel/preset-react"],
                       }
                   }
               },

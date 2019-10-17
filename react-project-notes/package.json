@@ -3,16 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "react-scripts start client/main.js",
     "server": "babel-node server/index.js",
-    "webpack-devserver": "webpack-dev-server --debug --hot --devtool eval-source-map --output-pathinfo --watch --colors --inline --content-base public --port 8090 --host 0.0.0.0"
+    "webpack-devserver": "webpack-dev-server --debug --hot --devtool eval-source-map --output-pathinfo --watch --colors --inline --content-base public --port 3000 --host 0.0.0.0"
   },
   "author": "ER",
   "license": "ISC",
   "type": "module",
   "dependencies": {
     "@babel/preset-react": "^7.6.3",
-    "babel-preset-react": "^6.24.1",
     "i": "^0.3.6",
     "mongoose": "^5.7.3",
     "react": "^16.10.2",
@@ -25,10 +23,10 @@
     "@babel/node": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/register": "^7.6.2",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-loader": "^8.0.0",
     "babel-watch": "^7.0.0",
     "body-parser": "^1.19.0",
-    "babel-core": "^7.0.0-bridge.0",
     "css-loader": "^0.22.0",
     "express": "^4.17.1",
     "file-loader": "^0.8.5",
