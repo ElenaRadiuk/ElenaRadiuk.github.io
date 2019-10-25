@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-
+import NoteEditor from './NoteEditor';
+// import './components/NoteEditor.js';
 // import logo from './logo.svg';
 // import './App.css';
 
@@ -11,6 +12,8 @@ function App() {
        NOTES
       </header>
 
+
+      <NoteEditor />
       <ul>
     <li>
       <a href="#">
