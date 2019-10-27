@@ -21,30 +21,22 @@ const notes = {
         }
       ]
 }
-
-class NotesList extends React.Component {
-    constructor(props) {
-        super(props)
-       
-    }
-
-    render() {
-        notes.note.map(note => console.log(note));
-        return ( 
-            <div className = "NotesList" >
-                {
-                    notes.note.map(note => 
-                        <Note 
-                            key={note.id}
-                            title={note.title}
-                        >
-                        {note.text}
-                        </Note>
-                        )
-                }
-            </div>
-        );
-    }
+console.log(notes.note.map(note => console.log(note.id)))
+// console.log(notesList)
+const NotesList = (props) => {
+    // console.log(props.notesList.map(note => console.log(note)))
+    return(<div className = "NotesList" >
+        ewerwer
+        {
+            props.notesList.map(note => 
+                <Note 
+                    key={note.id}
+                    note={note}
+                > {note.text} </Note>
+               
+        )}
+    </div>
+    )
 }
 
 export default NotesList;
