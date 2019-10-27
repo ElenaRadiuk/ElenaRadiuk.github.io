@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import NoteEditor from './NoteEditor';
+import NotesList from './NotesList';
 // import './components/NoteEditor.js';
 // import logo from './logo.svg';
 // import './App.css';
 
+// onChangeNoteAdd(data) {
+//   console.log(data)
+// };
 function App() {
   return (
     <div className="App">
@@ -13,27 +17,9 @@ function App() {
       </header>
 
 
+      {/* <NoteEditor onNoteAdd={this.onChangeNoteAdd}/> */}
       <NoteEditor />
-      <ul>
-    <li>
-      <a href="#">
-        <h2>Title #1</h2>
-        <p>Text Content #1</p>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <h2>Title #2</h2>
-        <p>Text Content #2</p>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <h2>Title #3</h2>
-        <p>Text Content #3</p>
-      </a>
-    </li>
-    </ul>
+      <NotesList />
     </div>
   );
 }

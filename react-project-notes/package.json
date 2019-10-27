@@ -9,8 +9,10 @@
   "author": "ER",
   "license": "ISC",
   "type": "module",
+  "proxy": "http://localhost:8080",
   "dependencies": {
     "@babel/preset-react": "^7.6.3",
+    "cors": "*",
     "i": "^0.3.6",
     "mongoose": "^5.7.3",
     "node-sass": "^4.13.0",
