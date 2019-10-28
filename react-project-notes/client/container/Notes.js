@@ -5,12 +5,16 @@ import NotesList from '../components/NotesList';
 // import NoteEditor from '../components/NoteEditor';
 import {fetchNotes} from '../actions';
 // import { stat } from 'fs';
+import * as userApi from '../api/api'
 
 class Notes extends Component {
-
+    
     constructor(props) {
         super(props);
         this.returnNoteList = this.returnNoteList.bind(this);
+    }
+    componentWillMount() {
+        userApi.loadNotes();
     }
 
     returnNoteList() {

@@ -9,6 +9,11 @@ export default function notesReducer(state=initialState.notes, action) {
                 notesList: [...state.notesList, state.newNote]
             }
     
+        case "DELETE_NOTE":
+        return {
+             ...state,
+             notesList: state.notesList.filter(id => id !== action.id)
+            }
 
         case "HANDLE_INPUT_CHANGE":
             return {

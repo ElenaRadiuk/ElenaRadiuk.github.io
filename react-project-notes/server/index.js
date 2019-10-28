@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import bodyParser from 'body-parser';
 
 import { serverPort } from '../etc/config.json';
@@ -9,8 +10,10 @@ db.setUpConnection(); //соединение с бд
 
 const app = express();
 
-app.use(bodyParser.json());
+// Allow requests from any origin
+app.use(cors({ origin: '*' }));
 
+app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
     res.send('8080 send');
@@ -21,7 +24,7 @@ app.get('/notes', (req, res) => {
 })
 
 app.post('/notes', (req, res) => {
-    db.createNote(req.body).then(data => res.send(data));
+    db.addNote(req.body).then(data => res.send(data));
 })
 
 app.get('/notes/:id', (req, res) => {

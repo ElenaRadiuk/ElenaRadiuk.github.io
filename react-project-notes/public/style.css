@@ -17,6 +17,7 @@ body {
 
 .App-header {
     text-align: center;
+    font-size: 28px;
 }
 
 h2,p{
@@ -26,7 +27,3 @@ h2,p{
   ul,li{
     list-style:none;
   }
- 
-  ol{text-align:center;}
-  ol li{display:inline;padding-right:1em;}
-  ol li a{color:#fff;}

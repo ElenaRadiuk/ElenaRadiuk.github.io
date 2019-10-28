@@ -6,6 +6,21 @@ export const addNote = () => {
     }
 }
 
+export const deleteNote = (noteId) => {
+	return {
+		type: "DELETE_NOTE",
+		noteId
+	}
+}
+
+export const getListNotes = (notes) => {
+	return {
+		type: "GET_LIST_NOTES",
+		notes
+	}
+}
+
+
 export const handleInputChange = (name, value) => {
     return {
         type: "HANDLE_INPUT_CHANGE",

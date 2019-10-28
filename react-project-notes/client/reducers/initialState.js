@@ -2,10 +2,10 @@ const initialState = {
     notes: {
         notesList: [],
         newNote: {
+            noteId: '',
             title: '',
             text: '',
-            name: '',
-            surname: ''
+            name: ''
         },
         searchText: 'a'
     },

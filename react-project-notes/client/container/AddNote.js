@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import NoteEditor from '../components/NoteEditor';
 import {addNote, handleInputChange, toggleNotesForm} from '../actions';
+import * as userApi from '../api/api';
+import './AddNote.css'
 
 class AddNote extends Component {
     constructor(props) {
@@ -27,10 +29,12 @@ class AddNote extends Component {
         onInputChange(name, value);
     }
 
-    handleSubmit(e) {
+    handleSubmit(e, data) {
         e.preventDefault();
         this.props.onToggle();
         this.props.onFormSubmit();
+
+        userApi.createNote(data);
     }
 
     renderForm() {
@@ -41,8 +45,8 @@ class AddNote extends Component {
 
     render() {
         return(
-            <div>
-                {this.props.isHidden === false ? this.renderForm() : <button className="btn btn-secondary" style= {{ "marginLeft": "15px"}} type="submit" onClick={this.showAddNoteBox}>ADD NOTE</button>}
+            <div className="AddNote__wrapper"> 
+                {this.props.isHidden === false ? this.renderForm() : <button className="addNote__btn" style= {{ "marginLeft": "15px"}} type="submit" onClick={this.showAddNoteBox}><span>ADD NOTE</span></button>}
             </div>
         )
     }

@@ -10,18 +10,15 @@ export function setUpConnection() {
     mongoose.connect(`mongodb://${config.db.host}:${config.db.port}/${config.db.name}`);
 }
 
-
 export function listNotes() {
     return Notes.find();
 }
 
-export function createNote(data) {
+export function addNote(data) {
     const note = new Notes({
         title: data.title,
         text: data.text,
-        color: data.color,
-        author: data.author,
-        dataCreated: new Date()
+        name: data.name
     });
 
     return note.save();

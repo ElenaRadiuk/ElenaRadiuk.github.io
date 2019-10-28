@@ -10,7 +10,7 @@ const NoteEditor = ({onInputChange, onFormSubmit}) => (
                         onChange={onInputChange}
                         />
                 <textarea   placeholder="Enter text"
-                            rows={5}
+                            rows={3}
                             className="NoteEditor__text"
                             
                             onChange = {onInputChange}
