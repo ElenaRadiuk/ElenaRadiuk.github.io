@@ -23,13 +23,17 @@ export function createNote(data) {
     );
 }
 
-export function deleteNoteA(notesId) {
+export function deleteNoteA(noteId) {
     return axios.delete(`http://localhost:8080/notes/${noteId}`)
         .then(response => {
             store.dispatch(deleteNote(noteId));
+            console.log(response.data);
             return response;
+           
         })
-        .catch(err =>
+        .catch(err => {
+            console.log('error'),
             console.error(err)
+        }
         );
 }

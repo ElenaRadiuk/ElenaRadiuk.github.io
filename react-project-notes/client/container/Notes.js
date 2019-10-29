@@ -15,7 +15,7 @@ class Notes extends Component {
     constructor(props) {
         super(props);
         this.returnNoteList = this.returnNoteList.bind(this);
-        // this.handleNoteDelete = this.handleNoteDelete.bind(this);
+        this.handleNoteDelete = this.handleNoteDelete.bind(this);
         
 
          this.state = {
@@ -69,9 +69,10 @@ class Notes extends Component {
             })
     }
 
-    // handleNoteDelete(note) {
-    //      notesApi.deleteNoteA(note._id);
-    // }
+    handleNoteDelete(note) {
+        console.log(note);
+        notesApi.deleteNoteA(note._id);
+    }
 
     returnNoteList() {
         return this.props.notesList;
@@ -83,8 +84,8 @@ class Notes extends Component {
             <div className="app-wrapper">
                 <AddNote />
                 <h3 className="App-sub_header"> LIST NOTES </h3>
-                <NotesList notesList={this.returnNoteList()} deleteNote={notesApi.deleteNoteA}/>
-                <NotesList notesList={this.state.notes.notesList} deleteNote={notesApi.deleteNoteA}/>
+                <NotesList notesList={this.returnNoteList()} onNoteDelete={this.handleNoteDelete}/>
+                <NotesList notesList={this.state.notes.notesList} onNoteDelete={this.handleNoteDelete}/>
             </div>
         );
     }
@@ -101,9 +102,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        //   handleNoteDelete: (no) => {
-        //       dispatch(deleteNote(newNote));
-        //   },
+        deleteNote: (noteId) => {
+        dispatch(deleteNote(noteId));
+    },
       fetchAllNotes: () => dispatch(fetchNotes())
     }
   }

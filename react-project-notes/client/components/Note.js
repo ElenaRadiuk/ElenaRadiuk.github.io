@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import './Note.css'
 
-const Note = ({note, props}) => {
+const Note = ({note, onDelete}) => {
     console.log(note)
     return(
     <div className = "Note" id={note._id}>
     <a href="#">
-    {/* <span className="Note__delete-icon" onClick={props.deleteNote.bind(null, note._id)}>x</span> */}
+    <span className="Note__delete-icon" onClick={onDelete}>x</span>
     {
         note.title 
         ?

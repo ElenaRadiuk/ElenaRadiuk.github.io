@@ -29,13 +29,11 @@ const NotesList = (props) => {
         
         {
             props.notesList.map(note => 
-              <div>
-              <span className="Note__delete-icon" onClick={props.deleteNote.bind(null, note._id)}>x</span>
                 <Note 
                 key={note._id} 
                 note={note}
-                onClick={props.deleteNote.bind(null, note._id)} />
-                </div>
+                onDelete={props.onNoteDelete.bind(null, note)} />
+                
                 )
         }
     </div>
