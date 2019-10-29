@@ -24,6 +24,13 @@
     padding-bottom:10px;
   }
 
+.Note__delete-icon {
+    float: right;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+}
+
 .Note__text {
     font-family:"Reenie Beanie",arial,sans-serif;
     font-size:180%;

@@ -17,13 +17,17 @@ body {
 
 .App-header {
     text-align: center;
-    font-size: 28px;
+    font-size: 34px;
+    font-weight: bold;
+    font-family: 'Indie Flower', cursive;
 }
 
-h2,p{
-    font-size:100%;
-    font-weight:normal;
-  }
-  ul,li{
+.App-sub_header {
+    text-align: center;
+    font-size: 28px;
+    font-family: 'Indie Flower', cursive;
+}
+
+ul, li{
     list-style:none;
-  }
+}

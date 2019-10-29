@@ -5,17 +5,73 @@ import NotesList from '../components/NotesList';
 // import NoteEditor from '../components/NoteEditor';
 import {fetchNotes} from '../actions';
 // import { stat } from 'fs';
-import * as userApi from '../api/api'
+import * as notesApi from '../api/api';
+
+import axios from 'axios';
+import { deleteNote } from '../../server/utils/DButils';
 
 class Notes extends Component {
     
     constructor(props) {
         super(props);
         this.returnNoteList = this.returnNoteList.bind(this);
+        // this.handleNoteDelete = this.handleNoteDelete.bind(this);
+        
+
+         this.state = {
+             notes: {notesList: []}
+         };
     }
     componentWillMount() {
-        userApi.loadNotes();
+    //    async function wait() {
+    //        let response = await userApi.loadNotes();
+    //        if (response.status == 200) {
+    //             this.setState({
+    //                 notes: {
+    //                     notesList: response
+    //                 }
+    //             });
+    //             console.log(response)
+    //        }
+    //     }
+    //     wait()
+        // userApi.loadNotes().then(result => {
+        //     console.log(result)
+        //     this.setState({
+        //         notes: {
+        //             notesList: result
+        //         }
+        //     })
+        //     }
+        //     )
+        // )
+            // console.log(result));
+        
+        // .then(console.log(userApi.loadNotes()))
+        // userApi.loadNotes();
+        // console.log(userApi.loadNotes())
+        axios.get(`http://localhost:8080/notes`)
+            .then(response => {
+                console.log(response.data);
+                const posts = response.data.map(obj => obj);
+                console.log({posts});
+                this.setState({ notes: {
+                        notesList: posts
+                    }
+                 })
+                 console.log(this.state.notes.notesList)
+        //         // .notes.notesList(posts)
+        //         //  this.setState({
+        //         //      notes: {
+        //         //          notesList: response.data
+        //         //      }
+                //  })
+            })
     }
+
+    // handleNoteDelete(note) {
+    //      notesApi.deleteNoteA(note._id);
+    // }
 
     returnNoteList() {
         return this.props.notesList;
@@ -24,15 +80,19 @@ class Notes extends Component {
     render() {
 
         return(
-            <div>
+            <div className="app-wrapper">
                 <AddNote />
-                <NotesList notesList={this.returnNoteList()} />
+                <h3 className="App-sub_header"> LIST NOTES </h3>
+                <NotesList notesList={this.returnNoteList()} deleteNote={notesApi.deleteNoteA}/>
+                <NotesList notesList={this.state.notes.notesList} deleteNote={notesApi.deleteNoteA}/>
             </div>
         );
     }
 }
 
+// приклеиваем данные из store
 function mapStateToProps(state) {
+    console.log(state)
     return {
         notesList: state.notes.notesList,
         searchText: state.notes.searchText
@@ -41,6 +101,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
+        //   handleNoteDelete: (no) => {
+        //       dispatch(deleteNote(newNote));
+        //   },
       fetchAllNotes: () => dispatch(fetchNotes())
     }
   }

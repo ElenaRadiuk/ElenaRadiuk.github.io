@@ -1,20 +1,20 @@
 import React, {Component} from 'react';
 import './Note.css'
 
-const Note = ({note}) => {
+const Note = ({note, props}) => {
+    console.log(note)
     return(
-    <div className = "Note" >
+    <div className = "Note" id={note._id}>
     <a href="#">
-    <span className="Note__delete-icon">x</span>
-    dtetststsdg
+    {/* <span className="Note__delete-icon" onClick={props.deleteNote.bind(null, note._id)}>x</span> */}
     {
         note.title 
         ?
-        <h2 className="Note__title">Title {note.title}</h2>
+        <h2 className="Note__title">Title: {note.title}</h2>
         :
         null
     }
-    <p className="Note__text">{note.text}Text Content #1</p>
+    <p className="Note__text">Text: {note.text}</p>
     </a>
     </div>
     )

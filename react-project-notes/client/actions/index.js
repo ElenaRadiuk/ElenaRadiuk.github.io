@@ -61,7 +61,7 @@ export const fetchNotes = () => {
 
 		dispatch(requestNotes());
 		return axios
-			.get('https://demo1443058.mockable.io/codeproject_tutorial/api/contacts')
+			.get('http://localhost:8080/notes')
 			.then(response => {
 				dispatch(receiveNotes(response.data))
 			})

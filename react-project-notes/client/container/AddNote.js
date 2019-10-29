@@ -29,17 +29,18 @@ class AddNote extends Component {
         onInputChange(name, value);
     }
 
-    handleSubmit(e, data) {
+    handleSubmit(e, state) {
         e.preventDefault();
         this.props.onToggle();
         this.props.onFormSubmit();
 
-        userApi.createNote(data);
+        userApi.createNote({...this.props.newNote});
+        console.log({...this.props.newNote})
     }
 
     renderForm() {
         return(
-            <NoteEditor onFormSubmit={this.handleSubmit} onInputChange={this.handleInputChange} />
+            <NoteEditor {...this.props.newNote} onFormSubmit={this.handleSubmit} onInputChange={this.handleInputChange} />
         )
     }
 
@@ -52,6 +53,7 @@ class AddNote extends Component {
     }
 }
 
+// приклеиваем данные из store
 function mapStateToProps(state) {
     return {
         isHidden: state.ui.isAddNotesFormHidden,

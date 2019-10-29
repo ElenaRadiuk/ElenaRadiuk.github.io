@@ -24,17 +24,20 @@ const notes = {
 console.log(notes.note.map(note => console.log(note.id)))
 // console.log(notesList)
 const NotesList = (props) => {
-    // console.log(props.notesList.map(note => console.log(note)))
+    props.notesList.map(note => console.log(note.text))
     return(<div className = "NotesList" >
-        ewerwer
+        
         {
             props.notesList.map(note => 
+              <div>
+              <span className="Note__delete-icon" onClick={props.deleteNote.bind(null, note._id)}>x</span>
                 <Note 
-                    key={note.id}
-                    note={note}
-                > {note.text} </Note>
-               
-        )}
+                key={note._id} 
+                note={note}
+                onClick={props.deleteNote.bind(null, note._id)} />
+                </div>
+                )
+        }
     </div>
     )
 }
