@@ -18,7 +18,8 @@ export function addNote(data) {
     const note = new Notes({
         title: data.title,
         text: data.text,
-        name: data.name
+        name: data.name,
+        id: Date.now() 
     });
 
     return note.save();

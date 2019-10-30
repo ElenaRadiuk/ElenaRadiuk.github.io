@@ -27,7 +27,7 @@ app.post('/notes', (req, res) => {
     db.addNote(req.body).then(data => res.send(data));
 })
 
-app.get('/notes/:id', (req, res) => {
+app.delete('/notes/:id', (req, res) => {
     db.deleteNote(req.params.id).then(data => res.send(data));
 })
 

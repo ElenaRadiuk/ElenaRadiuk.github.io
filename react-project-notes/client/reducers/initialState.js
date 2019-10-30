@@ -2,7 +2,7 @@ const initialState = {
     notes: {
         notesList: [],
         newNote: {
-            noteId: '',
+            id: '',
             title: '',
             text: '',
             name: ''

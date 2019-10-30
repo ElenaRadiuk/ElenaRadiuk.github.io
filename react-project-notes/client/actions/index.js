@@ -6,10 +6,10 @@ export const addNote = () => {
     }
 }
 
-export const deleteNote = (noteId) => {
+export const deleteNote = (id) => {
 	return {
 		type: "DELETE_NOTE",
-		noteId
+		id
 	}
 }
 

@@ -102,8 +102,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        deleteNote: (noteId) => {
-        dispatch(deleteNote(noteId));
+        deleteNote: (id) => {
+        dispatch(deleteNote(id));
     },
       fetchAllNotes: () => dispatch(fetchNotes())
     }

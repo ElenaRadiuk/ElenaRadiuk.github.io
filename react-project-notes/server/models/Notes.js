@@ -7,6 +7,7 @@ const NoteSchema  = new Schema({
     text: {type: String, required: true},
     color: {type: String},
     name: {type: String},
+    id: {type: String},
     dataCreated: {type: Date}
 })
 

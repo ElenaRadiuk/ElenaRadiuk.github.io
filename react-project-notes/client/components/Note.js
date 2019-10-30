@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import './Note.css'
 
 const Note = ({note, onDelete}) => {
-    console.log(note)
+    console.log(note.id)
     return(
-    <div className = "Note" id={note._id}>
-    <a href="#">
+    <div className = "Note" id={note.id}>
+    <div>
     <span className="Note__delete-icon" onClick={onDelete}>x</span>
     {
         note.title 
@@ -15,7 +15,7 @@ const Note = ({note, onDelete}) => {
         null
     }
     <p className="Note__text">Text: {note.text}</p>
-    </a>
+    </div>
     </div>
     )
 }

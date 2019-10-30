@@ -30,7 +30,7 @@ const NotesList = (props) => {
         {
             props.notesList.map(note => 
                 <Note 
-                key={note._id} 
+                key={note.id} 
                 note={note}
                 onDelete={props.onNoteDelete.bind(null, note)} />
                 

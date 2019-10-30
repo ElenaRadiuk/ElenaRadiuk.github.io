@@ -1,4 +1,4 @@
-.Note a{
+.Note > div {
     text-decoration:none;
     color:#000;
     background:#ffc;
@@ -13,7 +13,7 @@
     transition:-o-transform .15s linear;
     -webkit-transition:-webkit-transform .15s linear;
 }
-.Note{
+.Note {
     margin:2em;
     float:left;
   }
@@ -29,18 +29,19 @@
     width: 20px;
     height: 20px;
     text-align: center;
+    cursor: pointer;
 }
 
 .Note__text {
     font-family:"Reenie Beanie",arial,sans-serif;
     font-size:180%;
 }
-.Note a{
+.Note > div {
     -webkit-transform: rotate(-6deg);
     transform: rotate(-6deg);
     -moz-transform:rotate(-6deg);
   }
-.Note:nth-child(even) a{
+.Note:nth-child(even) > div {
     transform:rotate(4deg);
     -webkit-transform:rotate(4deg);
     -moz-transform:rotate(4deg);
@@ -48,7 +49,7 @@
     top:5px;
     background:#cfc;
   }
-.Note:nth-child(3n) a{
+.Note:nth-child(3n) > div {
     transform:rotate(-3deg);
     -webkit-transform:rotate(-3deg);
     -moz-transform:rotate(-3deg);
@@ -56,14 +57,14 @@
     top:-5px;
     background:#ccf;
   }
-.Note:nth-child(5n) a{
+.Note:nth-child(5n) > div {
     transform:rotate(5deg);
     -webkit-transform:rotate(5deg);
     -moz-transform:rotate(5deg);
     position:relative;
     top:-10px;
   }
-.Note a:hover, .Note a:focus{
+.Note > div:hover, .Note > div:focus{
     box-shadow:10px 10px 7px rgba(0,0,0,.7);
     -moz-box-shadow:10px 10px 7px rgba(0,0,0,.7);
     -webkit-box-shadow: 10px 10px 7px rgba(0,0,0,.7);
