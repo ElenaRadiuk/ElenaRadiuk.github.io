@@ -1,5 +1,6 @@
 import axios from 'axios';
 import store from '../store/index';
+import {connect} from 'react-redux';
 import {deleteNote, addNote, getListNotes} from '../actions/index'
 
 // import {apiPrefix} from 'raw-loader!../../etc/config.json';

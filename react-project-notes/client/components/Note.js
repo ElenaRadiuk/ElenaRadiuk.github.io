@@ -1,23 +1,31 @@
 import React, {Component} from 'react';
 import './Note.css'
 
-const Note = ({note, onDelete}) => {
-    console.log(note.id)
+// const Note = ({note, onDelete, props}) => {
+    
+export class Note extends Component  {
+        constructor(props) {
+            super(props);
+        }
+        render() {
+    // console.log(note.id)
+
     return(
-    <div className = "Note" id={note.id}>
+    <div className = "Note" id={this.props.id}>
     <div>
-    <span className="Note__delete-icon" onClick={onDelete}>x</span>
+    <span className="Note__delete-icon" onClick={() => this.props.deleteNote(this.props.id)}>x</span>
     {
-        note.title 
+        this.props.title 
         ?
-        <h2 className="Note__title">Title: {note.title}</h2>
+        <h2 className="Note__title">Title: {this.props.title}</h2>
         :
         null
     }
-    <p className="Note__text">Text: {note.text}</p>
+    <p className="Note__text">Text: {this.props.text}</p>
     </div>
     </div>
     )
+}
 }
 
 export default Note;

@@ -23,21 +23,34 @@ const notes = {
 }
 console.log(notes.note.map(note => console.log(note.id)))
 // console.log(notesList)
-const NotesList = (props) => {
-    props.notesList.map(note => console.log(note.text))
-    return(<div className = "NotesList" >
+export class NotesList extends Component {
+  constructor(props) {
+    super(props);
+}
+// const NotesList = (props) => {
+    // props.notesList.map(note => console.log(note.text))
+    render() {
+    return(
+      <div className = "NotesList" >
         
         {
-            props.notesList.map(note => 
+            this.props.notesList.map(note => 
                 <Note 
                 key={note.id} 
-                note={note}
-                onDelete={props.onNoteDelete.bind(null, note)} />
+                id={note.id}
+                name={note.name}
+                title={note.title}
+                text={note.text}
+                note={note} 
+                {...this.props.actions}
+                 />
                 
                 )
         }
     </div>
     )
+      }
+// }
 }
 
 export default NotesList;

@@ -64,12 +64,14 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         onFormSubmit: (newNote) => {
+            console.log('dispatch add');
             dispatch(addNote(newNote));
         },
         onInputChange: (name, value) => {
             dispatch(handleInputChange(name, value))
         },
         onToggle: () => {
+            console.log('dispatch toggle');
             dispatch(toggleNotesForm());
         }
     }

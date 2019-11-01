@@ -9,6 +9,12 @@ const NoteEditor = ({onInputChange, onFormSubmit}) => (
                         name="title"
                         onChange={onInputChange}
                         />
+                <input  type="text"
+                        className='NoteEditor__title'
+                        placeholder='Enter name'
+                        name="name"
+                        onChange={onInputChange}
+                        />
                 <textarea   placeholder="Enter text"
                             rows={3}
                             className="NoteEditor__text"

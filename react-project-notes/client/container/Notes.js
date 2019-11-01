@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import AddNote from './AddNote';
 import NotesList from '../components/NotesList';
@@ -7,8 +7,13 @@ import {fetchNotes} from '../actions';
 // import { stat } from 'fs';
 import * as notesApi from '../api/api';
 
+import { bindActionCreators } from 'redux';
+import * as notesAction from '../actions/index';
+
+
 import axios from 'axios';
 import { deleteNote } from '../../server/utils/DButils';
+
 
 class Notes extends Component {
     
@@ -22,6 +27,8 @@ class Notes extends Component {
              notes: {notesList: []}
          };
     }
+
+   
     componentWillMount() {
     //    async function wait() {
     //        let response = await userApi.loadNotes();
@@ -72,6 +79,7 @@ class Notes extends Component {
     handleNoteDelete(note) {
         console.log(note);
         notesApi.deleteNoteA(note._id);
+        return this.props.notesList;
     }
 
     returnNoteList() {
@@ -79,13 +87,14 @@ class Notes extends Component {
     }
     
     render() {
-
+        const { notesList: { notesList }, dispatch } = this.props;
+        const actions = bindActionCreators(notesAction, dispatch);
         return(
             <div className="app-wrapper">
                 <AddNote />
                 <h3 className="App-sub_header"> LIST NOTES </h3>
-                <NotesList notesList={this.returnNoteList()} onNoteDelete={this.handleNoteDelete}/>
-                <NotesList notesList={this.state.notes.notesList} onNoteDelete={this.handleNoteDelete}/>
+                <NotesList notesList={this.returnNoteList()} onNoteDelete={handleNoteDelete}/>
+                <NotesList notesList={this.state.notes.notesList} onNoteDelete={handleNoteDelete}/>
             </div>
         );
     }
@@ -102,11 +111,13 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        deleteNote: (id) => {
-        dispatch(deleteNote(id));
-    },
+        onNoteDelete: (notesList) => {
+            console.log('del disp');
+        dispatch(deleteNote(notesList));
+        },
       fetchAllNotes: () => dispatch(fetchNotes())
     }
   }
   
   export default connect(mapStateToProps, mapDispatchToProps) (Notes);
+//   export default connect(null, mapDispatchToProps)(Notes)
