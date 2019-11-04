@@ -7,7 +7,7 @@ module.exports = {
     mode: 'development',
     devServer: {
         contentBase: path.join(__dirname, 'public'),
-        port: 3000,
+        port: 3030,
         host: `localhost`,
     },
     entry: "./client/main.js",

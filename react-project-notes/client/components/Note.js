@@ -8,7 +8,12 @@ export class Note extends Component  {
             super(props);
         }
         render() {
-    // console.log(note.id)
+    console.log(this.props.id)
+
+    // deleteContact(e, index){
+    //     e.preventDefault();
+    //     this.props.deleteContact(index);
+    //   }
 
     return(
     <div className = "Note" id={this.props.id}>

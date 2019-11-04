@@ -6,16 +6,26 @@ import {deleteNote, addNote, getListNotes} from '../actions/index'
 // import {apiPrefix} from 'raw-loader!../../etc/config.json';
 // const apiPrefix = require('../../etc/config.json');
 
-export function loadNotes(notesId) {
-    return axios.get(`http://localhost:8080/notes`)
-     .then(function (response) {
-         console.log(response);
-     })
+export function loadNotes() {
+    // return axios.get(`http://localhost:8080/notes`)
+    //  .then(function (response) {
+    //     store.dispatch(getListNotes(response.data));
+    //      console.log(response);
+    //  })
+
+     return function (dispatch) { 
+        axios.get(`http://localhost:8080/notes`)
+          .then((response) => dispatch({
+            type: 'GET_LIST_NOTES',
+            notes: {notesList: [posts]}
+          }).catch((response) => console.log(response) )
+    )}
+
 }
 
 export function createNote(data) {
     return axios.post(`http://localhost:8080/notes`, data)
-    .then(() => loadNotes())
+    // .then(() => loadNotes())
     .then(function (response) {
         console.log(response);
     })

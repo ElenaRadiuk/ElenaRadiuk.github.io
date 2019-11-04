@@ -30,19 +30,21 @@ export class NotesList extends Component {
 // const NotesList = (props) => {
     // props.notesList.map(note => console.log(note.text))
     render() {
+      console.log(this.props.notesList);
     return(
       <div className = "NotesList" >
-        
+       
         {
             this.props.notesList.map(note => 
                 <Note 
-                key={note.id} 
+                key={note.title + Math.random()} 
                 id={note.id}
                 name={note.name}
                 title={note.title}
                 text={note.text}
-                note={note} 
-                {...this.props.actions}
+                note={note}
+                deleteNote={this.props.deleteNote} 
+                // {...this.props}
                  />
                 
                 )

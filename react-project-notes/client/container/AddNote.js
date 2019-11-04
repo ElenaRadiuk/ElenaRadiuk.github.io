@@ -4,6 +4,7 @@ import NoteEditor from '../components/NoteEditor';
 import {addNote, handleInputChange, toggleNotesForm} from '../actions';
 import * as userApi from '../api/api';
 import './AddNote.css'
+import NotesList from '../components/NotesList';
 
 class AddNote extends Component {
     constructor(props) {
@@ -58,6 +59,7 @@ function mapStateToProps(state) {
     return {
         isHidden: state.ui.isAddNotesFormHidden,
         newNote: state.notes.newNote
+        // notesList: state.notes.notesList
     }
 }
 
@@ -66,6 +68,7 @@ function mapDispatchToProps(dispatch) {
         onFormSubmit: (newNote) => {
             console.log('dispatch add');
             dispatch(addNote(newNote));
+            // dispatch(getListNotes(notesList));
         },
         onInputChange: (name, value) => {
             dispatch(handleInputChange(name, value))
