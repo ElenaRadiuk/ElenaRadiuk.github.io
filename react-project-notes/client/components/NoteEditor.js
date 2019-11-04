@@ -3,10 +3,22 @@ import './NoteEditor.css';
 
 const NoteEditor = ({onInputChange, onFormSubmit}) => (
             <div className="NoteEditor">
+                     <input  type="number"
+                        className='NoteEditor__title hidden'
+                        
+                        name="id"
+                        onChange={onInputChange}
+                        />
                 <input  type="text"
                         className='NoteEditor__title'
                         placeholder='Enter title'
                         name="title"
+                        onChange={onInputChange}
+                        />
+                <input  type="text"
+                        className='NoteEditor__title'
+                        placeholder='Enter name'
+                        name="name"
                         onChange={onInputChange}
                         />
                 <textarea   placeholder="Enter text"

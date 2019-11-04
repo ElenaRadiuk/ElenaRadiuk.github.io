@@ -11,9 +11,16 @@ export default function notesReducer(state=initialState.notes, action) {
     
         case "DELETE_NOTE":
         return {
-             ...state,
-             notesList: state.notesList.filter(id => id !== action.id)
+            //  ...state,
+            //  notesList: state.notesList.filter(id => id !== action.id)
+            notesList: [...state.notesList].filter((data, i) => i !== action.id)
             }
+
+        case "GET_LIST_NOTES":
+        return {
+                ...state,
+                notesList: [...state.notesList]
+            }    
 
         case "HANDLE_INPUT_CHANGE":
             return {
@@ -21,19 +28,19 @@ export default function notesReducer(state=initialState.notes, action) {
                 newNote: {...state.newNote, ...action.payload}
             }
 
-        case "REQUEST_CONTACTS": 
+        case "REQUEST_NOTES": 
             return {
                 ...state,
                 isFetching: true
             }   
             
-        case "RECEIVE_CONTACTS": 
+        case "RECEIVE_NOTES": 
             return {
                 ...state,
                 isFetching: false,
-                notesList: action.payload
+                notesList: action.notesList
             }    
-
+           
         default: return state;    
     }
 }

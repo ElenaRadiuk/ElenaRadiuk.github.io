@@ -42,10 +42,10 @@ export const requestNotes = () => {
 	}
 }
 
-export const receiveNotes = (json) => {
+export const receiveNotes = (notesList) => {
 	return {
 		type: "RECEIVE_NOTES",
-		payload: json.notes
+		notesList
 	}
 }
 
@@ -56,14 +56,15 @@ export const receiveNotesError = (err) => {
 	}
 }
 
-export const fetchNotes = () => {
+export const fetchNotes = (url) => {
 	return (dispatch) => {
 
 		dispatch(requestNotes());
 		return axios
-			.get('http://localhost:8080/notes')
+			.get(url)
 			.then(response => {
-				dispatch(receiveNotes(response.data))
+				dispatch(receiveNotes(response.data)),
+				console.log(response.data)
 			})
 			.catch ( err => {
 				dispatch(receiveNotesError(err))
