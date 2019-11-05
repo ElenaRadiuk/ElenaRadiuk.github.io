@@ -10,10 +10,14 @@ export default function notesReducer(state=initialState.notes, action) {
             }
     
         case "DELETE_NOTE":
+            // let filter = [state.notesList];
+            // console.log(...state);
+            console.log(state)
         return {
-            //  ...state,
+             ...state,
             //  notesList: state.notesList.filter(id => id !== action.id)
-            notesList: [...state.notesList].filter((data, i) => i !== action.id)
+            notesList: [state.notesList].filter((id) => id !== action.id)
+            
             }
 
         case "GET_LIST_NOTES":

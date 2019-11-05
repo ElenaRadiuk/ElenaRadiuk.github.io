@@ -38,7 +38,7 @@ export class NotesList extends Component {
             this.props.notesList.map(note => 
                 <Note 
                 key={note.title + Math.random()} 
-                id={note.id}
+                id={note._id}
                 name={note.name}
                 title={note.title}
                 text={note.text}

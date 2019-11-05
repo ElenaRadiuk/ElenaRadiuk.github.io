@@ -1,12 +1,14 @@
 import axios from 'axios';
 
 export const addNote = () => {
+	console.log('add action');
     return {
         type: "ADD_NOTE"
     }
 }
 
 export const deleteNote = (id) => {
+	console.log('del action'+id);
 	return {
 		type: "DELETE_NOTE",
 		id
