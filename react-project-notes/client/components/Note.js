@@ -9,7 +9,7 @@ export class Note extends Component  {
         }
         render() {
     console.log(this.props.id);
-    // console.log(this.props._id)
+    console.log(this.props._id)
 
     // deleteContact(e, index){
     //     e.preventDefault();

@@ -7,21 +7,6 @@ export const addNote = () => {
     }
 }
 
-export const deleteNote = (id) => {
-	console.log('del action'+id);
-	return {
-		type: "DELETE_NOTE",
-		id
-	}
-}
-
-export const getListNotes = (notes) => {
-	return {
-		type: "GET_LIST_NOTES",
-		notes
-	}
-}
-
 
 export const handleInputChange = (name, value) => {
     return {
@@ -55,6 +40,25 @@ export const receiveNotesError = (err) => {
 	return {
 		type: "ERROR",
 		payload: err
+	}
+}
+
+
+
+export const deleteNote = (id) => {
+	console.log('del action'+id);
+	return {
+		type: "DELETE_NOTE",
+		id
+	}
+}
+
+
+
+export const getListNotes = (notes) => {
+	return {
+		type: "GET_LIST_NOTES",
+		notes
 	}
 }
 

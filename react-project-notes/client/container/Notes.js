@@ -88,9 +88,11 @@ class Notes extends Component {
             // })
     }
 
-    handleNoteDelete(note) {
+    handleNoteDelete( note) {
+
         console.log(note);
         notesApi.deleteNoteApi(note);
+        this.props.deleteNote(note);
         // return this.props.notesList;
         
     }
@@ -102,13 +104,14 @@ class Notes extends Component {
     render() {
         // const { notesList: { notesList }, dispatch } = this.props;
         // const actions = bindActionCreators(notesAction, dispatch);
+        console.log(...this.props.notesList)
         return(
             <div className="app-wrapper">
                 <AddNote />
                 <h3 className="App-sub_header"> LIST NOTES </h3>
                 {/* <NotesList notesList={this.returnNoteList()} {...this.props} onNoteDelete={this.handleNoteDelete}/> 
                 <NotesList {...this.props} notesList={this.state.notes.notesList} deleteNote={this.handleNoteDelete}/> */}
-                <NotesList notesList={this.props.notesList} deleteNote={this.handleNoteDelete}/>
+                <NotesList notesList={this.props.notesList} deleteNote={this.handleNoteDelete} {...this.props.notesList}/>
 
             </div>
         );
