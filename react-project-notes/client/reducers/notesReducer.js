@@ -44,6 +44,8 @@ export default function notesReducer(state=initialState.notes, action) {
             }   
             
         case "RECEIVE_NOTES": 
+        console.log(state);
+        console.log(action.notesList);
             return {
                 ...state,
                 isFetching: false,

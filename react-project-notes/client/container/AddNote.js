@@ -36,7 +36,7 @@ class AddNote extends Component {
         this.props.onFormSubmit();
 
         userApi.createNote({...this.props.newNote});
-        this.props.fetchData(`http://localhost:8080/notes`);
+        // this.props.fetchData(`http://localhost:8080/notes`);
         console.log({...this.props.newNote})
     }
 
