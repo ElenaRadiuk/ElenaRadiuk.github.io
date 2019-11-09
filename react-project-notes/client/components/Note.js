@@ -8,7 +8,8 @@ export class Note extends Component  {
             super(props);
         }
         render() {
-    console.log(this.props.id)
+    console.log(this.props.id);
+    console.log(this.props._id)
 
     // deleteContact(e, index){
     //     e.preventDefault();

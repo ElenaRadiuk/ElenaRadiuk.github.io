@@ -34,7 +34,7 @@ export function createNote(data) {
     );
 }
 
-export function deleteNoteA(noteId) {
+export function deleteNoteApi(noteId) {
     return axios.delete(`http://localhost:8080/notes/${noteId}`)
         .then(response => {
             // store.dispatch(deleteNote(noteId));

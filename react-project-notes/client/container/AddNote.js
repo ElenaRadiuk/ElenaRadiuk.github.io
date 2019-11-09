@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import NoteEditor from '../components/NoteEditor';
-import {addNote, handleInputChange, toggleNotesForm} from '../actions';
+import {fetchNotes, addNote, handleInputChange, toggleNotesForm} from '../actions';
 import * as userApi from '../api/api';
 import './AddNote.css'
 import NotesList from '../components/NotesList';
@@ -36,6 +36,7 @@ class AddNote extends Component {
         this.props.onFormSubmit();
 
         userApi.createNote({...this.props.newNote});
+        // this.props.fetchData(`http://localhost:8080/notes`);
         console.log({...this.props.newNote})
     }
 
@@ -76,7 +77,11 @@ function mapDispatchToProps(dispatch) {
         onToggle: () => {
             console.log('dispatch toggle');
             dispatch(toggleNotesForm());
-        }
+        },
+        fetchData: (url) => {
+            console.dir(fetchNotes(url));
+              dispatch(fetchNotes(url))
+          }
     }
 }
 

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import AddNote from './AddNote';
 import NotesList from '../components/NotesList';
 // import NoteEditor from '../components/NoteEditor';
-import {fetchNotes} from '../actions';
+import {fetchNotes, deleteNote} from '../actions';
 // import { stat } from 'fs';
 import * as notesApi from '../api/api';
 
@@ -14,7 +14,7 @@ import * as notesAction from '../actions/index';
 
 
 import axios from 'axios';
-import { deleteNote } from '../../server/utils/DButils';
+// import { deleteNote } from '../../server/utils/DButils';
 
 
 class Notes extends Component {
@@ -34,6 +34,8 @@ class Notes extends Component {
     componentDidMount() {
         console.log('this.props.fetchData')
         this.props.fetchData(`http://localhost:8080/notes`);
+
+        // notesApi.deleteNoteApi('5dbb51898ce01a551013bb5d')
     //    async function wait() {
     //        let response = await userApi.loadNotes();
     //        if (response.status == 200) {
@@ -86,10 +88,13 @@ class Notes extends Component {
             // })
     }
 
-    handleNoteDelete(note) {
+    handleNoteDelete( note) {
+
         console.log(note);
-        notesApi.deleteNoteA(note._id);
-        return this.props.notesList;
+        notesApi.deleteNoteApi(note);
+        this.props.deleteNote(note);
+        // return this.props.notesList;
+        
     }
 
     returnNoteList() {
@@ -99,13 +104,14 @@ class Notes extends Component {
     render() {
         // const { notesList: { notesList }, dispatch } = this.props;
         // const actions = bindActionCreators(notesAction, dispatch);
+        console.log(...this.props.notesList)
         return(
             <div className="app-wrapper">
                 <AddNote />
                 <h3 className="App-sub_header"> LIST NOTES </h3>
                 {/* <NotesList notesList={this.returnNoteList()} {...this.props} onNoteDelete={this.handleNoteDelete}/> 
-                <NotesList {...this.props} notesList={this.state.notes.notesList} onNoteDelete={this.handleNoteDelete}/> */}
-                <NotesList notesList={this.props.notesList}/>
+                <NotesList {...this.props} notesList={this.state.notes.notesList} deleteNote={this.handleNoteDelete}/> */}
+                <NotesList notesList={this.props.notesList} deleteNote={this.handleNoteDelete} {...this.props.notesList}/>
 
             </div>
         );
@@ -126,10 +132,12 @@ function mapStateToProps(state) {
 
 
 function mapDispatchToProps(dispatch) {
+    dispatch(deleteNote('5dbe0643da2a421fa066bf00'));
     return {
-        onNoteDelete: (notesList) => {
+        deleteNote: (note) => {
+            console.log(note);
             console.log('del disp');
-        dispatch(deleteNote(notesList));
+        dispatch(deleteNote(note));
         },
       fetchData: (url) => {
         console.dir(fetchNotes(url));
