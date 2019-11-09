@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import AddNote from './AddNote';
+import SearchContainer from './SearchContainer';
 import NotesList from '../components/NotesList';
 // import NoteEditor from '../components/NoteEditor';
 import {fetchNotes, deleteNote} from '../actions';
@@ -108,6 +109,9 @@ class Notes extends Component {
         return(
             <div className="app-wrapper">
                 <AddNote />
+
+                <SearchContainer />
+                
                 <h3 className="App-sub_header"> LIST NOTES </h3>
                 {/* <NotesList notesList={this.returnNoteList()} {...this.props} onNoteDelete={this.handleNoteDelete}/> 
                 <NotesList {...this.props} notesList={this.state.notes.notesList} deleteNote={this.handleNoteDelete}/> */}

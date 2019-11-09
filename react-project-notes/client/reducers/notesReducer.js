@@ -18,6 +18,15 @@ export default function notesReducer(state=initialState.notes, action) {
             const filterNote = state.notesList.filter((item) => item._id !== action.id);
             console.log(filterNote);
         return Object.assign({}, {notesList: filterNote});
+
+
+        case "SEARCH_NOTES":
+            // let filter = [state.notesList];
+            // console.log(...state);
+            console.log(state);
+            const searchNote = state.notesList.filter((item) => item.searchText == action.name);
+            console.log('SEARCH_NOTES');
+        return Object.assign({}, {notesList: searchNote});
              
             //  notesList: state.notesList.filter(id => id !== action.id)
             // notesList: state.notesList.filter(id => id !== action.id)

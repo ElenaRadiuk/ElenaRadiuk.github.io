@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './NoteEditor.css';
 
 const NoteEditor = ({onInputChange, onFormSubmit}) => (
-            <div className="NoteEditor">
+            <form className="NoteEditor">
                      <input  type="number"
                         className='NoteEditor__title hidden'
                         
@@ -33,7 +33,7 @@ const NoteEditor = ({onInputChange, onFormSubmit}) => (
                             Add
                     </button>
                 </div>
-            </div>
+            </form>
             )
 
 export default NoteEditor;

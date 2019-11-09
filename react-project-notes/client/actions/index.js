@@ -43,6 +43,12 @@ export const receiveNotesError = (err) => {
 	}
 }
 
+export const searchNotesByName = (searchText) => {
+	return {
+		type: "SEARCH_NOTES",
+		searchText
+	}
+}
 
 
 export const deleteNote = (id) => {

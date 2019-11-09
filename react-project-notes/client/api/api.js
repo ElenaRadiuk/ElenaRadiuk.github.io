@@ -48,3 +48,19 @@ export function deleteNoteApi(noteId) {
         }
         );
 }
+
+export function searchNoteApi(searchText) {
+    console.log('searchText' + searchText);
+    return axios.get(`http://localhost:8080/notes?=${searchText}`)
+        .then(response => {
+            // store.dispatch(deleteNote(noteId));
+            console.log('searchText' + response.data);
+            return response;
+           
+        })
+        .catch(err => {
+            console.log('error'),
+            console.error(err)
+        }
+        );
+}

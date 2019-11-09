@@ -8,7 +8,7 @@ const initialState = {
             text: '',
             name: ''
         },
-        searchText: 'a'
+        searchText: ''
     },
     ui: {
         isAddNotesFormHidden: true

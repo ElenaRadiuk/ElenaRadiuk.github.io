@@ -1,32 +1,36 @@
 import React, {Component} from 'react';
 // import './NoteEditor.css';
 
-export default React.createClass({
-   
+// class SearchForm extends Component {
+//     constructor(props) {
+//         super(props);
+//     }
 
-    getQuery: function () {
-        return this.refs.search.value;
-    },
+//     getQuery() {
+//         return this..search.value;
+//     }
 
-    render: function () {
-        return(
-            <form onSubmit={this.props.search} className="SearchForm">          
+    const SearchForm = ({onInputChange2, onFormSubmit2}) => (
+
+            <form className="SearchForm">          
             <input  type="text"
                     className='SearchForm__input'
-                    ref="search"
+                    // ref="search"
                     placeholder='search...'
                     // name="search"
                     // onChange={onInputChange}
+                    name="searchText"
+                    onChange2={onInputChange2}
                     />
+                    
             <div className="SearchForm__footer">
                 <button className="SearchForm__button"
-                        onClick={}>
+                        onClick={onFormSubmit2}>
                         Search
                 </button>
             </div>
-            </form>
-        )
-    }
-});
+            </form> 
+        );
 
+export default SearchForm;
 
