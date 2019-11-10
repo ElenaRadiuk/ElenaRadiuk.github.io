@@ -15,6 +15,13 @@ export const handleInputChange = (name, value) => {
     }
 }
 
+export const handleInputChangeSearch = (name, value) => {
+    return {
+        type: "HANDLE_INPUT_CHANGE_SEARCH",
+		value
+	    }
+}
+
 export const toggleNotesForm = () => {
     return {
         type: "TOGGLE_NOTES_FORM"

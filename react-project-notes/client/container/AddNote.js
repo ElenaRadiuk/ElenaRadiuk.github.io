@@ -27,7 +27,8 @@ class AddNote extends Component {
         console.log(name);
 
         const { onInputChange } = this.props;
-        onInputChange(name, value);
+        console.log(onInputChange);
+        this.props.onInputChange(name, value);
     }
 
     handleSubmit(e, state) {
@@ -57,6 +58,7 @@ class AddNote extends Component {
 
 // приклеиваем данные из store
 function mapStateToProps(state) {
+    console.log(state);
     return {
         isHidden: state.ui.isAddNotesFormHidden,
         newNote: state.notes.newNote

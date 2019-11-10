@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import SearchForm from '../components/SearchForm';
-import {fetchNotes, addNote, handleInputChange, toggleNotesForm, searchNotesByName} from '../actions';
+import {fetchNotes, addNote, handleInputChangeSearch, toggleNotesForm, searchNotesByName} from '../actions';
 import * as userApi from '../api/api';
 
 
@@ -11,43 +11,51 @@ class SearchContainer extends Component {
 
         // this.search = this.search.bind(this);
 
-        this.handleInputChange2 = this.handleInputChange2.bind(this);
-        this.handleSubmit2 = this.handleSubmit2.bind(this);
+        this.handleInputChangeSearch = this.handleInputChangeSearch.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
    
 
-    handleInputChange2(event) {
+    handleInputChangeSearch(event) {
         const target = event.target;
         const value = target.value;
         const name = target.name;
         console.log(name);
+        console.log(value);
 
         const { onInputChange } = this.props;
-        onInputChange2(name, value);
+        console.log(onInputChange);
+        onInputChange(name, value);
+        console.log(name);
+
+        if(value == 0) {
+            this.props.fetchData(`http://localhost:8080/notes`);
+        }
     }
 
  
 
-    handleSubmit2(event) {
+    handleSubmit(event) {
         event.preventDefault();
-        let query = this.props.searchText;
+        console.log(this.props.searchText)
+        // let query = this.props.searchText;
 
         // this.props.onToggle();
         // this.props.onFormSubmit();
 
-        userApi.searchNoteApi(query);
+        userApi.searchNoteApi(this.props.searchText);
 
-        this.props.onFormSubmit2(query);
+        this.props.onFormSubmit(this.props.searchText);
         // this.props.fetchData(`http://localhost:8080/notes`);
-        console.log(query)
+        // console.log({...this.props.searchText})
     }
 
 
     render() {
         return(
             // <div></div>
-           <SearchForm {...this.props.searchText} onFormSubmit2={this.handleSubmit2} onInputChange2={this.handleInputChange2} />
+           <SearchForm {...this.props.searchText} onFormSubmit={this.handleSubmit} onInputChange={this.handleInputChangeSearch} />
         )
     }
 }
@@ -55,7 +63,7 @@ class SearchContainer extends Component {
 
 function mapStateToProps(state) {
     console.log(state);
-    // console.log('snn '+ state.notes.notesList);
+    console.log('snn '+ state.notes);
     console.log('state.notes.searchText' + state.notes.searchText);
     return {
         // notesList: state.notes.notesList,
@@ -69,11 +77,18 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        onFormSubmit2: (query) => {
+        onFormSubmit: (query) => {
             console.log(query);
             console.log('query disp');
         dispatch(searchNotesByName(query));
-        }
+        },
+        onInputChange: (name, value) => {
+            dispatch(handleInputChangeSearch(name, value))
+        },
+        fetchData: (url) => {
+            console.dir(fetchNotes(url));
+              dispatch(fetchNotes(url))
+          }
     }
   }
   

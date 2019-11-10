@@ -10,7 +10,7 @@ import React, {Component} from 'react';
 //         return this..search.value;
 //     }
 
-    const SearchForm = ({onInputChange2, onFormSubmit2}) => (
+    const SearchForm = ({onInputChange, onFormSubmit}) => (
 
             <form className="SearchForm">          
             <input  type="text"
@@ -20,12 +20,12 @@ import React, {Component} from 'react';
                     // name="search"
                     // onChange={onInputChange}
                     name="searchText"
-                    onChange2={onInputChange2}
+                    onChange={onInputChange}
                     />
                     
             <div className="SearchForm__footer">
                 <button className="SearchForm__button"
-                        onClick={onFormSubmit2}>
+                        onClick={onFormSubmit}>
                         Search
                 </button>
             </div>

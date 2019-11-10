@@ -23,8 +23,8 @@ export default function notesReducer(state=initialState.notes, action) {
         case "SEARCH_NOTES":
             // let filter = [state.notesList];
             // console.log(...state);
-            console.log(state);
-            const searchNote = state.notesList.filter((item) => item.searchText == action.name);
+            console.log(action.searchText);
+            const searchNote = state.notesList.filter((item) => item.name == action.searchText);
             console.log('SEARCH_NOTES');
         return Object.assign({}, {notesList: searchNote});
              
@@ -45,6 +45,12 @@ export default function notesReducer(state=initialState.notes, action) {
                 ...state,
                 newNote: {...state.newNote, ...action.payload}
             }
+
+        case "HANDLE_INPUT_CHANGE_SEARCH":
+            return {
+                ...state,
+                searchText: action.value
+            }    
 
         case "REQUEST_NOTES": 
             return {
