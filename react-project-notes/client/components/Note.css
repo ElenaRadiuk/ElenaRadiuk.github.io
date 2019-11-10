@@ -24,6 +24,13 @@
     padding-bottom:10px;
   }
 
+.Note__pin img {
+  max-width: 30px;
+  position: absolute;
+  top: -30px;
+  left: 48%;
+}
+
 .Note__delete-icon {
     float: right;
     width: 20px;
@@ -36,6 +43,11 @@
     font-family:"Reenie Beanie",arial,sans-serif;
     font-size:180%;
 }
+
+.Note__auth {
+  font-size: 12px;
+}
+
 .Note > div {
     -webkit-transform: rotate(-6deg);
     transform: rotate(-6deg);

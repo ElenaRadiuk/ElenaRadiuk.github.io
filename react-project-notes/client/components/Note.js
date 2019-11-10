@@ -17,8 +17,9 @@ export class Note extends Component  {
     //   }
 
     return(
-    <div className = "Note" id={this.props.id}>
+    <div className = "Note" id={this.props.id}>  
     <div>
+    <div className="Note__pin"><img src="pin.png" /> </div>
     <span className="Note__delete-icon" onClick={() => this.props.deleteNote(this.props.id)}>x</span>
     {
         this.props.title 
@@ -28,6 +29,7 @@ export class Note extends Component  {
         null
     }
     <p className="Note__text">Text: {this.props.text}</p>
+    <p className="Note__auth">by {this.props.name}</p>
     </div>
     </div>
     )

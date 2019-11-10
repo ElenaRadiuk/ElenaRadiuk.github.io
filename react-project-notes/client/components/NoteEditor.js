@@ -27,6 +27,40 @@ const NoteEditor = ({onInputChange, onFormSubmit}) => (
                             name="text"
                             onChange = {onInputChange}
                             />
+                <div className="NoteEditor__color">
+                        <span>Choose color for note: </span>         
+                        <label className="NoteEditor__color-item">
+                                <input type="radio"
+                                name="color"
+                                />
+                                <span className="color-item color_cfc"></span>
+                        </label>
+                        <label className="NoteEditor__color-item">
+                                <input type="radio"
+                                name="color"
+                                />
+                                <span className="color-item color_ffc"></span>
+                        </label>
+                        <label className="NoteEditor__color-item">
+                                <input type="radio"
+                                name="color"
+                                />
+                                <span className="color-item color_ccf"></span>
+                        </label>
+                        <label className="NoteEditor__color-item">
+                                <input type="radio"
+                                name="color"
+                                />
+                                <span className="color-item color_b5f6fc"></span>
+                        </label>
+                        <label className="NoteEditor__color-item">
+                                <input type="radio"
+                                name="color"
+                                />
+                                <span className="color-item color_fcc2e5"></span>
+                        </label>
+                </div>          
+                           
                 <div className="NoteEditor__footer">
                     <button className="NoteEditor__button"
                             onClick={onFormSubmit}>

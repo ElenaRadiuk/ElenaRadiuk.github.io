@@ -30,10 +30,57 @@
     margin: 5px;
     border: none;
     font-weight: 500;
+    outline: 0;
 
     /* &:focus {
         outline: 0;
     } */
+}
+
+.NoteEditor__color {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 12px;
+    color: #898989;
+}
+
+.NoteEditor__color-item {
+    position: relative;
+    margin-right: 20px;
+    margin-left: 5px;
+}
+
+.NoteEditor__color-item .color-item {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    border-radius: 50%;
+    left: 0;
+    top: -5px;
+    cursor: pointer;
+}
+
+.NoteEditor__color-item .color_cfc{
+    background-color: #cfc;
+
+}
+
+.NoteEditor__color-item .color_ffc{
+    background-color: #ffc;
+}
+
+.NoteEditor__color-item .color_ccf{
+    background-color: #ccf;
+}
+
+.NoteEditor__color-item .color_b5f6fc{
+    background-color: #b5f6fc;
+}
+
+.NoteEditor__color-item .color_fcc2e5{
+    background-color: #fcc2e5;
 }
 
 .NoteEditor__footer {
@@ -43,7 +90,7 @@
 }
 
 .NoteEditor__button {
-    border: 0 none;
+    border: none;
     /* border-radius: 24px; */
     padding: 10px 15px;
     margin: 10px;

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './SearchForm.css'
 // import './NoteEditor.css';
 
 // class SearchForm extends Component {
