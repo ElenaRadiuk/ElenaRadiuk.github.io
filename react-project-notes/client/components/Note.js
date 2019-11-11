@@ -10,6 +10,7 @@ export class Note extends Component  {
         render() {
     console.log(this.props.id);
     console.log(this.props._id)
+    console.log(this.props.color)
 
     // deleteContact(e, index){
     //     e.preventDefault();
@@ -18,7 +19,7 @@ export class Note extends Component  {
 
     return(
     <div className = "Note" id={this.props.id}>  
-    <div>
+    <div style={{backgroundColor:this.props.color}}>
     <div className="Note__pin"><img src="pin.png" /> </div>
     <span className="Note__delete-icon" onClick={() => this.props.deleteNote(this.props.id)}>x</span>
     {

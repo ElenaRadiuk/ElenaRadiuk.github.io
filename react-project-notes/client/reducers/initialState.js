@@ -6,7 +6,8 @@ const initialState = {
             id: '',
             title: '',
             text: '',
-            name: ''
+            name: '',
+            color: ''
         },
         searchText: 'test'
     },

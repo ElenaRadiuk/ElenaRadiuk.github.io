@@ -18,15 +18,17 @@ body {
 
 .App-header {
     text-align: center;
-    font-size: 34px;
+    font-size: 38px;
     font-weight: bold;
     font-family: 'Indie Flower', cursive;
+    color: #3a3731;
 }
 
 .App-sub_header {
     text-align: center;
     font-size: 28px;
     font-family: 'Indie Flower', cursive;
+    color: #3a3731;
 }
 
 ul, li{

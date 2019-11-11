@@ -40,6 +40,7 @@ export class NotesList extends Component {
                 key={note.title + Math.random()} 
                 id={note._id}
                 name={note.name}
+                color={note.color}
                 title={note.title}
                 text={note.text}
                 note={note}
