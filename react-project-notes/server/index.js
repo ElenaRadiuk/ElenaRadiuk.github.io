@@ -1,12 +1,17 @@
+// require('rootpath')();
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 
+import expressJwt from "express-jwt";
+
 import { serverPort } from '../etc/config.json';
 
 import * as db from './utils/DButils.js';
+import * as dbuser from './utils/DButilsUser.js';
 
 db.setUpConnection(); //соединение с бд
+dbuser.setUpConnection(); //соединение с бд
 
 const app = express();
 
