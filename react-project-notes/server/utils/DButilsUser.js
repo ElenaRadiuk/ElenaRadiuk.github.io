@@ -5,20 +5,31 @@ import bcrypt from 'bcryptjs'
 import '../models/User.js';
 
 import config from '../../etc/config.json';
-import { async } from "q";
+// import { async } from "q";
+mongoose.Promise = global.Promise;
 
 const User = mongoose.model('User');
 
-export function setUpConnectionUser() {
+export function setUpConnection() {
     mongoose.connect(`mongodb://${config.dbuser.host}:${config.dbuser.port}/${config.dbuser.name}`);
 }
+
+module.exports = {
+    authenticate,
+    getAll,
+    getById,
+    create,
+    update,
+    delete: _delete
+};
+
 
 export function listUsers() {
     return User.find();
 }
 
-async function authenticate({user, password}) {
-    const user = await User.findOne({user});
+async function authenticate({name, password}) {
+    const user = await User.findOne({name});
     if(user && bcrypt.compareSync(password, user.hash)) {
         const { hash, ...userWithoutHash } = user.toObject();
         const token = jwt.sign({ sub: user.id}, config.secret);
