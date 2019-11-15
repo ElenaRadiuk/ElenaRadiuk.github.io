@@ -3,18 +3,18 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 
-// import expressJwt from "express-jwt";
+import expressJwt from "express-jwt";
 
 import { serverPort } from '../etc/config.json';
 
 import jwt from './_helpers/jwt';
-import errorHandler from './_helpers/error-handler';
+// import errorHandler from './_helpers/error-handler';
 
 import * as db from './utils/DButils.js';
-import * as dbuser from './utils/DButilsUser.js';
+// import * as dbuser from './utils/DButilsUser.js';
 
 db.setUpConnection(); //соединение с бд
-dbuser.setUpConnection(); //соединение с бд
+// dbuser.setUpConnection(); //соединение с бд
 
 const app = express();
 
@@ -27,7 +27,7 @@ app.use(bodyParser.json());
 app.use(jwt());
 
 // global error handler
-app.use(errorHandler);
+// app.use(errorHandler);
 
 app.get('/', (req, res) => {
     res.send('8080 send');
@@ -47,40 +47,40 @@ app.delete('/notes/:id', (req, res) => {
 
 
 
-app.post('/authenticate', (req, res, next) => {
-    dbuser.authenticate(req.body).then(data => res.send(data))
-    .catch(err => next(err));
-})
+// app.post('/authenticate', (req, res, next) => {
+//     dbuser.authenticate(req.body).then(data => res.send(data))
+//     .catch(err => next(err));
+// })
 
-app.post('/register', (req, res, next) => {
-    dbuser.create(req.body).then(data => res.send(data))
-    .catch(err => next(err));
-})
+// app.post('/register', (req, res, next) => {
+//     dbuser.create(req.body).then(data => res.send(data))
+//     .catch(err => next(err));
+// })
 
 
-app.get('/', (req, res, next) => {
-    dbuser.getAll(req.body).then(data => res.send(data))
-    .catch(err => next(err));
-})
+// app.get('/', (req, res, next) => {
+//     dbuser.getAll(req.body).then(data => res.send(data))
+//     .catch(err => next(err));
+// })
 
-app.get('/current', (req, res, next) => {
-    dbuser.getById(req.user.sub).then(data => res.send(data))
-    .catch(err => next(err));
-})
+// app.get('/current', (req, res, next) => {
+//     dbuser.getById(req.user.sub).then(data => res.send(data))
+//     .catch(err => next(err));
+// })
 
-app.get('/:id', (req, res, next) => {
-    dbuser.getById(req.params.id).then(data => res.send(data))
-    .catch(err => next(err));
-})
+// app.get('/:id', (req, res, next) => {
+//     dbuser.getById(req.params.id).then(data => res.send(data))
+//     .catch(err => next(err));
+// })
 
-app.put('/:id', (req, res, next) => {
-    dbuser.update(req.params.id, req.body).then(data => res.send(data))
-    .catch(err => next(err));
-})
+// app.put('/:id', (req, res, next) => {
+//     dbuser.update(req.params.id, req.body).then(data => res.send(data))
+//     .catch(err => next(err));
+// })
 
-app.delete('/:id', (req, res) => {
-    dbuser._delete(req.params.id).then(data => res.send(data));
-})
+// app.delete('/:id', (req, res) => {
+//     dbuser._delete(req.params.id).then(data => res.send(data));
+// })
 
 
 
