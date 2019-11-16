@@ -1,20 +1,24 @@
 // require('rootpath')();
+import mongoose from "mongoose";
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 
 import expressJwt from "express-jwt";
 
-import { serverPort } from '../etc/config.json';
+import * as config from '../etc/config.json';
 
 import jwt from './_helpers/jwt';
-// import errorHandler from './_helpers/error-handler';
+import errorHandler from './_helpers/error-handler';
 
-import * as db from './utils/DButils.js';
-// import * as dbuser from './utils/DButilsUser.js';
+import * as dbnotes from './utils/DButils.js';
+import * as dbuser from './utils/DButilsUser.js';
 
-db.setUpConnection(); //соединение с бд
+mongoose.connect(`mongodb://${config.db.host}:${config.db.port}/${config.db.name}`);
+
+// db.setUpConnection(); //соединение с бд
 // dbuser.setUpConnection(); //соединение с бд
+// mongoose.connect(`mongodb://${config.dbuser.host}:${config.dbuse.port}/${config.dbuser.name}`);
 
 const app = express();
 
@@ -27,22 +31,22 @@ app.use(bodyParser.json());
 app.use(jwt());
 
 // global error handler
-// app.use(errorHandler);
+app.use(errorHandler);
 
 app.get('/', (req, res) => {
     res.send('8080 send');
 })
 
 app.get('/notes', (req, res) => {
-    db.listNotes().then(data => res.send(data));
+    dbnotes.listNotes().then(data => res.send(data));
 })
 
 app.post('/notes', (req, res) => {
-    db.addNote(req.body).then(data => res.send(data));
+    dbnotes.addNote(req.body).then(data => res.send(data));
 })
 
 app.delete('/notes/:id', (req, res) => {
-    db.deleteNote(req.params.id).then(data => res.send(data));
+    dbnotes.deleteNote(req.params.id).then(data => res.send(data));
 })
 
 
@@ -84,8 +88,8 @@ app.delete('/notes/:id', (req, res) => {
 
 
 
-const server = app.listen(serverPort, () => {
-    console.log(`start port ${serverPort}`);
+const server = app.listen(config.serverPort, () => {
+    console.log(`start port ${config.serverPort}`);
 });
 
 process.on('SIGTERM', () => {

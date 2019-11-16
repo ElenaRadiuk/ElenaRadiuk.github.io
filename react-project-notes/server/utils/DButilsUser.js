@@ -2,13 +2,13 @@ import mongoose from "mongoose";
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs'
 
-import '../models/User.js';
+import User from '../models/User.js';
 
 import config from '../../etc/config.json';
 // import { async } from "q";
 mongoose.Promise = global.Promise;
 
-const User = mongoose.model('User');
+// const User = mongoose.model('User');
 
 export function setUpConnection() {
     mongoose.connect(`mongodb://${config.dbuser.host}:${config.dbuser.port}/${config.dbuser.name}`);
