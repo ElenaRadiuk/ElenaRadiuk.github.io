@@ -51,40 +51,40 @@ app.delete('/notes/:id', (req, res) => {
 
 
 
-// app.post('/authenticate', (req, res, next) => {
-//     dbuser.authenticate(req.body).then(data => res.send(data))
-//     .catch(err => next(err));
-// })
+app.post('/authenticate', (req, res, next) => {
+    dbuser.authenticate(req.body).then(data => res.send(data))
+    .catch(err => next(err));
+})
 
-// app.post('/register', (req, res, next) => {
-//     dbuser.create(req.body).then(data => res.send(data))
-//     .catch(err => next(err));
-// })
+app.post('/register', (req, res, next) => {
+    dbuser.create(req.body).then(data => res.send(data))
+    .catch(err => next(err));
+})
 
 
-// app.get('/', (req, res, next) => {
-//     dbuser.getAll(req.body).then(data => res.send(data))
-//     .catch(err => next(err));
-// })
+app.get('/', (req, res, next) => {
+    dbuser.getAll(req.body).then(data => res.send(data))
+    .catch(err => next(err));
+})
 
-// app.get('/current', (req, res, next) => {
-//     dbuser.getById(req.user.sub).then(data => res.send(data))
-//     .catch(err => next(err));
-// })
+app.get('/current', (req, res, next) => {
+    dbuser.getById(req.user.sub).then(data => res.send(data))
+    .catch(err => next(err));
+})
 
-// app.get('/:id', (req, res, next) => {
-//     dbuser.getById(req.params.id).then(data => res.send(data))
-//     .catch(err => next(err));
-// })
+app.get('/:id', (req, res, next) => {
+    dbuser.getById(req.params.id).then(data => res.send(data))
+    .catch(err => next(err));
+})
 
-// app.put('/:id', (req, res, next) => {
-//     dbuser.update(req.params.id, req.body).then(data => res.send(data))
-//     .catch(err => next(err));
-// })
+app.put('/:id', (req, res, next) => {
+    dbuser.update(req.params.id, req.body).then(data => res.send(data))
+    .catch(err => next(err));
+})
 
-// app.delete('/:id', (req, res) => {
-//     dbuser._delete(req.params.id).then(data => res.send(data));
-// })
+app.delete('/:id', (req, res) => {
+    dbuser._delete(req.params.id).then(data => res.send(data));
+})
 
 
 

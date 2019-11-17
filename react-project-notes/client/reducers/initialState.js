@@ -1,3 +1,6 @@
+let user = JSON.parse(localStorage.getItem(['user']));
+console.log(user);
+
 const initialState = {
     notes: {
         notesList: [],
@@ -13,7 +16,8 @@ const initialState = {
     },
     ui: {
         isAddNotesFormHidden: true
-    }
+    },
+    user: {}
 }
 
 export default initialState;
