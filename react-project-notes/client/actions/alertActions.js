@@ -6,25 +6,37 @@ export const alertActions = {
     clear
 };
 
-const success = (message) => {
-	console.log('alert message success');
-    return {
-        type: alertConstants.SUCCESS,
-        message
-    }
+// const success = (message) => {
+// 	console.log('alert message success');
+//     return {
+//         type: alertConstants.SUCCESS,
+//         message
+//     }
+// }
+
+// const error = (message) => {
+// 	console.log('alert error');
+//     return {
+//         type: alertConstants.ERROR,
+//         message
+//     }
+// }
+
+// const clear = (message) => {
+// 	console.log('alert clear');
+//     return {
+//         type: alertConstants.CLEAR
+//     }
+// }
+
+function success(message) {
+    return { type: alertConstants.SUCCESS, message };
 }
 
-const error = (message) => {
-	console.log('alert error');
-    return {
-        type: alertConstants.ERROR,
-        message
-    }
+function error(message) {
+    return { type: alertConstants.ERROR, message };
 }
 
-const clear = (message) => {
-	console.log('alert clear');
-    return {
-        type: alertConstants.CLEAR
-    }
+function clear() {
+    return { type: alertConstants.CLEAR };
 }

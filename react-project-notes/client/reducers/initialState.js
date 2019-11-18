@@ -17,7 +17,7 @@ const initialState = {
     ui: {
         isAddNotesFormHidden: true
     },
-    user: {}
+    user: [{ id: 1, username: 'test1', password: 'test', email: 'Test'}]
 }
 
 export default initialState;

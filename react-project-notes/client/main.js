@@ -27,6 +27,10 @@ const store = configureStore();
 //   });
 
 
+// setup fake backend
+import { configureFakeBackend } from './_helpers';
+configureFakeBackend();
+
 ReactDOM.render(
     <Provider store={store}>
         <App />
