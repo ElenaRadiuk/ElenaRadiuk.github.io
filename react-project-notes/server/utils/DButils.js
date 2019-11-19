@@ -19,6 +19,7 @@ export function addNote(data) {
         title: data.title,
         text: data.text,
         name: data.name,
+        color: data.color,
         id: Date.now() 
     });
 

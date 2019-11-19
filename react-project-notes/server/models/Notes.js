@@ -11,4 +11,4 @@ const NoteSchema  = new Schema({
     dataCreated: {type: Date}
 })
 
-mongoose.model('Notes', NoteSchema);
+module.exports = mongoose.model('Notes', NoteSchema);
