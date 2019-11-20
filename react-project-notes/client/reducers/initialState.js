@@ -13,7 +13,9 @@ const initialState = {
     },
     ui: {
         isAddNotesFormHidden: true
-    }
+    },
+    isAuthenticated: false,
+    user: {}
 }
 
 export default initialState;
