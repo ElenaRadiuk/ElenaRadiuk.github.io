@@ -136,7 +136,7 @@ function mapStateToProps(state) {
 
 
 function mapDispatchToProps(dispatch) {
-    dispatch(deleteNote('5dbe0643da2a421fa066bf00'));
+    // dispatch(deleteNote('5dbe0643da2a421fa066bf00'));
     return {
         deleteNote: (note) => {
             console.log(note);

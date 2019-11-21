@@ -15,7 +15,7 @@ import * as db from './utils/DButils.js';
 
 import config from '../etc/config';
 
-import * as users from './utils/routesUser';
+const users = require('./utils/routesUser');
 
 
 // db.setUpConnection(); //соединение с бд
@@ -32,6 +32,18 @@ require('./passport')(passport);
 
 // Allow requests from any origin
 app.use(cors({ origin: '*' }));
+
+app.use(function(req, res, next) {
+    console.log('request', req.url, req.body, req.method);
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-token");
+    if(req.method === 'OPTIONS') {
+        res.end();
+    }
+    else {
+        next();
+    }
+});
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -52,24 +64,24 @@ app.delete('/notes/:id', (req, res) => {
     db.deleteNote(req.params.id).then(data => res.send(data));
 })
 
-// app.use('/api/users', users);
+app.use('/api/users', users);
 
-app.post('/register', (req, res) => {
-    users.regUser(req.body).then(data => res.send(data));
-})
+// app.post('/register', (req, res) => {
+//     users.regUser(req.body).then(data => res.send(data));
+// })
 
-app.post('/login', (req, res) => {
-    users.logUser(req.body).then(data => res.send(data));
-})
+// app.post('/login', (req, res) => {
+//     users.logUser(req.body).then(data => res.send(data));
+// })
 
 
-app.get('/me', passport.authenticate('jwt', { session: false }), (req, res) => {
-    return res.json({
-        id: req.user.id,
-        name: req.user.name,
-        email: req.user.email
-    });
-});
+// app.get('/me', passport.authenticate('jwt', { session: false }), (req, res) => {
+//     return res.json({
+//         id: req.user.id,
+//         name: req.user.name,
+//         email: req.user.email
+//     });
+// });
 
 
 const server = app.listen(serverPort, () => {

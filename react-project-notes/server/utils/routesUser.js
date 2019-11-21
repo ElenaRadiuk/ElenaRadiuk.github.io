@@ -10,7 +10,7 @@ const validateLoginInput = require('../validation/login');
 
 const User = require('../models/User');
 
-export function regUser() {
+router.post('/register', function(req, res) {
 
     const { errors, isValid } = validateRegisterInput(req.body);
 
@@ -56,9 +56,9 @@ export function regUser() {
             });
         }
     });
-};
+});
 
-export function logUser() {
+router.post('/login', (req, res) => {
 
     const { errors, isValid } = validateLoginInput(req.body);
 
@@ -101,8 +101,14 @@ export function logUser() {
                         }
                     });
         });
-};
+});
 
+router.get('/me', passport.authenticate('jwt', { session: false }), (req, res) => {
+    return res.json({
+        id: req.user.id,
+        name: req.user.name,
+        email: req.user.email
+    });
+});
 
-
-// module.exports = router;
+module.exports = router;
